@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPLDF7RVY0"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-TPLDF7RVY0');
+	</script>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Форум Парламенту | AfterLight</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Parlament.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 95%;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(240, 165, 0, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: #f0a500;
+            text-align: center;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .decree-wall {
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 300px;
+            max-height: 800px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+        .message {
+            padding: 12px 18px !important;
+            margin-bottom: 10px !important;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #f0a500;
+            border-radius: 0 4px 4px 0;
+            min-height: auto !important; /* ПРИБИРАЄ ДИРИ */
+            display: block !important;
+        }
+        
+        .message b {
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.75rem;
+            color: #f0a500;
+            margin-bottom: 8px !important;
+            display: block;
+            line-height: 1;
+        }
+        
+        .message p {
+            margin: 10px 0 0 0 !important;
+            white-space: pre-wrap; /* Це важливо, щоб бачити весь текст, а не один рядок */
+            word-wrap: break-word;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .input-area { background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px; border: 1px solid rgba(240,165,0,0.1); }
+        
+        .parl-input, .parl-textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(240, 165, 0, 0.3);
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .parl-input { font-family: 'Russo One', sans-serif; color: #f0a500; }
+        .parl-textarea { resize: vertical; min-height: 100px; }
+
+        .send-btn {
+            background: #f0a500;
+            color: black;
+            border: none;
+            padding: 10px 25px;
+            font-family: 'Russo One', sans-serif;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .send-btn:hover { background: #fff; box-shadow: 0 0 10px #f0a500; }
+
+        .auth-btn {
+            background: none;
+            border: 1px dashed #f0a500;
+            color: #f0a500;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-family: 'Russo One', sans-serif;
+            margin: 20px auto;
+            display: block;
+        }
+        
+        @media (max-width: 600px) {
+            .corner-logo { display: none; }
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .rate-card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <a href="index.html"><img src="logo.png" alt="Logo" class="nav-logo"></a>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+    </nav>
+
+    <div class="container">
+        <h1>ФОРУМ ПАРЛАМЕНТУ</h1>
+
+        <div class="decree-wall" id="decreeWall">
+            <p style="text-align:center;">Завантаження дописів...</p>
+        </div>
+
+        <div id="authSection">
+            <button class="auth-btn" onclick="checkParlPass()">🔐 АВТОРИЗАЦІЯ ПОЛІТИКА</button>
+        </div>
+
+        <div id="inputSection" class="input-area" style="display: none;">
+            <input type="text" id="authorName" placeholder="Ваш нікнейм..." class="parl-input">
+            <textarea id="messageText" placeholder="Напишіть ваш допис тут..." class="parl-textarea"></textarea>
+            <div style="display: flex; justify-content: flex-end;">
+                <button class="send-btn" onclick="postMessage()">ОПУБЛІКУВАТИ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === НАЛАШТУВАННЯ ===
+        const FORM_ID = "1FAIpQLSdonsj01Se51h0f_vnAG_uniH2mY1KeIVQq7ax71H3Fi4KyzQ";        
+        const NICK_ID = "entry.426138291"; 
+        const MSG_ID  = "entry.1992935995"; 
+        const PASS_FIELD_ID = "entry.538990333";
+        const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTUjPGqtjr-yX__6GsMy9cfwfoWj3rc_lLE7Hf0Jh5IYCBhANOqjKQnen_VP4q9nmoKEcbIQY-JSKmA/pub?gid=507092794&single=true&output=csv";
+
+        // 1. ДОДАЙ ID ПОЛЯ ПАРОЛЯ (візьми його з попередньо заповненого посилання твоєї форми)
+
+        // 2. ФУНКЦІЯ АВТОРИЗАЦІЇ (тепер просто показує форму)
+        function checkParlPass() {
+            // Ми прибрали перевірку пароля звідси, щоб його не було в коді
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('inputSection').style.display = 'block';
+            console.log("Доступ до полів відкрито. Пароль буде запитано при публікації.");
+        }
+
+        // 3. ФУНКЦІЯ ВІДПРАВКИ (запитує пароль тут)
+        async function postMessage() {
+            const author = document.getElementById('authorName').value.trim();
+            const text = document.getElementById('messageText').value.trim();
+            
+            // ОСЬ ТУТ ВІКНО ПАРОЛЯ
+            const pass = prompt("Введіть секретний ключ для підтвердження публікації:");
+
+            if (!author || !text) return alert("Заповни всі поля!");
+            if (!pass) return alert("Пароль обов'язковий!");
+
+            const url = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+            const params = new URLSearchParams();
+            
+            params.append(NICK_ID, author);
+            params.append(MSG_ID, text);
+            params.append(PASS_FIELD_ID, pass); // ВІДПРАВЛЯЄМО ПАРОЛЬ У GOOGLE
+
+            try {
+                await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: params
+                });
+
+                alert("Запит надіслано! Якщо пароль вірний, допис з'явиться в списку за 10-20 секунд.");
+                document.getElementById('messageText').value = '';
+                setTimeout(() => { location.reload(); }, 2000); 
+            } catch (e) {
+                alert("Помилка зв'язку з сервером.");
+            }
+        }
+        
+       // Допоміжна функція для правильного читання CSV (враховує лапки та переноси рядків)
+        function parseCSV(text) {
+            const rows = [];
+            let currentRow = [];
+            let currentField = '';
+            let inQuotes = false;
+        
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const nextChar = text[i + 1];
+        
+                if (char === '"' && inQuotes && nextChar === '"') {
+                    currentField += '"';
+                    i++; // Пропускаємо подвійну лапку
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    currentRow.push(currentField);
+                    currentField = '';
+                } else if ((char === '\r' || char === '\n') && !inQuotes) {
+                    if (currentRow.length > 0 || currentField !== '') {
+                        currentRow.push(currentField);
+                        rows.push(currentRow);
+                        currentRow = [];
+                        currentField = '';
+                    }
+                    if (char === '\r' && nextChar === '\n') i++; // Пропускаємо \n після \r
+                } else {
+                    currentField += char;
+                }
+            }
+            if (currentRow.length > 0 || currentField !== '') {
+                currentRow.push(currentField);
+                rows.push(currentRow);
+            }
+            return rows;
+        }
+
+// Оновлена функція завантаження
+        async function loadDecrees() {
+            const wall = document.getElementById('decreeWall');
+            try {
+                const response = await fetch(CSV_URL + "&t=" + Date.now());
+                const data = await response.text();
+                
+                // Використовуємо нову функцію замість простого split()
+                const allRows = parseCSV(data);
+                const rows = allRows.slice(1); // Видаляємо заголовок (Timestamp, Nick, Message)
+        
+                wall.innerHTML = '';
+                
+                // Виводимо в зворотному порядку (нові зверху)
+                rows.reverse().forEach(row => {
+                    if (row.length >= 3) {
+                        const time = row[0].trim();
+                        const name = row[1].trim();
+                        const msg = row[2].trim();
+        
+                        const msgBlock = document.createElement('div');
+                        msgBlock.className = 'message';
+                        msgBlock.innerHTML = `<b>${name.toUpperCase()} | ${time}</b><p>${msg}</p>`;
+                        wall.appendChild(msgBlock);
+                    }
+                });
+            } catch (e) {
+                console.error("Помилка завантаження:", e);
+                wall.innerHTML = '<p style="text-align:center; color: red;">Помилка завантаження даних.</p>';
+            }
+        }
+        
+        // ПЕРЕВІРКА ПРИ ЗАВАНТАЖЕННІ
+        window.onload = () => {
+            loadDecrees();
+            if (sessionStorage.getItem('parl_auth') === 'true') {
+                const authSec = document.getElementById('authSection');
+                const inputSec = document.getElementById('inputSection');
+                if (authSec) authSec.style.display = 'none';
+                if (inputSec) inputSec.style.display = 'block';
+            }
+        };
+    </script>
+<script>
+  atOptions = {
+    'key' : '84098daf7de2c5bed744f8fab6ee74ff',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/84098daf7de2c5bed744f8fab6ee74ff/invoke.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

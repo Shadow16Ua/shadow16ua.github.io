@@ -1,0 +1,89 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+	margin: 0;
+}
+
+.back-btn {
+	position: relative;
+	color: var(--accent-brass) !important;
+	text-decoration: none;
+	font-weight: bold;
+	font-family: 'Russo One', sans-serif;
+	border: 2px solid var(--accent-brass) !important;
+	padding: 10px 25px;
+	border-radius: 4px;
+	transition: all 0.4s ease-in-out;		
+	white-space: nowrap;		
+	display: inline-block;				
+	z-index: 1;				
+
+	/* Вимикаємо фон повністю у звичайному стані */
+	background-image: none !important; 
+	background-color: transparent !important;
+}
+
+.back-btn:hover {
+	color: #c87533 !important;
+	border-color: #c87533 !important;
+			
+	/* Вмикаємо градієнт ТІЛЬКИ при наведенні */
+	background-image: linear-gradient(120deg, 
+		transparent 0%, 
+		rgba(240, 165, 0, 0.4) 50%, 
+		transparent 100%) !important;
+	background-size: 200% 100% !important;
+	background-color: rgba(240, 165, 0, 0.1) !important;
+			
+	transform: scale(1.05);
+	box-shadow: 0 0 15px rgba(240, 165, 0, 0.3);
+	animation: lightFlow 3s infinite linear;
+}
+
+@keyframes lightFlow {
+	0% { background-position: 200% 0; }
+	100% { background-position: -200% 0; }
+}
+
+.nav-side { flex: 1; display: flex; align-items: center; }
+.nav-logo { 
+	position: absolute;
+	top: 28.5px;
+	left: 20px;
+	width: 150px; /* Розмір логотипу */
+	height: auto;
+	z-index: 1000;
+	transition: transform 0.3s ease;
+}
+.nav-logo:hover { filter: drop-shadow(0 0 8px var(--accent-brass)); }
+
+/* Навігація */
+.nav-bar {
+    width: 100%;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid var(--accent-copper);
+}
+
+:root {
+    --bg-color: #1a1a1a;
+    --accent-brass: #f0a500;
+    --accent-copper: #c87533;
+    --text-color: #e0e0e0;
+    --panel-bg: rgba(255, 255, 255, 0.05);
+    --card-dark: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 600px) 
+{
+    .nav-bar { padding: 10px 20px; flex-direction: column; gap: 15px; }
+    .container { padding: 20px; }
+    h1 { font-size: 1.8rem; }
+}
+
+
+
+
