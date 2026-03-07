@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPLDF7RVY0"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-TPLDF7RVY0');
+	</script>
+    <meta charset="UTF-8">
+	<link rel="icon" type="image/png" href="favicon.png">
+    <title>Завантаження | Create Server</title>
+	<link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+		{
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Parlament.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Головний контейнер */
+        .container {
+            max-width: 900px;
+            width: 95%;
+            margin-top: 40px;
+            margin-bottom: 50px;
+            background: var(--panel-bg);
+            padding: 40px;
+            border-radius: 8px;
+            border: 4px solid #444;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+			background: rgba(255, 255, 255, 0.05) !important; /* Дуже тонка біла основа */
+			backdrop-filter: blur(10px); /* Розмиття того, що ПІД контейнером */
+			-webkit-backdrop-filter: blur(15px); /* Для iPhone/Safari */
+			
+			/* Латунна рамка зі світінням */
+			border: 1px solid rgba(240, 165, 0, 0.3);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px dashed #555;
+            padding-bottom: 20px;
+        }
+
+        /* Дві колонки вибору */
+        .split-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .option-card {
+            flex: 1;
+            background: var(--card-dark);
+            padding: 30px;
+            border-radius: 6px;
+            border: 2px solid #555;
+            min-width: 280px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--accent-brass);
+            transform: translateY(-5px);
+        }
+
+        .option-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .option-desc {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Кнопки завантаження */
+        .dl-btn {
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Russo One', sans-serif;
+            border-radius: 4px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .btn-license {
+            background: transparent;
+            border: 2px solid var(--accent-copper);
+            color: var(--accent-copper);
+        }
+        .btn-license:hover { background: var(--accent-copper); color: #fff; box-shadow: 0 0 15px rgba(200, 117, 51, 0.4); }
+
+        .btn-pirate {
+            background: transparent;
+            border: 2px solid var(--accent-copper);
+            color: var(--accent-copper);
+        }
+        .btn-pirate:hover { background: var(--accent-copper); color: #fff; box-shadow: 0 0 15px rgba(200, 117, 51, 0.4); }
+
+        /* Блок інструкції */
+        .steps-section {
+            border-top: 2px dashed #555;
+            padding-top: 30px;
+        }
+
+        .step-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .step-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .step-content h3 {
+            margin: 0 0 5px 0;
+            color: var(--accent-brass);
+            font-family: 'Roboto', sans-serif;
+			font-weight: 700; /* Просто жирний, не "блоковий" */
+            font-size: 1.2rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .highlight-ram {
+            color: #fff;
+            font-weight: bold;
+            border-bottom: 2px solid var(--accent-copper);
+        }
+
+        /* Кнопка Discord */
+        .discord-box {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            background: var(--discord-color);
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .discord-btn:hover {
+            background: #4752c4;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+            transform: scale(1.02);
+        }
+		
+		.corner-logo {
+			position: absolute;
+			top: 27px;
+			left: 20px;
+			width: 150px; /* Розмір логотипу */
+			height: auto;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+		}
+
+		.nav-logo { 
+			position: absolute;
+			top: 26px;
+			left: 20px;
+			width: 150px; /* Розмір логотипу */
+			height: auto;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+		}
+
+		@media (max-width: 600px) {
+            .nav-bar { padding: 10px 20px; flex-direction: column; gap: 15px; }
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+
+    </style>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9855066680842594"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="nav-bar">
+    <div class="nav-left">
+        <a href="index.html">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+        </a>
+    </div>
+    <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+	</nav>
+    
+
+    <div class="container">
+        <h1>ОБЕРІТЬ ВЕРСІЮ</h1>
+
+        <div class="split-container">
+            
+            <div class="option-card">
+                <div class="option-title">💎 ЛІЦЕНЗІЯ</div>
+                <div class="option-desc">Файл .mrpack для автоматичного імпорту</div>
+                <a href="https://drive.google.com/uc?export=download&id=1B-2WUfSU49wIWXL6nNOqQ3jZjr_v6DIC" class="dl-btn btn-license">ЗАВАНТАЖИТИ MRPACK</a>
+            </div>
+
+            <div class="option-card">
+                <div class="option-title">🏴‍☠️ ПІРАТКА</div>
+                <div class="option-desc">Архів .zip для ручного встановлення</div>
+                <a href="https://drive.google.com/uc?export=download&id=1hMAX7s_FT3pORBDG2LSiPYDVYHB2zGWV" class="dl-btn btn-pirate">ЗАВАНТАЖИТИ ZIP</a>
+            </div>
+
+        </div>
+
+        </div>
+
+        <div class="steps-section">
+            
+            <div class="step-row">
+                <div class="step-icon">📂</div>
+                <div class="step-content">
+                    <h3>КРОК 1: ВСТАНОВЛЕННЯ</h3>
+                    <p>Завантажте та перемістіть відповідні файли до своєї папки збірки</p>
+                </div>
+            </div>
+
+            <div class="step-row">
+                <div class="step-icon">⚙️</div>
+                <div class="step-content">
+                    <h3>КРОК 2: ПАМ'ЯТЬ</h3>
+                    <p>Рекомендовано виділити <b>мінімум 4-6 ГБ пам'яті</b> у налаштуваннях лаунчера для комфортної гри.</p>
+                </div>
+            </div>
+
+            <div class="discord-box">
+                <p style="margin-bottom: 15px; color: #aaa;">Маєте питання або виникли проблеми?</p>
+                <a href="https://discord.gg/zhKqAJyVpH" target="_blank" class="discord-btn">
+                    ПЕРЕЙТИ ДО DISCORD
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+
+
+

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPLDF7RVY0"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-TPLDF7RVY0');
+	</script>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Економіка | AfterLight S1</title>
+	<link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Parlament.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-bar {
+			width: 100%;
+			padding: 15px 0; /* Прибираємо бокові паддінги для точного центру */
+			background: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: space-between; /* Розподіляє: ліво - центр - право */
+			align-items: center;
+			border-bottom: 2px solid var(--accent-copper);
+			position: sticky; 
+			top: 0; 
+			z-index: 1000;
+		}
+
+		/* Додаємо порожній блок справа для балансу */
+		.nav-side-right {
+			flex: 1;
+		}
+
+        .nav-logo { 
+			position: absolute;
+			top: 22px;
+			left: 20px;
+			width: 150px; /* Розмір логотипу */
+			height: auto;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+		}
+        .nav-logo:hover { filter: drop-shadow(0 0 8px var(--accent-brass)); }
+
+        /* Контейнер */
+        .container {
+            max-width: 940px;
+            width: 95%;
+            margin: 40px auto;
+            background: var(--panel-bg);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            backdrop-filter: blur(10px);
+            text-align: center;
+			background: rgba(255, 255, 255, 0.05) !important; /* Дуже тонка біла основа */
+			backdrop-filter: blur(10px); /* Розмиття того, що ПІД контейнером */
+			-webkit-backdrop-filter: blur(15px); /* Для iPhone/Safari */
+			
+			/* Латунна рамка зі світінням */
+			border: 1px solid rgba(240, 165, 0, 0.3);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: 2.5rem;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        /* Діаграма */
+        .chart-wrapper {
+			max-width: 850px; 
+			width: 95%;
+			height: 450px;
+			margin: 30px auto; 
+			border: 2px solid var(--accent-copper);
+			border-radius: 8px;
+			background: #333333; 
+			overflow: hidden; /* Це важливо: воно відріже все, що вилізе за край */
+			position: relative;
+		}
+
+		.chart-wrapper iframe {
+			/* Робимо iframe ШИРШИМ за сам контейнер на 5% */
+			width: 105% !important; 
+			height: 100%;
+			border: none;
+			display: block;
+			
+			/* Зміщуємо вліво, щоб шкала цифр залишилась, а пустий край справа виліз за рамку */
+			margin-left: 0; 
+			
+			/* Додатковий фікс: якщо справа все ще багато місця, 
+			   можна додати трансформацію */
+			transform: scaleX(1.04); 
+			transform-origin: left;
+		}
+		
+        /* Картки курсів */
+        .exchange-rates {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .rate-card {
+            background: var(--card-dark);
+            border: 2px solid #555;
+            padding: 25px;
+            border-radius: 8px;
+            min-width: 220px;
+            transition: 0.3s;
+        }
+
+        .rate-card:hover {
+            border-color: var(--accent-brass);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .rate-label {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .rate-value {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-brass);
+        }
+
+        .rate-trend {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .up { color: #4caf50; }
+        .down { color: #f44336; }
+
+        /* Адаптивність */
+        @media (max-width: 600px) {
+            .corner-logo { display: none; }
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .rate-card { width: 100%; }
+        }
+		
+		/* Звичайний стан підсвіченої картки */
+		.highlight-card {
+			border-color: var(--accent-brass) !important;
+			box-shadow: 0 0 20px rgba(240, 165, 0, 0.4), 
+						inset 0 0 10px rgba(240, 165, 0, 0.2);
+			
+			/* Встановлюємо початковий збільшений розмір */
+			transform: scale(1.05) !important; 
+			z-index: 2;
+			background: rgba(60, 60, 60, 0.9) !important;
+			animation: pulse-glow 3s infinite ease-in-out;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		/* Стан при наведенні ТІЛЬКИ для підсвіченої картки */
+		.highlight-card:hover {
+			/* Робимо її ще трохи більшою або залишаємо такою ж, 
+			   щоб вона не "стрибала" назад */
+			transform: scale(1.1) !important; 
+			box-shadow: 0 0 30px rgba(240, 165, 0, 0.6), 
+						inset 0 0 15px rgba(240, 165, 0, 0.3);
+		}
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="nav-side">
+            <a href="index.html"><img src="logo.png" alt="Logo" class="nav-logo"></a>
+        </div>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+        <div class="nav-side"></div>
+    </nav>
+
+    <div class="container">
+        <h1>ЕКОНОМІКА СЕРВЕРА</h1>
+        <p style="color: var(--accent-copper); font-weight: bold;">Моніторинг ринку та курсів валют в реальному часі</p>
+
+        <div class="chart-wrapper">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRiviA620osuqTpYTEb-sxdsWkTt_rxaAvSG_tqe-GWJj4y4ake74q-VexpK0Rm6rmEB77rvUvS6b50/pubchart?oid=725411998&format=interactive" 	 
+        scrolling="no"
+        allowfullscreen></iframe>
+        </div>
+
+        <div class="exchange-rates">
+            <div class="rate-card">
+                <div class="rate-label">DIAMOND COIN ➔ GDR</div>
+                <div class="rate-value">1</div>
+                <div class="rate-trend">0.0</div>
+            </div>
+
+            <div class="rate-card highlight-card">
+                <div class="rate-label">GOLD COIN ➔ GDR</div> 
+                <div class="rate-value">16</div>
+                <div class="rate-trend up">▲ + 2</div>
+            </div>
+
+            <div class="rate-card">
+                <div class="rate-label">IRON COIN ➔ GDR</div>
+                <div class="rate-value">27</div>
+                <div class="rate-trend">0.0</div>
+            </div>
+        </div>
+    </div>
+<script>
+  atOptions = {
+    'key' : '84098daf7de2c5bed744f8fab6ee74ff',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/84098daf7de2c5bed744f8fab6ee74ff/invoke.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
