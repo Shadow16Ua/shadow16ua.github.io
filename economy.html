@@ -4,15 +4,7 @@
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9855066680842594"
      crossorigin="anonymous"></script>
 	<meta name="google-adsense-account" content="ca-pub-9855066680842594">
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPLDF7RVY0"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
 	
-	  gtag('config', 'G-TPLDF7RVY0');
-	</script>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="favicon.png">
     <title>Економіка | AfterLight S1</title>
@@ -200,6 +192,66 @@
 			box-shadow: 0 0 30px rgba(240, 165, 0, 0.6), 
 						inset 0 0 15px rgba(240, 165, 0, 0.3);
 		}
+
+		.market-analysis {
+		    margin-top: 50px;
+		    width: 100%;
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center; /* Центрує заголовок і картки по горизонталі */
+		    text-align: center;
+		}
+		
+		.market-analysis h2 {
+		    font-family: 'Russo One', sans-serif;
+		    color: #fff;
+		    font-size: 1.6rem;
+		    margin-bottom: 25px;
+		    display: flex;
+		    align-items: center;
+		    gap: 10px;
+		    text-transform: uppercase;
+		}
+		
+		.analysis-card {
+		    background: rgba(30, 30, 30, 0.9); /* Темний фон як на скріншоті */
+		    border-radius: 12px;
+		    padding: 25px;
+		    max-width: 600px;
+		    width: 90%;
+		    border: 1px solid rgba(255, 255, 255, 0.1);
+		    border-left: 5px solid #4caf50; /* Зелена смужка зліва */
+		    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+		}
+		
+		.analysis-card h3 {
+		    font-family: 'Russo One', sans-serif;
+		    font-size: 1.3rem;
+		    color: #fff;
+		    margin-bottom: 15px;
+		    display: flex;
+		    justify-content: center; /* Центрує назву монети */
+		    align-items: center;
+		    gap: 10px;
+		}
+		
+		.analysis-card p {
+		    color: #bbb;
+		    font-size: 1rem;
+		    line-height: 1.6;
+		    margin: 0;
+		}
+		
+		.analysis-card b {
+		    color: #fff;
+		}
+
+		/* Адаптивність для мобілок */
+		@media (max-width: 768px) {
+		    .analysis-grid {
+		        grid-template-columns: 1fr;
+		    }
+		}
     </style>
 </head>
 <body>
@@ -231,8 +283,8 @@
 
             <div class="rate-card highlight-card">
                 <div class="rate-label">GOLD COIN ➔ GDR</div> 
-                <div class="rate-value">16</div>
-                <div class="rate-trend up">▲ + 2</div>
+                <div class="rate-value">56</div>
+                <div class="rate-trend up">▲ + 0</div>
             </div>
 
             <div class="rate-card">
@@ -241,9 +293,23 @@
                 <div class="rate-trend">0.0</div>
             </div>
         </div>
+
+		<div class="market-analysis">
+		    <h2>📊 АНАЛІТИКА ТА ПРИЧИНИ ЗМІН</h2>
+		
+		    <div class="analysis-card">
+		        <h3>🌕 GOLD COIN ➔ GDR</h3>
+		        <p>
+		            Курс золотого коіна зріс на <b>+2 пункти</b> через активне скуповування золотих коїнів. 
+		            Збільшення попиту на золоті монети спричинило зріст курсу.
+		        </p>
+		    </div>
+		</div>
+		
     </div>
 </body>
 </html>
+
 
 
 
