@@ -221,13 +221,6 @@
             font-family: 'Russo One', sans-serif;
             margin-bottom: 15px;
         }
-
-        @media (max-width: 600px) {
-            .button-group { flex-direction: column; align-items: center; }
-            .cta-button { width: 280px; text-align: center; }
-            h1 { font-size: 3rem; }
-        }
-        
         /* Бокові панелі - Вертикальні прямокутники */
         .side-panel {
             position: absolute; /* Тепер вони прив'язані до Hero-секції, а не до екрана */
@@ -323,12 +316,6 @@
         }
 
         .slider-nav button:hover { transform: scale(1.2); }
-
-        /* Приховуємо на малих екранах, щоб не заважали */
-        @media (max-width: 1300px) {
-            .side-panel { display: none; }
-        }
-
         /* Кнопка всередині бокових панелей */
         .side-btn {
             display: inline-block;
@@ -556,7 +543,6 @@
             100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 68, 68, 0.6); }
         }
 
-
         /* Щоб на маленьких екранах кнопки не наїхали на лого */
         @media (max-width: 1100px) {
             .nav-logo-link {
@@ -567,6 +553,18 @@
                 justify-content: space-between;
             }
         }
+
+		@media (max-width: 600px) {
+            .button-group { flex-direction: column; align-items: center; }
+            .cta-button { width: 280px; text-align: center; }
+            h1 { font-size: 3rem; }
+        }
+
+		 /* Приховуємо на малих екранах, щоб не заважали */
+        @media (max-width: 1300px) {
+            .side-panel { display: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -702,4 +700,5 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
