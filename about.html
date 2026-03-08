@@ -44,7 +44,7 @@
         /* --- ОСНОВНИЙ КОНТЕНТ --- */
         .container {
             max-width: 1200px;
-            margin: 120px auto 50px;
+            margin: 10px auto 50px;
             padding: 20px;
             text-align: center;
         }
@@ -143,6 +143,44 @@
             background-color: transparent !important;
         }
 
+		.support-footer {
+            width: 100%;
+            max-width: 700px;
+            margin: 80px auto;   /* центрує сам блок */
+            text-align: center;
+        }
+
+        .support-footer h2 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .support-footer p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .discord-btn {
+            padding: 16px 45px;
+            background: #5865F2;
+            color: white;
+            text-decoration: none;
+            font-family: 'Russo One', sans-serif;
+            border-radius: 6px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .discord-btn:hover {
+            background: #4752C4;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.4);
+        }
+
         @media (max-width: 768px) {
 		    .analysis-grid {
 		        grid-template-columns: 1fr;
@@ -201,7 +239,15 @@
             
         </div>
     </div>
+	<div class="support-footer">
+        <h2>ВИНИКЛИ ЗАПИТАННЯ ?</h2>
+        <p>Якщо у вас з'явилися технічні проблеми або ви хочете поставити запитання команді — просто відкрийте тікет у нашому Discord.</p>
+        <a href="https://discord.gg/zhKqAJyVpH" target="_blank" class="discord-btn">
+                        ВІДКРИТИ ТІКЕТ У DISCORD
+        </a>
+    </div>
 
 </body>
 
 </html>
+
