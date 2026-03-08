@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9855066680842594"
+     crossorigin="anonymous"></script>
+	<meta name="google-adsense-account" content="ca-pub-9855066680842594">
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-M7D417QV57');
+	</script>
+    
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Де це? | AfterLight</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+        :root {
+            --accent-brass: #f0a500;
+            --accent-copper: #c87533;
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Parlament.png');
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+ 
+
+        /* --- КОНТЕНЕР ЗАГАДКИ --- */
+        .container {
+            max-width: 900px;
+            width: 95%;
+            margin: 50px auto 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(240, 165, 0, 0.3);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .guess-image-box {
+            position: relative;
+            margin: 30px 0;
+            border: 3px solid var(--accent-copper);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .guess-img {
+            width: 100%;
+            display: block;
+            transition: 0.5s ease;
+        }
+
+        .guess-img:hover { transform: scale(1.03); }
+
+        .prize-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.85);
+            padding: 12px 25px;
+            border-left: 4px solid var(--accent-brass);
+            color: #ffd700;
+            font-family: 'Russo One', sans-serif;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        /* БЛОК DISCORD */
+        .discord-section {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-top: 30px;
+        }
+
+        .discord-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #5865F2;
+            color: white !important;
+            text-decoration: none !important;
+            font-family: 'Russo One', sans-serif;
+            border-radius: 5px;
+            transition: 0.3s;
+            border: none;
+            margin-top: 15px;
+            outline: none !important;
+        }
+
+        .discord-btn:hover {
+            background: #4752C4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="index.html"><img src="logo.png" alt="Logo" class="nav-logo"></a>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+    </nav>
+
+    <div class="container">
+        <h1>🌍 ДЕ ЦЕ ?</h1>
+        <p style="color: var(--accent-copper); font-weight: bold; letter-spacing: 1px;">ЩОТИЖНЕВА ГЕО-ЗАГАДКА</p>
+
+        <div class="guess-image-box">
+            <img src="https://cdn.discordapp.com/attachments/1462551821192003725/1479940165391876238/image.png?ex=69ae85ef&is=69ad346f&hm=bf9b0087af027f433552f08e48d6dbd8f52f6c9ffdeaef62a85f6d55c8c20061&" alt="Загадка" class="guess-img">
+            <div class="prize-badge">🎁 ПРИЗ: 0 монет (поки нема локації)</div>
+        </div>
+
+        <div class="discord-section">
+            <p style="color: #aaa; font-size: 1rem;">Знайшли локацію? Надсилайте координати у наш Discord!</p>
+            <a href="https://discord.gg/zhKqAJyVpH" target="_blank" class="discord-btn">
+                ВІДКРИТИ DISCORD
+            </a>
+        </div>
+        
+        <p style="margin-top: 25px; font-size: 0.85rem; color: #666; line-height: 1.5;">
+            *Перший гравець, який знайде місце та вкаже правильні координати у відповідному каналі Discord, отримає нагороду. Загадка оновлюється кожного понеділка о 12-13 годин за київським часом. Слідкуйте за оновленнями та приєднуйтесь до спільноти!*
+        </p>
+    </div>
+
+</body>
+</html>

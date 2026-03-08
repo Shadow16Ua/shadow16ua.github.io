@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9855066680842594"
+     crossorigin="anonymous"></script>
+	<meta name="google-adsense-account" content="ca-pub-9855066680842594">
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-M7D417QV57');
+	</script>
+    
+    <meta charset="UTF-8">
+    <title>Дошка пошани | AfterLight</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Parlament.png');
+            background-attachment: fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: 3rem;
+            text-shadow: 0 0 20px rgba(240, 165, 0, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .leaderboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .top-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(240, 165, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .top-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-brass);
+        }
+
+        .top-card h2 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(240, 165, 0, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .leader-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid transparent;
+        }
+
+        /* Медалі для ТОП-3 */
+        .rank-1 { border-left-color: #ffd700; background: rgba(255, 215, 0, 0.1); }
+        .rank-2 { border-left-color: #c0c0c0; background: rgba(192, 192, 192, 0.05); }
+        .rank-3 { border-left-color: #cd7f32; background: rgba(205, 127, 50, 0.05); }
+
+        .nick { font-weight: bold; font-size: 1.1rem; }
+        .value { font-family: 'Russo One', sans-serif; color: var(--accent-brass); }
+
+        .back-btn {
+            margin-top: 30px;
+            display: inline-block;
+            color: var(--accent-copper);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏛️ ЗАЛА СЛАВИ</h1>
+        <p style="color: var(--accent-copper); font-weight: bold; text-transform: uppercase;">Легенди сервера AfterLight</p>
+
+        <div id="main-grid" class="leaderboard-grid">
+            </div>
+
+        <a href="index.html" class="back-btn">← Повернутися на головну</a>
+    </div>
+
+    <script>
+        // ТУТ ТИ САМ ВПИСУЄШ ДАНІ
+        const leaderboardData = [
+            {
+                title: "⚔️ Топ вбивств (PvP)",
+                players: [
+                    { name: "SegFaulted19", value: "520" },
+                    { name: "Blendy", value: "376" },
+                    { name: "FanaTic__", value: "270" },
+                ]
+            },
+            {
+                title: "💀 Топ Смертей",
+                players: [
+                    { name: "Blendy", value: "390" },
+                    { name: "Alextimcuk20", value: "259" },
+                    { name: "aklelic", value: "255" }
+                ]
+            },
+            {
+                title: "⏳ Награний час",
+                players: [
+                    { name: "byrevyuko", value: "7днів 13год." },
+                    { name: "Blendy", value: "7днів 5год." },
+                    { name: "FanaTic__", value: "7днів 2год." },
+                ]
+            },
+            {
+                title: "🗺️ Топ Мандрівників",
+                players: [
+                    { name: "Blendy", value: "324к блоків" },
+                    { name: "brunoLOVE2727", value: "186к блоків" },
+                    { name: "Shadow_Ua", value: "184к блоків" }
+                ]
+            },
+            {
+                title: "🏗️ Вбито мобів",
+                players: [
+                    { name: "BrockKE", value: "148к мобів" },
+                    { name: "salik", value: "37к мобів" },
+                    { name: "kiritotop3", value: "21к мобів" }
+                ]
+            },
+            {
+                title: "Використано тотемів",
+                players: [
+                    { name: "SegFaulted19", value: "300" },
+                    { name: "Alextimcuk20", value: "187" },
+                    { name: "egyss", value: "111" }, 
+                ]
+            }
+            
+        ];
+
+        function renderLeaderboards() {
+            const grid = document.getElementById('main-grid');
+            grid.innerHTML = '';
+
+            leaderboardData.forEach(category => {
+                const card = document.createElement('div');
+                card.className = 'top-card';
+                
+                let playersHTML = `<h2>${category.title}</h2>`;
+                
+                category.players.forEach((player, index) => {
+                    const rankClass = index < 3 ? `rank-${index + 1}` : '';
+                    playersHTML += `
+                        <div class="leader-item ${rankClass}">
+                            <span class="nick">${index + 1}. ${player.name}</span>
+                            <span class="value">${player.value}</span>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = playersHTML;
+                grid.appendChild(card);
+            });
+        }
+
+        // Запуск при завантаженні
+        window.onload = renderLeaderboards;
+    </script>
+</body>
+</html>
