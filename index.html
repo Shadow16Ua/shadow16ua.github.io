@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <title>AfterLight | Industrial Vanilla</title>
 	<link rel="stylesheet" href="style.css">
-    <style>
+	<style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
 
         /* Скидаємо базові відступи для всіх елементів */
@@ -56,7 +56,7 @@
         /* --- СУЧАСНА ГНУЧКА ШАПКА --- */
         .main-nav {
             width: 100%;
-            min-height: 80px;
+            min-height: 100px; /* Трохи вища шапка для двох поверхів */
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--accent-copper);
@@ -65,16 +65,18 @@
             left: 0;
             z-index: 2000;
             display: flex;
-            align-items: center;
+            justify-content: center;
+            padding: 15px 0;
         }
 
         .nav-container {
             width: 100%;
-            max-width: none; /* Зносимо ліміт ширини! Шапка тягнеться на весь екран */
-            display: grid;
-            grid-template-columns: 1fr auto 1fr; /* Ділимо шапку на 3 зони: ліва, центр, права */
-            align-items: center;
-            padding: 0 40px; /* Відступ від країв екрана */
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column; /* Ставимо елементи в стовпчик (один під одним) */
+            align-items: center; /* Відцентровуємо все по горизонталі */
+            gap: 15px; /* Відстань між логотипом і кнопками */
+            padding: 0 20px;
             box-sizing: border-box;
         }
 
@@ -86,7 +88,7 @@
         }
 
         .nav-bar-logo {
-            height: 35px; 
+            height: 45px; /* Зробив лого трохи більшим, бо воно тепер головне по центру */
             width: auto;
             transition: all 0.3s ease;
         }
@@ -97,10 +99,11 @@
         }
 
         .nav-links {
-            justify-self: center; /* Меню ЗАВЖДИ буде рівно по центру екрана */
             display: flex;
-            gap: 10px; /* Комфортна відстань між кнопками */
-            align-items: center;
+            flex-wrap: wrap; /* Кнопки автоматично падатимуть на нові рядки на телефонах */
+            justify-content: center; /* Рівномірно по центру */
+            gap: 12px; /* Зручна відстань між кнопками */
+            width: 100%;
         }
 
         @media (max-width: 1300px) {
@@ -126,7 +129,7 @@
             font-family: 'Russo One', sans-serif;
             font-size: 0.9rem;
             text-transform: uppercase;
-            padding: 10px 12px; /* ЗМЕНШЕНО бокові відступи (було 18px), щоб зекономити місце */
+            padding: 10px 15px;
             border-radius: 6px;
             border: 1px solid transparent;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -349,7 +352,7 @@
         /* Бокові панелі */
         .side-panel {
             position: absolute; 
-            top: 51%;
+            top: 60%;
             transform: translateY(-50%); 
             width: 260px;       
             height: 480px;      
@@ -633,6 +636,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
