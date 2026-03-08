@@ -57,15 +57,6 @@
             width: 100%;
         }
 
-        .nav-logo { 
-            position: absolute;
-            top: 26px;
-            left: 20px;
-            width: 150px;
-            height: auto;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
         .nav-logo:hover { filter: drop-shadow(0 0 8px var(--accent-brass)); }
 
         h1 {
@@ -241,7 +232,7 @@
         .side-panel {
             position: absolute; /* Тепер вони прив'язані до Hero-секції, а не до екрана */
             top: 51%;
-            transform: translateY(-50%);
+            transform: translateY(-50%); 
             width: 260px;       /* Ширина */
             height: 480px;      /* Висота для вертикальної форми */
             background: rgba(20, 20, 20, 0.85);
@@ -253,7 +244,10 @@
             display: flex;
             flex-direction: column;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            flex-shrink: 0;
         }
+
 
         .side-panel:hover {
             transform: translateY(-52%) scale(1.05); /* Блок трохи піднімається і збільшується */
@@ -364,7 +358,7 @@
 
         .forum-btn {
             flex-basis: 100%; /* Займає всю ширину рядка, тому падає вниз */
-            max-width: 340px; /* Щоб вона не була на весь екран довжелезною */
+            max-width: 370px; /* Щоб вона не була на весь екран довжелезною */
             margin-top: 20px; /* Відступ від верхніх кнопок */
             border-color: var(--accent-brass) !important;
             color: var(--accent-brass) !important;
@@ -377,90 +371,282 @@
             flex-basis: 100%;       /* Змушуємо їх впасти на новий рядок під основні кнопки */
             margin-top: 10px;        /* Відступ від верхніх кнопок */
         }
+
+
+
+        /* Нова стильна шапка (меню) */
+       .main-nav {
+            width: 100%;
+            height: 80px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-copper);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            box-sizing: border-box;
+            
+            /* ЗМІНА ТУТ: тепер вона не зафіксована, а просто стоїть зверху */
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            justify-content: center; /* Кнопки по центру */
+            align-items: center;
+            position: relative; /* База для логотипа */
+            padding: 0 230px;
+        }
+
+        .nav-logo-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-bar-logo {
+            height: 35px; 
+            width: auto;
+        }
+
+        .nav-bar-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 8px var(--accent-brass));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px; /* Відстань між кнопками */
+        }
+
+        .nav-logo-link {
+            /* Вириваємо логотип з центру і ставимо його в лівий кут */
+            position: absolute;
+            left: 10px; 
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item {
+            color: var(--text-color);
+            text-decoration: none;
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: 1px solid transparent; /* Заготовка для рамки */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Плавна анімація */
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Відстань між іконкою та текстом */
+        }
+
+        /* Ефект при наведенні (Hover) */
+        .nav-item:hover {
+            color: var(--accent-brass) !important; /* Колір латуні */
+            background: rgba(240, 165, 0, 0.1); /* Легке золотисте фонове світіння */
+            border-color: rgba(240, 165, 0, 0.4); /* Поява тонкої рамки */
+            transform: translateY(-2px); /* Кнопка трохи піднімається вгору */
+            text-shadow: 0 0 10px rgba(240, 165, 0, 0.5); /* Сяйво тексту */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Тінь знизу для об'єму */
+        }
+
+        /* Ефект при натисканні (Active) */
+        .nav-item:active {
+            transform: translateY(0);
+            scale: 0.95; /* Ефект продавлювання кнопки */
+        }
+
+        /* Очищений центр сторінки */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            padding-top: 80px; /* Відступ, щоб шапка не закривала контент */
+        }
+
+        .main-start-btn {
+            padding: 20px 60px;
+            background: var(--accent-brass);
+            color: #000 !important;
+            text-decoration: none;
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 0 30px rgba(240, 165, 0, 0.4);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        .main-start-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 60px rgba(240, 165, 0, 0.7);
+        }
+
+
+
+        /* Спільні стилі для звичайних кнопок та кнопок з приміткою */
+        .nav-item1 {
+            color: var(--text-color);
+            text-decoration: none;
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative; /* Обов'язково для позиціонування мітки NEW */
+        }
+
+        /* Ефект наведення для обох класів */
+        .nav-item1:hover {
+            color: var(--accent-brass) !important;
+            background: rgba(240, 165, 0, 0.15);
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px rgba(240, 165, 0, 0.6);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- ТІЛЬКИ ДЛЯ nav-item1 (Червона мітка) --- */
+        .nav-item1::after {
+            content: "NEW";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444; /* Червоний колір мітки */
+            color: white;
+            font-size: 8px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
+            z-index: 10;
+            pointer-events: none;
+            animation: pulse-red 2s infinite; /* Пульсація для привернення уваги */
+        }
+
+        /* Анімація пульсації */
+        @keyframes pulse-red {
+            0% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 68, 68, 0.6); }
+            50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(255, 68, 68, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 68, 68, 0.6); }
+        }
+
+
+        /* Щоб на маленьких екранах кнопки не наїхали на лого */
+        @media (max-width: 1100px) {
+            .nav-logo-link {
+                position: static; /* Повертаємо в потік на малих екранах */
+                margin-right: 20px;
+            }
+            .nav-container {
+                justify-content: space-between;
+            }
+        }
     </style>
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo-link">
+                <img src="logo.png" class="nav-bar-logo">
+            </a>
+
+            <div class="nav-links">
+                <a href="rules.html" class="nav-item">📜 Правила</a>
+                <a href="rp-mechanics.html" class="nav-item">⚙️ Механіки</a>
+                <a href="economy.html" class="nav-item">📈 Економіка</a>
+                <a href="news.html" class="nav-item">📰 Новини</a>
+                <a href="parliament.html" class="nav-item">🗫 Форум</a>
+                <a href="leaderboard.html" class="nav-item1">🏆 Топ гравців</a>
+                <a href="geoguessr.html" class="nav-item1">🌍 Де ця локація?</a>
+                <a href="about.html" class="nav-item1">Про нас</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="hero">
+        
         <div class="side-panel left-panel">
-        <div class="slider-container" id="left-slider">
-            <div class="slide active">
-                <img src="https://static.android.com.pl/uploads/2022/10/discord_co_to-1280x960.jpg" class="slide-img" alt="Discord">
-                <h3>DISCORD</h3>
-                <p>Наш дискорд сервер</p>
-                <a href="https://discord.gg/zhKqAJyVpH" class="side-btn" target="_blank" rel="noopener">ПРИЄДНАТИСЬ</a>
+            <div class="slider-container" id="left-slider">
+                <div class="slide active">
+                    <img src="https://static.android.com.pl/uploads/2022/10/discord_co_to-1280x960.jpg" class="slide-img" alt="Discord">
+                    <h3>DISCORD</h3>
+                    <p>Наш офіційний сервер для спілкування та новин.</p>
+                    <a href="https://discord.gg/zhKqAJyVpH" class="side-btn" target="_blank">ПРИЄДНАТИСЬ</a>
+                </div>
+                <div class="slide">
+                    <img src="https://popsters.com/blog/content/all/mceu0slzguje501imqzas166n4rjfut4f7.jpg" class="slide-img" alt="Telegram">
+                    <h3>TELEGRAM</h3>
+                    <p>Оперативні анонси та чат гравців у телеграмі</p>
+                    <a href="https://t.me/AfterLightAdministration" class="side-btn" target="_blank">ПІДПИСАТИСЬ</a>
+                </div>
+                <div class="slide">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKvIt8JC26d5W825jcwH6KMYGmG_UMDfacLg&s" class="slide-img" alt="TikTok">
+                    <h3>TIKTOK</h3>
+                    <p>Короткі відео та моменти з життя сервера.</p>
+                    <a href="https://www.tiktok.com/@segfaulted_g.o.u" class="side-btn" target="_blank">ПЕРЕГЛЯНУТИ</a>
+                </div>
             </div>
-
-            <div class="slide">
-                <img src="https://popsters.com/blog/content/all/mceu0slzguje501imqzas166n4rjfut4f7.jpg" class="slide-img" alt="Telegram">
-                <h3>TELEGRAM</h3>
-                <p>Телеграм нашого серверу!</p>
-                <a href="https://t.me/AfterLightAdministration" class="side-btn" target="_blank" rel="noopener">ПІДПИСАТИСЬ</a>
-            </div>
-
-            <div class="slide">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKvIt8JC26d5W825jcwH6KMYGmG_UMDfacLg&s" class="slide-img" alt="TikTok">
-                <h3>TIKTOK</h3>
-                <p>ТікТок нашого серверу!</p>
-                <a href="https://www.tiktok.com/@segfaulted_g.o.u" class="side-btn" target="_blank" rel="noopener">ПІДПИСАТИСЬ</a>
-            </div>
-
-            <div class="slide">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfo992cbbg6fnrHNIRxGcLqbr09DJHjwoHdQ&s" class="slide-img" alt="YouTube"> 
-                <h3>YOUTUBE</h3>
-                <p>Ютуб нашого тех-адміна!</p>
-                <a href="https://www.youtube.com/@Sh4d%C3%B8w_YT333" class="side-btn" target="_blank" rel="noopener">ПІДПИСАТИСЬ</a>
-            </div>
-
-        </div>
-        <div class="slider-nav">
-            <button onclick="prevSlide('left-slider')">❮</button>
-            <button onclick="nextSlide('left-slider')">❯</button>
-        </div>
-    </div>
-
-    <div class="side-panel right-panel">
-        <div class="slider-container" id="right-slider"> 
-            <div class="slide active">
-                <img src="Parlament.png" class="slide-img" alt="News">
-                <h3>ФОРУМ ПАРЛАМЕНТУ</h3>
-                <p>Офіційні дописи політиків AfterLight.</p>
-                <a href="parliament.html" class="side-btn">ВІДКРИТИ</a>
-            </div>
-            <div class="slide">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiT5_1EMetR9nZCCgAmmq_tzZaqK566rf3Dw&s" class="slide-img" alt="News">
-                <h3>Тех роботи</h3>
-                <p>На сервері ведуться технічні роботи. Очікується що вони будуть йти кілька днів</p>
-              
+            <div class="slider-nav">
+                <button onclick="prevSlide('left-slider')">❮</button>
+                <button onclick="nextSlide('left-slider')">❯</button>
             </div>
         </div>
-        <div class="slider-nav">
-            <button onclick="prevSlide('right-slider')">❮</button>
-            <button onclick="nextSlide('right-slider')">❯</button>
-        </div>
-    </div>
 
-        <img src="logo.png" alt="Logo" class="nav-logo">
+        <div class="side-panel right-panel">
+            <div class="slider-container" id="right-slider"> 
+                <div class="slide active">
+                    <img src="Parlament.png" class="slide-img" alt="Forum">
+                    <h3>ФОРУМ ПАРЛАМЕНТУ</h3>
+                    <p>Офіційні дописи політиків та законопроєкти.</p>
+                    <a href="parliament.html" class="side-btn">ВІДКРИТИ</a>
+                </div>
+                <div class="slide">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiT5_1EMetR9nZCCgAmmq_tzZaqK566rf3Dw&s" class="slide-img" alt="Status">
+                    <h3>ТЕХНІЧНІ РОБОТИ</h3>
+                    <p>На сервері ведуться роботи. Орієнтовний час — кілька днів.</p>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button onclick="prevSlide('right-slider')">❮</button>
+                <button onclick="nextSlide('right-slider')">❯</button>
+            </div>
+        </div>
+
         <h1>AfterLight</h1>
         <p class="subtitle">Vanilla + Create Mod | Forge 1.20.1</p>
         
         <div class="ip-box" onclick="copyIP(event)">
             <div class="ip-text" id="server-ip">afterlight.joinserver.xyz</div>
-            <div class="click-hint" id="ip-hint" data-key="ip-hint">Натисніть, щоб скопіювати IP</div>
+            <div class="click-hint" id="ip-hint">Натисніть, щоб скопіювати IP</div>
         </div>
 
-        <div class="button-group">
-
-            <a href="download.html" class="cta-button" data-key="btn-how">Як почати гру?</a>
-            <a href="rules.html" class="cta-button" data-key="btn-rules">Правила сервера</a>
-            <a href="rp-mechanics.html" class="cta-button" data-key="btn-rp">RP Механіки</a>
-            <a href="economy.html" class="cta-button" data-key="btn-eco">Економіка</a>
-            <div class="bottom-buttons">
-                <a href="parliament.html" class="cta-button forum-btn">🏛️ ФОРУМ ПАРЛАМЕНТУ</a>
-                <a href="news.html" class="cta-button forum-btn">Новини</a>
-				<a href="about.html" class="cta-button forum-btn">Про нас</a>
-            </div>
-        </div>
+        <a href="download.html" class="main-start-btn">ПОЧАТИ ГРАТИ</a>
     </div>
 
     <div class="features">
@@ -478,7 +664,7 @@
         </div>
     </div>
 
-    <script>
+<script>
     function copyIP(event) {
         // 1. Знаходимо елементи
         const ipText = document.getElementById('server-ip').innerText;
@@ -516,31 +702,4 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
