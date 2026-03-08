@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Про нас | AfterLight</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+        :root {
+            --accent-brass: #f0a500;
+            --accent-copper: #c87533;
+            --text-color: #e0e0e0;
+            --panel-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('Parlament.png');
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+        }
+        
+
+        /* --- ОСНОВНИЙ КОНТЕНТ --- */
+        .container {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+
+        .about-text {
+            background: var(--panel-bg);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(240, 165, 0, 0.2);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            text-align: justify;
+        }
+
+        /* --- СІТКА АДМІНІСТРАЦІЇ --- */
+        .admin-grid {
+            display: grid;
+            /* Зменшуємо мінімальну ширину картки з 280px до 230px, щоб влізло 4 штуки */
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); 
+            gap: 25px; /* Трохи зменшуємо відступ між картками */
+            margin-top: 40px;
+        }
+
+        /* 3. Оптимізуємо паддінги всередині карток, щоб текст не злипався */
+        .admin-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-top: 4px solid var(--accent-brass);
+            padding: 20px; /* Зменшуємо з 30px до 20px */
+            border-radius: 10px;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .admin-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(240, 165, 0, 0.2);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .admin-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-copper);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .admin-name {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 10px 0;
+        }
+
+        .admin-role {
+            color: var(--accent-brass);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .admin-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.4;
+        }
+
+        .back-btn {
+            position: relative;
+            color: var(--accent-brass) !important;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Russo One', sans-serif;
+            border: 2px solid var(--accent-brass) !important;
+            padding: 10px 25px;
+            border-radius: 4px;
+            transition: all 0.4s ease-in-out;		
+            white-space: nowrap;		
+            display: inline-block;				
+            z-index: 1;				
+            left: -20px;
+
+            background-image: none !important; 
+            background-color: transparent !important;
+        }
+
+        @media (max-width: 768px) {
+		    .analysis-grid {
+		        grid-template-columns: 1fr;
+		    }
+		}
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="nav-side">
+            <a href="index.html"><img src="logo.png" alt="Logo" class="nav-logo"></a>
+        </div>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+        <div class="nav-side"></div>
+    </nav>
+
+    <div class="container">
+        <h1>ПРО AFTERLIGHT</h1>
+
+        <div class="about-text">
+            <strong>AfterLight</strong> — це унікальний Minecraft сервер на версії 1.20.1, де ванільне виживання зустрічається з безмежними можливостями моду <strong>Create</strong>. Наша мета — створити затишну спільноту, де кожен може стати видатним інженером, політиком або успішним торговцем. Ми цінуємо рольовий аспект (RP) та розвинену економіку, де кожен твій крок впливає на життя всього сервера.
+        </div>
+
+        <h2 style="font-family: 'Russo One'; color: var(--accent-copper); margin-bottom: 30px;">АДМІНІСТРАЦІЯ ПРОЕКТУ</h2>
+
+        <div class="admin-grid">
+            <div class="admin-card">
+                <img src="https://minotar.net/helm/Steve/100.png" alt="Admin" class="admin-avatar">
+                <div class="admin-name">SegFaulted</div>
+                <div class="admin-role">ГОЛОВНИЙ АДМІНІСТРАТОР</div>
+                <p class="admin-desc">Займається ігровим процесом, вирішенням конфліктів та підтримкою порядку на сервері</p>
+            </div>
+
+            <div class="admin-card">
+                <img src="https://minotar.net/helm/Alex/100.png" alt="Admin" class="admin-avatar">
+                <div class="admin-name">Zogned</div>
+                <div class="admin-role">ГОЛОВНИЙ АДМІНІСТРАТОР</div>
+                <p class="admin-desc">Відповідає за технічну стабільність сервера, розробку сайту та загальний розвиток проекту.</p>
+            </div>
+
+            <div class="admin-card">
+                <img src="https://cdn.discordapp.com/attachments/1430503321763975240/1480180704926105762/image.png?ex=69aebd34&is=69ad6bb4&hm=3c72ab1af945a4fb05fd32e4cdafd4933a4e787d9bad16ddb3c4efe056eb9fc8&" alt="Admin" class="admin-avatar">
+                <div class="admin-name">Shadow_Ua</div>
+                <div class="admin-role">Куратор модерації/Тех адмін</div>
+                <p class="admin-desc">Слідкує за роботою модерації та вирішує складні питання; розробник сайту</p>
+            </div>
+
+            <div class="admin-card">
+                <img src="https://cdn.discordapp.com/attachments/1426085494403502091/1480180384300797952/image.png?ex=69aebce8&is=69ad6b68&hm=9a5396bf23ebfa96d9a230e058aef2f9933fb8c251700b97164451e070b6dfb0&" alt="Admin" class="admin-avatar">
+                <div class="admin-name">Maqwr</div>
+                <div class="admin-role">Тех адмін</div>
+                <p class="admin-desc">Розробник</p>
+            </div>
+
+            
+        </div>
+    </div>
+
+</body>
+</html>
