@@ -543,26 +543,17 @@
             100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 68, 68, 0.6); }
         }
 
-        /* Щоб на маленьких екранах кнопки не наїхали на лого */
-        @media (max-width: 1100px) {
-            .nav-logo-link {
-                position: static; /* Повертаємо в потік на малих екранах */
-                margin-right: 20px;
-            }
-            .nav-container {
-                justify-content: space-between;
-            }
-        }
-
-		@media (max-width: 600px) {
-            .button-group { flex-direction: column; align-items: center; }
-            .cta-button { width: 280px; text-align: center; }
-            h1 { font-size: 3rem; }
-        }
-
-		 /* Приховуємо на малих екранах, щоб не заважали */
+		/* --- АДАПТИВНІСТЬ --- */
         @media (max-width: 1300px) {
-            .side-panel { display: none; }
+            .side-panel { display: none !important; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-logo-link { position: static; margin-bottom: 15px; }
+            .nav-container { flex-direction: column; padding: 15px; }
+            .hero { padding-top: 180px; }
+            h1 { font-size: 3rem; }
+            .ip-text { font-size: 1.2rem; }
         }
 
     </style>
@@ -700,5 +691,6 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
