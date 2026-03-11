@@ -16,7 +16,7 @@
 	</script>
 	
     <meta charset="UTF-8">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
     <title>AfterLight | Industrial Vanilla</title>
 	<link rel="stylesheet" href="style.css">
@@ -60,7 +60,7 @@
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--accent-copper);
-            position: absolute; 
+            position: relative;
             top: 0;
             left: 0;
             z-index: 2000;
@@ -215,7 +215,7 @@
             border-bottom: 5px solid var(--accent-brass);
             width: 100%;
             position: relative;
-            padding-top: 100px; /* Захист, щоб шапка не перекривала текст */
+            padding-top: 50px; /* Захист, щоб шапка не перекривала текст */
         }
 
         h1 {
@@ -463,18 +463,31 @@
         }
 
 
-        /* Телефони та планшети (меню падає під логотип) */
         @media (max-width: 1100px) {
-            .nav-container {
-                justify-content: center;
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-            }
-            .hero {
-                padding-top: 180px; /* Збільшуємо відступ, бо меню стало вищим */
-            }
-        }
+	    .hero {
+	        height: auto; /* Дозволяємо секції розтягуватися по висоті контенту */
+	        padding: 180px 20px 50px 20px;
+	        display: flex;
+	        flex-direction: column;
+	    }
+	
+	    .side-panel {
+	        position: static; /* Повертаємо панелі в загальний потік */
+	        transform: none;
+	        width: 100%;
+	        max-width: 400px;
+	        margin: 20px auto;
+	        height: auto;
+	    }
+	
+	    .side-panel:hover {
+	        transform: scale(1.02); /* Полегшуємо ефект ховера для мобільних */
+	    }
+	
+	    h1 {
+	        order: -1; /* Ставимо заголовок наверх на мобілках */
+	    }
+	}
 
         /* Зовсім малі екрани (телефони) */
         @media (max-width: 600px) {
@@ -636,6 +649,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
