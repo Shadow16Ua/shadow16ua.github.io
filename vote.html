@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Голосуй за сервер | AfterLight</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+        :root {
+            --accent-brass: #f0a500;
+            --accent-copper: #c87533;
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('Parlament.png');
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 10px auto 50px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 10px;
+        }
+
+        .vote-desc {
+            color: var(--accent-copper);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .vote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .vote-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(240, 165, 0, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vote-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-brass);
+            box-shadow: 0 10px 30px rgba(240, 165, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .vote-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .vote-card h3 {
+            font-family: 'Russo One', sans-serif;
+            margin: 0;
+            color: #fff;
+        }
+
+        .vote-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-copper);
+            color: white !important;
+            text-decoration: none;
+            font-family: 'Russo One', sans-serif;
+            border-radius: 6px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .vote-btn:hover {
+            background: var(--accent-brass);
+            box-shadow: 0 0 15px rgba(240, 165, 0, 0.5);
+            transform: scale(1.02);
+        }
+
+        .corner-logo {
+			position: absolute;
+			top: 27px;
+			left: 20px;
+			width: 150px; /* Розмір логотипу */
+			height: auto;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+		}
+
+		.nav-logo { 
+			position: absolute;
+			top: 26px;
+			left: 20px;
+			width: 150px; /* Розмір логотипу */
+			height: auto;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+		}
+
+        .back-btn {
+            position: relative;
+            color: var(--accent-brass) !important;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Russo One', sans-serif;
+            border: 2px solid var(--accent-brass) !important;
+            padding: 10px 25px;
+            border-radius: 4px;
+            transition: all 0.4s ease-in-out;		
+            white-space: nowrap;		
+            display: inline-block;				
+            z-index: 1;				
+            left: -20px;
+
+            background-image: none !important; 
+            background-color: transparent !important;
+        }
+
+        .bonus-highlight {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important; /* Гарантоване центрування за досвідом минулих помилок */
+            text-align: center !important;
+            
+            max-width: 800px;
+            margin: 60px auto !important;
+            padding: 40px;
+            background: rgba(240, 165, 0, 0.05); /* Легкий золотистий фон */
+            border: 2px dashed var(--accent-brass); /* Пунктирна латунна рамка для залучення уваги */
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(240, 165, 0, 0.1);
+        }
+
+        .bonus-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px var(--accent-brass));
+        }
+
+        .bonus-highlight h2 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+        }
+
+        .bonus-highlight p {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+
+        .bonus-instruction {
+            color: var(--accent-copper) !important;
+            font-weight: bold;
+            margin-top: 10px !important;
+        }
+
+        .bonus-badge {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 8px 20px;
+            background: var(--accent-brass);
+            color: #000;
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(240, 165, 0, 0.3);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+    <div class="nav-left">
+        <a href="index.html">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+        </a>
+    </div>
+    <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+	</nav>
+
+    <div class="container">
+        
+        <h1>ГОЛОСУЙ ЗА НАС</h1>
+        <p class="vote-desc">Підтримай сервер та допоможи нам стати кращими!</p>
+
+        <div class="vote-grid">
+            <div class="vote-card">
+                <h3>AllMc.in.ua</h3>
+                <p style="font-size: 0.85rem; color: #aaa;">Голосуй кожні 24 години та отримуй нагороди.</p>
+                <a href="https://allmc.in.ua/afterlight-joinserver-xyz" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
+            </div>
+
+            <div class="vote-card">
+                <h3>Minecraft Servers</h3>
+                <p style="font-size: 0.85rem; color: #aaa;">Твій голос піднімає AfterLight у топ списку, а ти отримаєш бонуси!</p>
+                <a href="https://minecraft-mp.com/server/355583/vote/" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
+            </div>
+        </div>
+    </div>
+        <div class="bonus-highlight">
+            <div class="bonus-icon">🎁</div>
+            <h2>АКЦІЯ: БОНУС ЗА ВІРНІСТЬ!</h2>
+            <p>Проголосуй за сервер <strong>10 разів підряд</strong> (на кожному сайті) та отримай винагороду!</p>
+            <p class="bonus-instruction">Нагорода є рандомна, це може бути ігрова валюта або прівелеї</p>
+            <div class="bonus-badge">ГОЛОСУВАННЯ = ВИНАГОРОДА</div>
+        </div>
+</body>
+</html>
