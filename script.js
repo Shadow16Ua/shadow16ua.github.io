@@ -31,41 +31,6 @@ function prevSlide(sliderId) {
     showSlide(sliderId, current - 1);
 }
 
-/* --- КОПІЮВАННЯ IP З ЕФЕКТОМ ЕНЕРГІЇ --- */
-function copyIP(event) {
-    const ipValue = "afterlight.joinserver.xyz";
-    const box = document.querySelector('.ip-box');
-    const hint = document.getElementById('ip-hint');
-
-    if (!box || !hint) return;
-
-    // Створюємо ефект хвилі (Ripple)
-    const ripple = document.createElement('span');
-    ripple.classList.add('ripple');
-    box.appendChild(ripple);
-
-    const rect = box.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = event.clientX - rect.left - size/2 + 'px';
-    ripple.style.top = event.clientY - rect.top - size/2 + 'px';
-
-    // Копіювання
-    navigator.clipboard.writeText(ipValue).then(() => {
-        box.classList.add('success');
-        hint.classList.add('copied');
-        const originalText = hint.innerText;
-        hint.innerText = "IP СКОПІЙОВАНО!";
-
-        setTimeout(() => {
-            box.classList.remove('success');
-            hint.classList.remove('copied');
-            hint.innerText = originalText;
-            ripple.remove();
-        }, 2000);
-    });
-}
-
 /* --- АВТОМАТИЗАЦІЯ ПРИ ЗАВАНТАЖЕННІ --- */
 document.addEventListener('DOMContentLoaded', () => {
     // Запускаємо авто-прокрутку для лівого та правого слайдерів
