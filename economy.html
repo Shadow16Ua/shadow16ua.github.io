@@ -264,6 +264,49 @@
 		        grid-template-columns: 1fr;
 		    }
 		}
+
+		:root {
+		    /* Додай до існуючих змінних */
+		    --accent-diamond: #00e5ff; 
+		    --diamond-glow: rgba(0, 229, 255, 0.4);
+		}
+		
+		/* Спеціальна підсвічена Діамантова картка */
+		.diamond-highlight {
+		    border-color: var(--accent-diamond) !important;
+		    box-shadow: 0 0 20px var(--diamond-glow), 
+		                inset 0 0 10px rgba(0, 229, 255, 0.2) !important;
+		    
+		    transform: scale(1.05) !important; 
+		    z-index: 2;
+		    background: rgba(20, 40, 50, 0.9) !important; /* Темно-синій відтінок фону */
+		    animation: diamond-pulse-glow 3s infinite ease-in-out !important;
+		    transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+		
+		.diamond-highlight:hover {
+		    transform: scale(1.1) !important; 
+		    box-shadow: 0 0 35px var(--diamond-glow), 
+		                inset 0 0 15px rgba(0, 229, 255, 0.3) !important;
+		}
+		
+		/* Анімація для діамантового сяйва */
+		@keyframes diamond-pulse-glow {
+		    0% { box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+		    50% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); }
+		    100% { box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+		}
+		
+		/* Колір заголовків та значень для діамантів */
+		.diamond-text {
+		    color: var(--accent-diamond) !important;
+		    text-shadow: 0 0 10px var(--diamond-glow);
+		}
+		
+		/* Синя смужка для аналітики */
+		.analysis-card.diamond-border {
+		    border-left: 5px solid var(--accent-diamond) !important;
+		}
     </style>
 </head>
 <body>
@@ -287,9 +330,9 @@
         </div>
 
         <div class="exchange-rates">
-            <div class="rate-card">
+    		<div class="rate-card diamond-highlight">
                 <div class="rate-label">DIAMOND COIN ➔ GDR</div>
-                <div class="rate-value">3</div>
+                <div class="rate-value diamond-text">3</div>
                 <div class="rate-trend">▼ 0.0</div>
             </div>
 
@@ -305,7 +348,6 @@
                 <div class="rate-trend"> + 0.0</div>
             </div>
         </div>
-
 	 <!--<div class="market-analysis"> 
 		    <h2>📊 АНАЛІТИКА ТА ПРИЧИНИ ЗМІН</h2>
 		
@@ -317,7 +359,6 @@
 		        </p>
 		    </div>
 		</div> -->
-		
     </div>
 </body>
 </html>
