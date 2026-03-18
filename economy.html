@@ -269,6 +269,8 @@
 		    /* Додай до існуючих змінних */
 		    --accent-diamond: #00e5ff; 
 		    --diamond-glow: rgba(0, 229, 255, 0.4);
+			--accent-silver: #bdc3c7; 
+    		--silver-glow: rgba(189, 195, 199, 0.4);
 		}
 		
 		/* Спеціальна підсвічена Діамантова картка */
@@ -303,9 +305,41 @@
 		    text-shadow: 0 0 10px var(--diamond-glow);
 		}
 		
-		/* Синя смужка для аналітики */
-		.analysis-card.diamond-border {
-		    border-left: 5px solid var(--accent-diamond) !important;
+		/* Спеціальна підсвічена Срібна картка */
+		.silver-highlight {
+		    border-color: var(--accent-silver) !important;
+		    box-shadow: 0 0 20px var(--silver-glow), 
+		                inset 0 0 10px rgba(189, 195, 199, 0.2) !important;
+		    
+		    transform: scale(1.05) !important; 
+		    z-index: 2;
+		    background: rgba(45, 45, 45, 0.9) !important; /* Сталевий відтінок фону */
+		    animation: silver-pulse-glow 3s infinite ease-in-out !important;
+		    transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+		
+		.silver-highlight:hover {
+		    transform: scale(1.1) !important; 
+		    box-shadow: 0 0 35px var(--silver-glow), 
+		                inset 0 0 15px rgba(189, 195, 199, 0.3) !important;
+		}
+		
+		/* Анімація для срібного сяйва */
+		@keyframes silver-pulse-glow {
+		    0% { box-shadow: 0 0 15px rgba(189, 195, 199, 0.3); }
+		    50% { box-shadow: 0 0 30px rgba(189, 195, 199, 0.6); }
+		    100% { box-shadow: 0 0 15px rgba(189, 195, 199, 0.3); }
+		}
+		
+		/* Колір заголовків та значень для срібла */
+		.silver-text {
+		    color: var(--accent-silver) !important;
+		    text-shadow: 0 0 10px var(--silver-glow);
+		}
+		
+		/* Срібна смужка для аналітики */
+		.analysis-card.silver-border {
+		    border-left: 5px solid var(--accent-silver) !important;
 		}
     </style>
 </head>
@@ -342,9 +376,9 @@
                 <div class="rate-trend up">▲ + 1</div>
             </div>
 
-            <div class="rate-card">
-                <div class="rate-label">IRON COIN ➔ DC</div>
-                <div class="rate-value">80</div>
+            <div class="rate-card silver-highlight">
+		        <div class="rate-label" style="color: #bdc3c7;">IRON COIN ➔ DC</div>
+                <div class="rate-value silver-text">80</div>
                 <div class="rate-trend"> + 0.0</div>
             </div>
         </div>
