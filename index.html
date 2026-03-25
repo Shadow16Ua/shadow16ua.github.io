@@ -521,6 +521,64 @@
                 padding-top: 180px; 
             }
         }
+
+		/* --- СТАТУС СЕРВЕРА (Під кнопкою) --- */
+        .server-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.4); /* Напівпрозорий темний фон */
+            border: 1px solid var(--accent-copper);
+            padding: 10px 25px;
+            border-radius: 50px;
+            margin-top: 25px; /* Відступ вниз від кнопки "Почати грати" */
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .server-status:hover {
+            border-color: var(--accent-brass);
+            box-shadow: 0 0 15px rgba(240, 165, 0, 0.2);
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #555;
+            box-shadow: 0 0 8px transparent;
+            transition: 0.3s;
+        }
+
+        /* Зелений пульсуючий вогник (Сервер працює) */
+        .status-indicator.online {
+            background-color: #44ff44;
+            box-shadow: 0 0 10px #44ff44;
+            animation: pulse-green 2s infinite ease-in-out;
+        }
+
+        /* Червоний вогник (Сервер вимкнено) */
+        .status-indicator.offline {
+            background-color: #ff4444;
+            box-shadow: 0 0 10px #ff4444;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(1); box-shadow: 0 0 5px rgba(68, 255, 68, 0.5); }
+            50% { transform: scale(1.2); box-shadow: 0 0 15px rgba(68, 255, 68, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 5px rgba(68, 255, 68, 0.5); }
+        }
+
+        .status-text {
+            font-family: 'Russo One', sans-serif;
+            color: #ccc;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        #player-count {
+            color: var(--accent-brass); /* Латунний колір для самих цифр */
+        }
     </style>
 </head>
 <body>
@@ -603,6 +661,13 @@
         </div>
 
         <a href="download.html" class="main-start-btn">ПОЧАТИ ГРАТИ</a>
+
+		<div class="server-status">
+            <div class="status-indicator" id="status-dot"></div>
+            <div class="status-text">
+                ОНЛАЙН: <span id="player-count">завантаження...</span>
+            </div>
+        </div>
     </div>
 
     <div class="features">
@@ -654,6 +719,42 @@
             console.error('Помилка копіювання: ', err);
         });
     }
+	// --- МАГІЯ ОНЛАЙНУ СЕРВЕРА ---
+        const serverIP = "afterlight.joinserver.xyz"; // Твій IP
+
+        async function updateServerStatus() {
+            const countElement = document.getElementById('player-count');
+            const dotElement = document.getElementById('status-dot');
+
+            try {
+                // Запитуємо дані у mcsrvstat.us
+                const response = await fetch(`https://api.mcsrvstat.us/3/${serverIP}`);
+                const data = await response.json();
+
+                if (data.online) {
+                    // Сервер працює
+                    countElement.innerText = `${data.players.online} / ${data.players.max}`;
+                    countElement.style.color = "var(--accent-brass)";
+                    dotElement.classList.remove('offline');
+                    dotElement.classList.add('online');
+                } else {
+                    // Сервер вимкнений
+                    countElement.innerText = "ОФЛАЙН";
+                    countElement.style.color = "#ff4444";
+                    dotElement.classList.remove('online');
+                    dotElement.classList.add('offline');
+                }
+            } catch (error) {
+                console.error("Помилка отримання статусу:", error);
+                countElement.innerText = "ПОМИЛКА";
+            }
+        }
+
+        // Запускаємо перевірку одразу при відкритті сайту
+        updateServerStatus();
+
+        // Оновлюємо дані кожні 60 секунд непомітно для користувача
+        setInterval(updateServerStatus, 60000);
     </script>
 <script src="script.js" defer></script>
 </body>
