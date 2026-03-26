@@ -875,33 +875,34 @@
 </div>
 
 <script>
+    // Функція, щоб плавно закрити вікно
+    function closeAdblock() {
+        const overlay = document.getElementById('ab-overlay');
+        overlay.style.opacity = '0'; // Плавно розчиняємо
+        setTimeout(() => {
+            overlay.style.display = 'none'; // Повністю прибираємо
+        }, 300); // Чекаємо 0.3с, поки закінчиться анімація
+    }
+
     async function checkRealAdBlock() {
         let adBlockEnabled = false;
-        // Спробуємо завантажити файл, який адблоки точно ріжуть
         const url = 'https://www.google-analytics.com/analytics.js'; 
         
         try {
             await fetch(new Request(url), { mode: 'no-cors' });
         } catch (e) {
-            // Якщо запит впав — блокувальник увімкнено
+            // AdBlock з'їв запит
             adBlockEnabled = true;
         }
 
         if (adBlockEnabled) {
-            // Плавно показуємо плашку знизу
-            const banner = document.getElementById('ab-warning');
-            banner.style.display = 'block';
-            
-            // Додаємо легку анімацію виїзду
-            banner.animate([
-                { transform: 'translateY(100%)' },
-                { transform: 'translateY(0)' }
-            ], { duration: 400, easing: 'ease-out' });
+            // Робимо фон активним, і вікно вискакує по центру
+            document.getElementById('ab-overlay').style.display = 'flex';
         }
     }
 
-    // Запускаємо перевірку через 2 секунди після завантаження сторінки
-    window.onload = () => setTimeout(checkRealAdBlock, 2000);
+    // Запускаємо перевірку через 2 секунди
+    window.onload = () => setTimeout(checkRealAdBlock, 1500);
 </script>
 
 </body>
