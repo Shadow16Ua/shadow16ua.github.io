@@ -580,6 +580,64 @@
         #player-count {
             color: var(--accent-brass); /* Латунний колір для самих цифр */
         }
+
+
+
+		.adblock-banner {
+        display: none; /* Приховано за замовчуванням */
+        width: 100%;
+        background: rgba(15, 15, 15, 0.95);
+        border-top: 2px solid var(--accent-brass);
+        color: #fff;
+        text-align: center;
+        padding: 15px 20px;
+        position: fixed;
+        bottom: 0; /* Притискаємо до НИЗУ екрана, щоб не закривати меню */
+        left: 0;
+        z-index: 999999;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .ab-content {
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 1rem;
+    }
+
+    .ab-text b {
+        color: var(--accent-brass);
+        font-family: 'Russo One', sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    /* Кнопка закриття */
+    .ab-close {
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: #888;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .ab-close:hover {
+        color: var(--accent-copper);
+        scale: 1.2;
+    }
+
+    /* Адаптивність для телефонів */
+    @media (max-width: 600px) {
+        .ab-content { flex-direction: column; text-align: left; padding-right: 30px; gap: 5px; }
+        .ab-close { top: 15px; transform: none; right: 15px; }
+    }
     </style>
 	<script>
   atOptions = {
@@ -774,31 +832,43 @@
 <div id="container-4b750c879882a9ee5c284e3dfcc6a0e6"></div>
 
 
-<script>
-async function checkRealAdBlock() {
-    let adBlockEnabled = false;
-    // Спробуємо завантажити файл, назву якого адблоки НЕНАВИДЯТЬ
-    const url = 'https://www.google-analytics.com/analytics.js'; 
-    
-    try {
-        await fetch(new Request(url), { mode: 'no-cors' });
-    } catch (e) {
-        // Якщо завантаження ПРОВАЛИЛОСЯ - значить щось (адблок) його зрізало
-        adBlockEnabled = true;
-    }
-
-    if (adBlockEnabled) {
-        // Показуємо тільки плашку зверху, щоб не блокувати весь сайт
-        document.getElementById('ab-warning').style.display = 'block';
-    }
-}
-
-window.onload = () => setTimeout(checkRealAdBlock, 2000);
-</script>
-
-<div id="ab-warning" style="display:none; width:100%; background:#cc3300; color:white; text-align:center; padding:8px; position:fixed; top:0; z-index:999999;">
-    ⚠️ Будь ласка, вимкніть AdBlock для підтримки сервера Afterlight
+<div id="ab-warning" class="adblock-banner">
+    <div class="ab-content">
+        <span style="font-size: 1.5rem;">🛡️</span>
+        <span class="ab-text">Будь ласка, <b>вимкніть AdBlock</b>, щоб підтримати роботу сервера AfterLight!</span>
+    </div>
+    <button class="ab-close" onclick="document.getElementById('ab-warning').style.display='none'">✖</button>
 </div>
+
+<script>
+    async function checkRealAdBlock() {
+        let adBlockEnabled = false;
+        // Спробуємо завантажити файл, який адблоки точно ріжуть
+        const url = 'https://www.google-analytics.com/analytics.js'; 
+        
+        try {
+            await fetch(new Request(url), { mode: 'no-cors' });
+        } catch (e) {
+            // Якщо запит впав — блокувальник увімкнено
+            adBlockEnabled = true;
+        }
+
+        if (adBlockEnabled) {
+            // Плавно показуємо плашку знизу
+            const banner = document.getElementById('ab-warning');
+            banner.style.display = 'block';
+            
+            // Додаємо легку анімацію виїзду
+            banner.animate([
+                { transform: 'translateY(100%)' },
+                { transform: 'translateY(0)' }
+            ], { duration: 400, easing: 'ease-out' });
+        }
+    }
+
+    // Запускаємо перевірку через 2 секунди після завантаження сторінки
+    window.onload = () => setTimeout(checkRealAdBlock, 2000);
+</script>
 
 </body>
 </html>
