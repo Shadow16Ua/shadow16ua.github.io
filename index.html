@@ -880,18 +880,37 @@
 </div>
 
 <script>
+(function() {
     async function checkRealAdBlock() {
+        const popup = document.getElementById('adblock-fullscreen-popup');
+        let adBlockEnabled = false;
+
+        // Метод 1: Швидка перевірка через завантаження "ворожого" для адблоків файлу
         try {
-            // Перевіряємо, чи блокується аналітика
-            await fetch(new Request('https://www.google-analytics.com/analytics.js'), { mode: 'no-cors' });
+            // Використовуємо fetch з cache: 'no-store', щоб не було помилкових спрацювань з кешу
+            await fetch(new Request('https://www.google-analytics.com/analytics.js'), { 
+                mode: 'no-cors', 
+                cache: 'no-store' 
+            });
         } catch (e) {
-            // Якщо заблоковано - показуємо вікно (змінюємо display на flex для центрування)
-            document.getElementById('adblock-fullscreen-popup').style.display = 'flex';
+            adBlockEnabled = true;
+        }
+
+        if (adBlockEnabled) {
+            // Показуємо вікно моментально
+            popup.style.display = 'flex';
+            // Блокуємо прокрутку сайту, щоб користувач не міг "втекти" від вікна
+            document.body.style.overflow = 'hidden';
         }
     }
 
-    // Чекаємо 2 секунди після завантаження і перевіряємо
-    window.onload = () => setTimeout(checkRealAdBlock, 2000);
+    // Запуск без затримок (моментально при готовності DOM)
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        checkRealAdBlock();
+    } else {
+        document.addEventListener('DOMContentLoaded', checkRealAdBlock);
+    }
+})();
 </script>
 
 </body>
