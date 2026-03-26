@@ -860,49 +860,41 @@
 <div id="container-4b750c879882a9ee5c284e3dfcc6a0e6"></div>
 
 
-<div id="ab-overlay" class="adblock-overlay">
-    <div class="adblock-modal">
+<div id="adblock-fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2147483647; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+    
+    <div style="background: #141414; border: 2px solid #f0a500; border-radius: 12px; padding: 40px; width: 100%; max-width: 600px; text-align: center; box-shadow: 0 0 50px rgba(240,165,0,0.4); position: relative; font-family: 'Roboto', sans-serif;">
         
-        <div class="ab-icon">🛑</div>
-        <h2 class="ab-title">Вимкніть AdBlock</h2>
-        <p class="ab-text">
+        <button onclick="document.getElementById('adblock-fullscreen-popup').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: #888; font-size: 1.8rem; cursor: pointer;">✖</button>
+        
+        <div style="font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));">🛑</div>
+        
+        <h2 style="font-family: 'Russo One', sans-serif; color: #f0a500; font-size: 2.2rem; margin-top: 0; margin-bottom: 15px; text-transform: uppercase;">Вимкніть AdBlock</h2>
+        
+        <p style="font-size: 1.1rem; color: #ccc; line-height: 1.6; margin-bottom: 35px; margin-top: 0;">
             Ми помітили, що ви використовуєте блокувальник реклами.<br><br>
-            Сервер <b>AfterLight</b> існує та розвивається завдяки рекламі на цьому сайті. Будь ласка, додайте нас у винятки, щоб підтримати проект. Ми гарантуємо, що реклама не заважатиме!
+            Сервер <b style="color: #fff;">AfterLight</b> існує та розвивається завдяки рекламі. Будь ласка, додайте нас у винятки, щоб підтримати проект.
         </p>
         
-        <button class="ab-btn" onclick="closeAdblock()">Я ЗРОЗУМІВ, ПРОДОВЖИТИ</button>
+        <button onclick="document.getElementById('adblock-fullscreen-popup').style.display='none'" style="background: transparent; border: 2px solid #c87533; color: #c87533; padding: 15px 30px; 
+			font-family: 'Russo One', sans-serif; font-size: 1.2rem; cursor: pointer; border-radius: 6px; text-transform: uppercase; width: 100%; transition: 0.3s;" onmouseover="this.style.background='#c87533'; 
+			this.style.color='#fff'; this.style.boxShadow='0 0 20px rgba(200, 117, 51, 0.6)';" onmouseout="this.style.background='transparent'; this.style.color='#c87533'; this.style.boxShadow='none';">Я ЗРОЗУМІВ, ПРОДОВЖИТИ</button>
+        
     </div>
 </div>
 
 <script>
-    // Функція, щоб плавно закрити вікно
-    function closeAdblock() {
-        const overlay = document.getElementById('ab-overlay');
-        overlay.style.opacity = '0'; // Плавно розчиняємо
-        setTimeout(() => {
-            overlay.style.display = 'none'; // Повністю прибираємо
-        }, 300); // Чекаємо 0.3с, поки закінчиться анімація
-    }
-
     async function checkRealAdBlock() {
-        let adBlockEnabled = false;
-        const url = 'https://www.google-analytics.com/analytics.js'; 
-        
         try {
-            await fetch(new Request(url), { mode: 'no-cors' });
+            // Перевіряємо, чи блокується аналітика
+            await fetch(new Request('https://www.google-analytics.com/analytics.js'), { mode: 'no-cors' });
         } catch (e) {
-            // AdBlock з'їв запит
-            adBlockEnabled = true;
-        }
-
-        if (adBlockEnabled) {
-            // Робимо фон активним, і вікно вискакує по центру
-            document.getElementById('ab-overlay').style.display = 'flex';
+            // Якщо заблоковано - показуємо вікно (змінюємо display на flex для центрування)
+            document.getElementById('adblock-fullscreen-popup').style.display = 'flex';
         }
     }
 
-    // Запускаємо перевірку через 2 секунди
-    window.onload = () => setTimeout(checkRealAdBlock, 1500);
+    // Чекаємо 2 секунди після завантаження і перевіряємо
+    window.onload = () => setTimeout(checkRealAdBlock, 2000);
 </script>
 
 </body>
