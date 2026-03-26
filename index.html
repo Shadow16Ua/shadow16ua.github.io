@@ -580,6 +580,28 @@
             color: var(--accent-brass); /* Латунний колір для самих цифр */
         }
     </style>
+<style>
+  #adblock-msg {
+    display: none; /* Спочатку приховано */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    z-index: 99999;
+    text-align: center;
+    padding-top: 20%;
+    font-family: Arial, sans-serif;
+  }
+  #adblock-msg h2 { color: #ff4444; }
+  #adblock-msg button {
+    padding: 10px 20px;
+    background: #55ff55;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+</style>
 	<script>
   atOptions = {
     'key' : '84098daf7de2c5bed744f8fab6ee74ff',
@@ -769,6 +791,38 @@
     </script>
 <script src="script.js" defer></script>
 <script src="https://upcomingperusehike.com/13/b7/c6/13b7c64b79e6e7334a0ef5272292a3a4.js"></script>
+	<div id="adblock-msg">
+  <h2>Виявлено AdBlock! 🛡️</h2>
+  <p>Щоб підтримати сервер Afterlight, будь ласка, вимкніть блокувальник реклами.</p>
+  <p>Наш сайт живе завдяки рекламі, це допомагає нам працювати далі.</p>
+  <button onclick="window.location.reload()">Я вимкнув, оновити сторінку</button>
+</div>
+
+<script>
+  window.onload = function() {
+    // Чекаємо секунду, щоб реклама встигла смикнутися
+    setTimeout(function() {
+      // Перевіряємо, чи завантажився скрипт Adsterra
+      // Якщо файл реклами заблоковано, висота або наявність об'єкта буде 0
+      var adBlockEnabled = false;
+      var testAd = document.createElement('div');
+      testAd.innerHTML = '&nbsp;';
+      testAd.className = 'adsbox'; // Популярна назва, яку блокує AdBlock
+      document.body.appendChild(testAd);
+      
+      if (testAd.offsetHeight === 0) {
+        adBlockEnabled = true;
+      }
+      document.body.removeChild(testAd);
+
+      // Якщо AdBlock знайдено — показуємо вікно
+      if (adBlockEnabled) {
+        document.getElementById('adblock-msg').style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Забороняємо скролити сайт
+      }
+    }, 1000);
+  };
+</script>
 </body>
 </html>
 
