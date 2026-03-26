@@ -263,6 +263,92 @@
 		        display: none !important;
 		    }
 		}
+
+
+			/* Темний фон, що перекриває весь сайт */
+    .adblock-overlay {
+        display: none; /* Приховано до перевірки */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.8); /* Напівпрозоре затемнення */
+        backdrop-filter: blur(8px); /* Розмиття сайту на фоні */
+        z-index: 999999;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Сама центральна плашка (на пів екрана) */
+    .adblock-modal {
+        background: rgba(20, 20, 20, 0.95);
+        border: 2px solid var(--accent-brass);
+        border-radius: 12px;
+        padding: 40px;
+        width: 90%;
+        max-width: 650px; /* Максимальна ширина для великих моніторів */
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 0 50px rgba(240, 165, 0, 0.3);
+        position: relative;
+        font-family: 'Roboto', sans-serif;
+        
+        /* Крута анімація появи (вискакує і трохи пружинить) */
+        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes popIn {
+        0% { transform: scale(0.7); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .ab-icon {
+        font-size: 4.5rem;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));
+    }
+
+    .ab-title {
+        font-family: 'Russo One', sans-serif;
+        color: var(--accent-brass);
+        font-size: 2.2rem;
+        margin: 0 0 15px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .ab-text {
+        font-size: 1.1rem;
+        color: #ccc;
+        line-height: 1.6;
+        margin-bottom: 35px;
+    }
+
+    .ab-text b {
+        color: #fff;
+    }
+
+    /* Кнопка "Я зрозумів" */
+    .ab-btn {
+        background: transparent;
+        border: 2px solid var(--accent-copper);
+        color: var(--accent-copper);
+        padding: 15px 40px;
+        font-family: 'Russo One', sans-serif;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: 0.3s;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    .ab-btn:hover {
+        background: var(--accent-copper);
+        color: #fff;
+        box-shadow: 0 0 20px rgba(200, 117, 51, 0.6);
+        transform: translateY(-3px);
+    }
     </style>
 </head>
 <body>
@@ -328,89 +414,59 @@
 </div>
 
 
-<script>
-  (function () {
-    function detectAdBlock() {
-        return new Promise((resolve) => {
-            let bait = document.createElement("div");
-            bait.className = "adsbox ad-banner ad-unit"; 
-            bait.style.width = "1px";
-            bait.style.height = "1px";
-            bait.style.position = "absolute";
-            bait.style.left = "-9999px";
-            bait.style.visibility = "hidden"; 
-            document.body.appendChild(bait);
-
-            setTimeout(() => {
-                let isBlocked = !bait || bait.offsetParent === null || window.getComputedStyle(bait).display === "none";
-                document.body.removeChild(bait);
-                resolve(isBlocked);
-            }, 100); 
-        });
-    }
-
-    function showAdblockPopup() {
-        let overlay = document.createElement("div");
-        overlay.id = "adblock-overlay";
-        overlay.style.position = "fixed";
-        overlay.style.top = "0";
-        overlay.style.left = "0";
-        overlay.style.width = "100%";
-        overlay.style.height = "100%";
-        overlay.style.backgroundColor = "rgba(0, 0, 0, 0.9)"; // Темніший фон для фокусу
-        overlay.style.backdropFilter = "blur(5px)"; // Розмиття заднього фону
-        overlay.style.display = "flex";
-        overlay.style.justifyContent = "center";
-        overlay.style.alignItems = "center";
-        overlay.style.zIndex = "99999"; // Поверх усього, навіть меню
+<div id="adblock-fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2147483647; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+    
+    <div style="background: #141414; border: 2px solid #f0a500; border-radius: 12px; padding: 40px; width: 100%; max-width: 600px; text-align: center; box-shadow: 0 0 50px rgba(240,165,0,0.4); position: relative; font-family: 'Roboto', sans-serif;">
         
-        // Тут ми використовуємо твої змінні кольорів та шрифти
-        overlay.innerHTML = `
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; max-width: 450px; border-radius: 12px; margin: 20px; border: 2px solid #f0a500; background: rgba(20, 20, 20, 0.95); box-shadow: 0 0 30px rgba(240, 165, 0, 0.3); color: #fff; font-family: 'Roboto', sans-serif;">
-                
-                <div style="font-size: 3rem; margin-bottom: 15px;">🛡️</div>
-                
-                <h2 style="margin: 0px 0px 15px; font-weight: 700; font-family: 'Russo One', sans-serif; color: #f0a500; text-transform: uppercase;">AdBlock Виявлено!</h2>
-                
-                <p style="color: #ccc; line-height: 1.5; margin-bottom: 25px;">
-                    Сервер AfterLight існує завдяки рекламі. Будь ласка, вимкніть блокувальник реклами для нашого сайту, щоб підтримати проект та продовжити.
-                </p>
-                
-                <button id="refresh-page" style="padding: 15px 30px; font-size: 1rem; font-family: 'Russo One', sans-serif; cursor: pointer; background: transparent; color: #c87533; border: 2px solid #c87533; border-radius: 5px; text-transform: uppercase; transition: all 0.3s ease;">
-                    Я ВИМКНУВ ADBLOCK
-                </button>
-            </div>
-        `;
-        document.body.appendChild(overlay);
+        <!-- <button onclick="document.getElementById('adblock-fullscreen-popup').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: #888; font-size: 1.8rem; cursor: pointer;">✖</button> -->
+        
+        <div style="font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));">🛑</div>
+        
+        <h2 style="font-family: 'Russo One', sans-serif; color: #f0a500; font-size: 2.2rem; margin-top: 0; margin-bottom: 15px; text-transform: uppercase;">Вимкніть AdBlock</h2>
+        
+        <p style="font-size: 1.1rem; color: #ccc; line-height: 1.6; margin-bottom: 35px; margin-top: 0;">
+            Ми помітили, що ви використовуєте блокувальник реклами.<br><br>
+            Сервер <b style="color: #fff;">AfterLight</b> має платний хост. Будь ласка, додайте нас у винятки, щоб підтримувати проект.
+        </p>
+        <button onclick="location.reload()" style="background: transparent; border: 2px solid #c87533; color: #c87533; padding: 15px 30px; font-family: 'Russo One', sans-serif; font-size: 1.2rem; cursor: pointer; border-radius: 6px; 
+			text-transform: uppercase; width: 100%; transition: 0.3s;" onmouseover="this.style.background='#c87533'; this.style.color='#fff'; this.style.boxShadow='0 0 20px rgba(200, 117, 51, 0.6)';" 
+			onmouseout="this.style.background='transparent'; this.style.color='#c87533'; this.style.boxShadow='none';">🔄 Я ВИМКНУВ (ОНОВИТИ)</button>
+    </div>
+</div>
 
-        // Додаємо ефект при наведенні на кнопку через JS
-        const btn = document.getElementById("refresh-page");
-        btn.addEventListener("mouseover", () => {
-            btn.style.background = "#c87533";
-            btn.style.color = "#fff";
-            btn.style.boxShadow = "0 0 15px rgba(200, 117, 51, 0.5)";
-        });
-        btn.addEventListener("mouseout", () => {
-            btn.style.background = "transparent";
-            btn.style.color = "#c87533";
-            btn.style.boxShadow = "none";
-        });
+<script>
+(function() {
+    async function checkRealAdBlock() {
+        const popup = document.getElementById('adblock-fullscreen-popup');
+        let adBlockEnabled = false;
 
-        btn.addEventListener("click", function () {
-            location.reload();
-        });
+        // Метод 1: Швидка перевірка через завантаження "ворожого" для адблоків файлу
+        try {
+            // Використовуємо fetch з cache: 'no-store', щоб не було помилкових спрацювань з кешу
+            await fetch(new Request('https://www.google-analytics.com/analytics.js'), { 
+                mode: 'no-cors', 
+                cache: 'no-store' 
+            });
+        } catch (e) {
+            adBlockEnabled = true;
+        }
+
+        if (adBlockEnabled) {
+            // Показуємо вікно моментально
+            popup.style.display = 'flex';
+            // Блокуємо прокрутку сайту, щоб користувач не міг "втекти" від вікна
+            document.body.style.overflow = 'hidden';
+        }
     }
 
-    window.addEventListener("load", () => {
-        detectAdBlock().then((adBlockDetected) => {
-            if (adBlockDetected) {
-                showAdblockPopup();
-            }
-        });
-    });
-  })();
+    // Запуск без затримок (моментально при готовності DOM)
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        checkRealAdBlock();
+    } else {
+        document.addEventListener('DOMContentLoaded', checkRealAdBlock);
+    }
+})();
 </script>
-	
 </body>
 </html>
 
