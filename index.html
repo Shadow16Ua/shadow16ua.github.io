@@ -773,33 +773,27 @@
     <script src="https://upcomingperusehike.com/13/b7/c6/13b7c64b79e6e7334a0ef5272292a3a4.js"></script>
 </div>
 
-<div id="ab-stop-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#0b0b0b; color:white; z-index:100000; text-align:center; padding-top:15%; font-family: 'Segoe UI', sans-serif;">
-    <h1 style="color:#ff4d4d; font-size: 40px;">🛡️ ВИЯВЛЕНО ADBLOCK!</h1>
-    <p style="font-size: 18px; margin: 20px;">Щоб зайти на сервер <b>Afterlight</b>, вимкніть блокувальник реклами.<br>Це допомагає нам оплачувати хостинг сервера.</p>
-    <button onclick="location.reload()" style="padding:15px 30px; background:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; font-size:16px;">Я ВИМКНУВ, ПУСТІТЬ МЕНЕ</button>
-    <p style="margin-top:30px; color:#666;">(Після вимкнення оновіть сторінку)</p>
+<div id="ab-warning" style="display:none; width:100%; background:#ff4d4d; color:white; text-align:center; padding:10px; font-weight:bold; position:fixed; top:0; left:0; z-index:100000;">
+    ⚠️ Виявлено AdBlock! Будь ласка, вимкніть його, щоб підтримати сервер Afterlight.
+    <button onclick="location.reload()" style="margin-left:15px; cursor:pointer; background:white; border:none; padding:2px 10px; border-radius:3px;">Оновити</button>
 </div>
 
 <script>
 window.addEventListener('load', function() {
-    // Збільшимо затримку до 3 секунд, щоб точно встигло завантажитись
+    // Даємо рекламі аж 5 секунд на роздуми
     setTimeout(function() {
         var trap = document.getElementById('wrapper-ads-afterlight');
-        var stopScreen = document.getElementById('ab-stop-screen');
+        var warning = document.getElementById('ab-warning');
 
-        // Перевіряємо саме чи є всередині контейнера iframe або скрипт від Adsterra
-        // Якщо AdBlock працює, він зазвичай видаляє вміст повністю
-        var hasContent = trap.innerHTML.trim().length > 10;
-        
-        // Також перевіряємо видимість (деякі блоки просто приховуються)
-        var isVisible = trap.offsetWidth > 0 && trap.offsetHeight > 0;
+        // Перевіряємо тільки видимість блоку
+        var isBlocked = (trap.offsetHeight === 0) || (window.getComputedStyle(trap).display === 'none');
 
-        if (!hasContent || !isVisible) {
-            // Тільки якщо контенту нуль АБО блок приховано - блокуємо
-            stopScreen.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+        if (isBlocked) {
+            warning.style.display = 'block';
+            // Ми НЕ блокуємо весь сайт, просто показуємо попередження зверху
+            console.warn('AdBlock Detected - showing banner');
         }
-    }, 3000); 
+    }, 5000); 
 });
 </script>
 
