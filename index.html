@@ -782,27 +782,24 @@
 
 <script>
 window.addEventListener('load', function() {
-    // Чекаємо 2 секунди, поки AdBlock встигне все вирізати
+    // Збільшимо затримку до 3 секунд, щоб точно встигло завантажитись
     setTimeout(function() {
         var trap = document.getElementById('wrapper-ads-afterlight');
         var stopScreen = document.getElementById('ab-stop-screen');
 
-        // ПЕРЕВІРКА 1: Чи приховав AdBlock сам контейнер?
-        var isHidden = window.getComputedStyle(trap).display === 'none' || 
-                       window.getComputedStyle(trap).visibility === 'hidden' ||
-                       trap.offsetParent === null;
+        // Перевіряємо саме чи є всередині контейнера iframe або скрипт від Adsterra
+        // Якщо AdBlock працює, він зазвичай видаляє вміст повністю
+        var hasContent = trap.innerHTML.trim().length > 10;
+        
+        // Також перевіряємо видимість (деякі блоки просто приховуються)
+        var isVisible = trap.offsetWidth > 0 && trap.offsetHeight > 0;
 
-        // ПЕРЕВІРКА 2: Чи має контейнер нульову висоту?
-        var hasNoHeight = trap.offsetHeight < 5;
-
-        if (isHidden || hasNoHeight) {
-            // Блокуємо сайт
+        if (!hasContent || !isVisible) {
+            // Тільки якщо контенту нуль АБО блок приховано - блокуємо
             stopScreen.style.display = 'block';
             document.body.style.overflow = 'hidden';
-            // Видаляємо весь інший контент, щоб не було хитрих обходів через консоль
-            console.log('AdBlock detected. Content locked.');
         }
-    }, 2000);
+    }, 3000); 
 });
 </script>
 
