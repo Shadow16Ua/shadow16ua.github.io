@@ -769,42 +769,43 @@
     </script>
 <script src="script.js" defer></script>
 
-	<div id="adblock-msg" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); color:white; z-index:99999; text-align:center; padding-top:20%; font-family:sans-serif;">
-  <h2>Виявлено AdBlock! 🛡️</h2>
-  <p>Щоб зайти на сайт Afterlight, будь ласка, вимкніть блокувальник реклами.</p>
-  <button onclick="window.location.reload()" style="padding:10px 20px; background:#55ff55; border:none; cursor:pointer; font-weight:bold; margin-top:20px;">Я вимкнув, оновити сторінку</button>
+<div id="wrapper-ads-afterlight" class="ad-zone-container ads-section">
+    <script src="https://upcomingperusehike.com/13/b7/c6/13b7c64b79e6e7334a0ef5272292a3a4.js"></script>
+</div>
+
+<div id="ab-stop-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#0b0b0b; color:white; z-index:100000; text-align:center; padding-top:15%; font-family: 'Segoe UI', sans-serif;">
+    <h1 style="color:#ff4d4d; font-size: 40px;">🛡️ ВИЯВЛЕНО ADBLOCK!</h1>
+    <p style="font-size: 18px; margin: 20px;">Щоб зайти на сервер <b>Afterlight</b>, вимкніть блокувальник реклами.<br>Це допомагає нам оплачувати хостинг сервера.</p>
+    <button onclick="location.reload()" style="padding:15px 30px; background:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; font-size:16px;">Я ВИМКНУВ, ПУСТІТЬ МЕНЕ</button>
+    <p style="margin-top:30px; color:#666;">(Після вимкнення оновіть сторінку)</p>
 </div>
 
 <script>
-  function checkAdBlock() {
-    // Спробуємо завантажити "фейковий" скрипт реклами
-    // Блокувальники бачать слово "ads" або "google-analytics" і відразу ріжуть
-    fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', {
-      method: 'HEAD',
-      mode: 'no-cors'
-    }).catch(() => {
-      // Якщо запит не пройшов (блокувальник зупинив його)
-      showAdBlockMessage();
-    });
+window.addEventListener('load', function() {
+    // Чекаємо 2 секунди, поки AdBlock встигне все вирізати
+    setTimeout(function() {
+        var trap = document.getElementById('wrapper-ads-afterlight');
+        var stopScreen = document.getElementById('ab-stop-screen');
 
-    // Додаткова перевірка: чи живий твій скрипт Adsterra
-    // Ми шукаємо скрипт, у якого в адресі є "upcomingperusehike"
-    var adsterraScript = document.querySelector('script[src*="upcomingperusehike"]');
-    if (!adsterraScript) {
-      showAdBlockMessage();
-    }
-  }
+        // ПЕРЕВІРКА 1: Чи приховав AdBlock сам контейнер?
+        var isHidden = window.getComputedStyle(trap).display === 'none' || 
+                       window.getComputedStyle(trap).visibility === 'hidden' ||
+                       trap.offsetParent === null;
 
-  function showAdBlockMessage() {
-    document.getElementById('adblock-msg').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  }
+        // ПЕРЕВІРКА 2: Чи має контейнер нульову висоту?
+        var hasNoHeight = trap.offsetHeight < 5;
 
-  // Запускаємо перевірку через 1.5 секунди після завантаження
-  window.addEventListener('load', function() {
-    setTimeout(checkAdBlock, 1500);
-  });
+        if (isHidden || hasNoHeight) {
+            // Блокуємо сайт
+            stopScreen.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            // Видаляємо весь інший контент, щоб не було хитрих обходів через консоль
+            console.log('AdBlock detected. Content locked.');
+        }
+    }, 2000);
+});
 </script>
+
 </body>
 </html>
 
