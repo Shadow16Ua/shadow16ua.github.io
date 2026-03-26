@@ -327,6 +327,90 @@
 	<div id="container-4b750c879882a9ee5c284e3dfcc6a0e6"></div>
 </div>
 
+
+<script>
+  (function () {
+    function detectAdBlock() {
+        return new Promise((resolve) => {
+            let bait = document.createElement("div");
+            bait.className = "adsbox ad-banner ad-unit"; 
+            bait.style.width = "1px";
+            bait.style.height = "1px";
+            bait.style.position = "absolute";
+            bait.style.left = "-9999px";
+            bait.style.visibility = "hidden"; 
+            document.body.appendChild(bait);
+
+            setTimeout(() => {
+                let isBlocked = !bait || bait.offsetParent === null || window.getComputedStyle(bait).display === "none";
+                document.body.removeChild(bait);
+                resolve(isBlocked);
+            }, 100); 
+        });
+    }
+
+    function showAdblockPopup() {
+        let overlay = document.createElement("div");
+        overlay.id = "adblock-overlay";
+        overlay.style.position = "fixed";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.width = "100%";
+        overlay.style.height = "100%";
+        overlay.style.backgroundColor = "rgba(0, 0, 0, 0.9)"; // Темніший фон для фокусу
+        overlay.style.backdropFilter = "blur(5px)"; // Розмиття заднього фону
+        overlay.style.display = "flex";
+        overlay.style.justifyContent = "center";
+        overlay.style.alignItems = "center";
+        overlay.style.zIndex = "99999"; // Поверх усього, навіть меню
+        
+        // Тут ми використовуємо твої змінні кольорів та шрифти
+        overlay.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; max-width: 450px; border-radius: 12px; margin: 20px; border: 2px solid #f0a500; background: rgba(20, 20, 20, 0.95); box-shadow: 0 0 30px rgba(240, 165, 0, 0.3); color: #fff; font-family: 'Roboto', sans-serif;">
+                
+                <div style="font-size: 3rem; margin-bottom: 15px;">🛡️</div>
+                
+                <h2 style="margin: 0px 0px 15px; font-weight: 700; font-family: 'Russo One', sans-serif; color: #f0a500; text-transform: uppercase;">AdBlock Виявлено!</h2>
+                
+                <p style="color: #ccc; line-height: 1.5; margin-bottom: 25px;">
+                    Сервер AfterLight існує завдяки рекламі. Будь ласка, вимкніть блокувальник реклами для нашого сайту, щоб підтримати проект та продовжити.
+                </p>
+                
+                <button id="refresh-page" style="padding: 15px 30px; font-size: 1rem; font-family: 'Russo One', sans-serif; cursor: pointer; background: transparent; color: #c87533; border: 2px solid #c87533; border-radius: 5px; text-transform: uppercase; transition: all 0.3s ease;">
+                    Я ВИМКНУВ ADBLOCK
+                </button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        // Додаємо ефект при наведенні на кнопку через JS
+        const btn = document.getElementById("refresh-page");
+        btn.addEventListener("mouseover", () => {
+            btn.style.background = "#c87533";
+            btn.style.color = "#fff";
+            btn.style.boxShadow = "0 0 15px rgba(200, 117, 51, 0.5)";
+        });
+        btn.addEventListener("mouseout", () => {
+            btn.style.background = "transparent";
+            btn.style.color = "#c87533";
+            btn.style.boxShadow = "none";
+        });
+
+        btn.addEventListener("click", function () {
+            location.reload();
+        });
+    }
+
+    window.addEventListener("load", () => {
+        detectAdBlock().then((adBlockDetected) => {
+            if (adBlockDetected) {
+                showAdblockPopup();
+            }
+        });
+    });
+  })();
+</script>
+	
 </body>
 </html>
 
