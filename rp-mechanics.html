@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
 	<script>
@@ -156,6 +155,24 @@
 		        display: none !important;
 		    }
 		}
+
+        .top-header-ad {
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Центрує по горизонталі */
+            align-items: center;
+            padding: 10px 0; /* Відступи зверху і знизу */
+            background: rgba(0, 0, 0, 0.2); /* Легкий фон, щоб виділити */
+        }
+
+        /* Якщо хочеш, щоб банер завжди висів зверху навіть при скролі: */
+        .top-header-ad {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            background: #000;
+        }
 
 		/* Темний фон, що перекриває весь сайт */
     .adblock-overlay {
@@ -318,7 +335,7 @@
     </div>
 </div>
 
-<div class="side-ad-banner ad-left">
+<div class="top-header-ad">
 	<script>
 	  atOptions = {
 	    'key' : '84098daf7de2c5bed744f8fab6ee74ff',
@@ -331,6 +348,18 @@
 	<script src="https://upcomingperusehike.com/84098daf7de2c5bed744f8fab6ee74ff/invoke.js"></script>
 </div>
 
+<div class="side-ad-banner ad-right">
+    <script>
+    atOptions = {
+        'key' : '752aab916514885fc9fed2033eab5726',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+    };
+    </script>
+    <script src="https://upcomingperusehike.com/752aab916514885fc9fed2033eab5726/invoke.js"></script>
+</div>
 
 <div id="adblock-fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2147483647; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
     
