@@ -427,25 +427,6 @@
         transform: translateY(-3px);
     }
 
-
-	/* Робимо рядок гнучким */
-	.main-content-wrapper {
-		display: flex;
-		flex-direction: row; /* Тільки в ряд! */
-		justify-content: center;
-		align-items: flex-start;
-		width: 100%;
-		max-width: 1300px; /* Достатньо місця для контейнера + банера */
-		gap: 20px; /* Відступ між ними */
-		margin: 0 auto;
-	}
-
-	/* Оскільки body центрує все, приберемо авто-відступи у контейнера */
-	.container {
-		margin: 40px 0 !important; /* Міняємо auto на 0, щоб не штовхало рекламу */
-		flex-shrink: 0; /* Щоб контейнер не стискався */
-	}
-
 	/* Права колонка з рекламою */
 	.sidebar-ad {
 		width: 300px;
@@ -456,10 +437,6 @@
 
 	/* На мобілках знову робимо все в один стовпчик */
 	@media (max-width: 1200px) {
-		.main-content-wrapper {
-			flex-direction: column;
-			align-items: center;
-		}
 		.sidebar-ad {
 			width: 100%;
 			display: flex;
@@ -519,10 +496,10 @@
 		    </div>
 		</div> -->
     </div>
-	<div class="sidebar-ad">
-		<script async="async" data-cfasync="false" src="https://upcomingperusehike.com/4b750c879882a9ee5c284e3dfcc6a0e6/invoke.js"></script>
-		<div id="container-4b750c879882a9ee5c284e3dfcc6a0e6"></div>
-	</div>
+<div class="sidebar-ad">
+	<script async="async" data-cfasync="false" src="https://upcomingperusehike.com/4b750c879882a9ee5c284e3dfcc6a0e6/invoke.js"></script>
+	<div id="container-4b750c879882a9ee5c284e3dfcc6a0e6"></div>
+</div>
 
 <div class="side-ad-banner ad-left">
 	<script>
