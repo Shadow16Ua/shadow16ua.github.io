@@ -147,7 +147,7 @@
 		    justify-content: center;
 		}
 		
-		.ad-left { left: 15px; }
+		.ad-left { left: 45px; }
 		.ad-right { right: 15px; }
 		
 		@media (max-width: 1400px) {
@@ -156,22 +156,14 @@
 		    }
 		}
 
-        .top-header-ad {
+        .under-nav-ad {
             width: 100%;
             display: flex;
-            justify-content: center; /* Центрує по горизонталі */
+            justify-content: center;
             align-items: center;
-            padding: 10px 0; /* Відступи зверху і знизу */
-            background: rgba(0, 0, 0, 0.2); /* Легкий фон, щоб виділити */
-        }
-
-        /* Якщо хочеш, щоб банер завжди висів зверху навіть при скролі: */
-        .top-header-ad {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 2000;
-            background: #000;
+            padding: 20px 0; /* Відступ 20px зверху і знизу від банера */
+            /* Якщо хочеш, щоб банер не "прилипав" до контенту нижче: */
+            margin-bottom: 10px;
         }
 
 		/* Темний фон, що перекриває весь сайт */
@@ -267,6 +259,20 @@
         <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
     </nav>
 	
+    
+    <div class="under-nav-ad">
+        <script>
+        atOptions = {
+            'key' : '84098daf7de2c5bed744f8fab6ee74ff',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+        };
+        </script>
+        <script src="https://upcomingperusehike.com/84098daf7de2c5bed744f8fab6ee74ff/invoke.js"></script>
+    </div>
+
     <div class="container">
     <h1>Механіки ROLEPLAY</h1>
     <div class="subtitle">AFTERLIGHT Season 1 • Офіційний збірник правил війни та рейдів</div>
@@ -335,18 +341,6 @@
     </div>
 </div>
 
-<div class="top-header-ad">
-	<script>
-	  atOptions = {
-	    'key' : '84098daf7de2c5bed744f8fab6ee74ff',
-	    'format' : 'iframe',
-	    'height' : 50,
-	    'width' : 320,
-	    'params' : {}
-	  };
-	</script>
-	<script src="https://upcomingperusehike.com/84098daf7de2c5bed744f8fab6ee74ff/invoke.js"></script>
-</div>
 
 <div class="side-ad-banner ad-right">
     <script>
