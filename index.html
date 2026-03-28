@@ -841,7 +841,12 @@
             color: var(--accent-brass);
             text-transform: uppercase;
             margin-bottom: 20px;
-            text-shadow: 0 0 25px rgba(240, 165, 0, 0.6);
+            
+            /* ✨ МАГІЯ ТІНЕЙ: 
+               1-ша частина: світіння латунним кольором (glow)
+               2-га частина: жорстка чорна тінь, щоб текст добре читався на світлому фоні 
+            */
+            text-shadow: 0 0 25px rgba(240, 165, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.9);
             
             /* Важливо для механізмів, щоб вони літали відносно тексту */
             position: relative;
