@@ -1123,6 +1123,44 @@
 })();
 </script>
 
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#f0a500" }, /* Твій колір латуні */
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.2, "random": true },
+    "size": { "value": 3, "random": true },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#c87533", /* Колір міді */
+      "opacity": 0.2,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 0.5, /* Повільний, спокійний рух */
+      "direction": "none",
+      "random": true,
+      "out_mode": "out"
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" }, /* Лінії тягнуться до мишки */
+      "onclick": { "enable": true, "mode": "push" }
+    },
+    "modes": {
+      "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } }
+    }
+  },
+  "retina_detect": true
+});
+</script>
 </body>
 </html>
 
