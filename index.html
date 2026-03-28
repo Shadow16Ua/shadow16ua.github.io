@@ -664,6 +664,136 @@
         transform: translateY(-3px);
     }
 
+
+	/* --- ТАЙМЕР ІВЕНТУ (Механічний стиль) --- */
+	.event-timer-container {
+		margin-top: 50px;
+		background: rgba(15, 15, 15, 0.85); /* Темний металевий фон */
+		border: 2px solid var(--accent-copper);
+		border-radius: 8px;
+		padding: 15px 25px;
+		text-align: center;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(200, 117, 51, 0.2);
+		backdrop-filter: blur(5px);
+		z-index: 10;
+	}
+
+	.timer-header {
+		color: #aaa;
+		font-size: 0.9rem;
+		margin-bottom: 12px;
+		font-family: 'Russo One', sans-serif;
+		letter-spacing: 1px;
+	}
+
+	/* Слово "ІВЕНТУ" з підказкою */
+	.event-tooltip-trigger {
+		color: var(--accent-brass);
+		cursor: help; /* Курсор змінюється на знак питання */
+		border-bottom: 1px dashed var(--accent-brass); /* Пунктир знизу */
+		position: relative;
+		display: inline-block;
+	}
+
+	/* Сама табличка підказки */
+	.event-tooltip-trigger .tooltip-text {
+		visibility: hidden;
+		width: 260px;
+		background-color: rgba(20, 20, 20, 0.95);
+		color: #ddd;
+		text-align: center;
+		border-radius: 8px;
+		padding: 15px;
+		border: 1px solid var(--accent-brass);
+		position: absolute;
+		z-index: 100;
+		bottom: 150%; /* Піднімає над словом */
+		left: 50%;
+		margin-left: -130px; /* Центрування (половина ширини) */
+		opacity: 0;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateY(10px);
+		font-family: 'Roboto', sans-serif;
+		font-size: 0.85rem;
+		line-height: 1.5;
+		text-transform: none;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+	}
+
+	.event-tooltip-trigger .tooltip-text strong {
+		color: var(--accent-brass);
+		font-family: 'Russo One', sans-serif;
+		letter-spacing: 1px;
+	}
+
+	/* Стрілочка вниз для підказки */
+	.event-tooltip-trigger .tooltip-text::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -6px;
+		border-width: 6px;
+		border-style: solid;
+		border-color: var(--accent-brass) transparent transparent transparent;
+	}
+
+	/* Анімація появи підказки */
+	.event-tooltip-trigger:hover .tooltip-text,
+	.event-tooltip-trigger:active .tooltip-text {
+		visibility: visible;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Дизайн циферблату */
+	.timer-display {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.time-box {
+		display: flex;
+		flex-direction: column;
+		background: #0a0a0a; /* Дуже темний "екран" */
+		border: 2px inset #333; /* Ефект вдавлення (як механічний лічильник) */
+		border-radius: 6px;
+		padding: 5px 10px;
+		min-width: 65px;
+		box-shadow: inset 0 0 10px rgba(0,0,0,1);
+	}
+
+	.time-box span:first-child {
+		font-family: 'Russo One', sans-serif;
+		font-size: 1.8rem;
+		color: #fff;
+		text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+	}
+
+	.time-label {
+		font-size: 0.65rem;
+		color: var(--accent-copper);
+		margin-top: 3px;
+		font-weight: bold;
+	}
+
+	/* Двокрапка, що блимає */
+	.colon {
+		font-family: 'Russo One', sans-serif;
+		font-size: 1.5rem;
+		color: var(--accent-copper);
+		animation: blink-colon 1s infinite;
+	}
+
+	@keyframes blink-colon {
+		0%, 100% { opacity: 1; text-shadow: 0 0 5px var(--accent-copper); }
+		50% { opacity: 0.3; text-shadow: none; }
+	}
+		
+
+		
 	#particles-js {
             position: fixed;
             width: 100%;
@@ -1090,7 +1220,7 @@
 		// ВСТАНОВИ ДАТУ ТУТ: Рік, Місяць, День, Година, Хвилина
         // ВАЖЛИВО: Місяці в JavaScript починаються з НУЛЯ (0 - Січень, 1 - Лютий, 3 - Квітень і т.д.)
         // Наприклад: 2026 рік, Травень (це цифра 4), 15 число, 18:00
-        const targetDate = new Date(2026, 3, 29, 16, 0, 0).getTime();
+        const targetDate = new Date(2026, 2, 29, 16, 0, 0).getTime();
 
         const countdownInterval = setInterval(function() {
             const now = new Date().getTime();
