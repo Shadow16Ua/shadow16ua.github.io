@@ -978,6 +978,29 @@
         </div>
     </div>
 
+	<div class="event-timer-container">
+		<div class="timer-header">
+			ДО НАСТУПНОГО 
+			<span class="event-tooltip-trigger">
+				ІВЕНТУ
+				<span class="tooltip-text">
+					<strong>Відкриття енду - не пропусти!</strong><br><br>
+					Часу до відкриття енду на сервері залишилось зовсім мало! Підготуйся до нових пригод та викликів. Збирай ресурси, готуй спорядження та будь готовий до битв з новими монстрами та босами. Це буде епічна подія, яку не можна пропустити!
+				</span>
+			</span>
+		</div>
+            
+        <div class="timer-display">
+            <div class="time-box"><span id="t-days">00</span><span class="time-label">ДН</span></div>
+            <span class="colon">:</span>
+            <div class="time-box"><span id="t-hours">00</span><span class="time-label">ГОД</span></div>
+            <span class="colon">:</span>
+            <div class="time-box"><span id="t-minutes">00</span><span class="time-label">ХВ</span></div>
+            <span class="colon">:</span>
+            <div class="time-box"><span id="t-seconds">00</span><span class="time-label">СЕК</span></div>
+        </div>
+    </div>
+
     <div class="features">
         <div class="card">
             <h2>⚙️ Create Mod</h2>
@@ -1063,6 +1086,36 @@
 
         // Оновлюємо дані кожні 60 секунд непомітно для користувача
         setInterval(updateServerStatus, 60000);
+
+		// ВСТАНОВИ ДАТУ ТУТ: Рік, Місяць, День, Година, Хвилина
+        // ВАЖЛИВО: Місяці в JavaScript починаються з НУЛЯ (0 - Січень, 1 - Лютий, 3 - Квітень і т.д.)
+        // Наприклад: 2026 рік, Травень (це цифра 4), 15 число, 18:00
+        const targetDate = new Date(2026, 3, 29, 16, 0, 0).getTime();
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Якщо час вийшов
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector('.timer-display').innerHTML = 
+                    "<div style='color: var(--accent-brass); font-family: Russo One; font-size: 1.5rem; text-shadow: 0 0 10px #f0a500;'>ІВЕНТ ПОЧАВСЯ! 🔥</div>";
+                return;
+            }
+
+            // Математика обчислення днів, годин, хвилин та секунд
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Виведення на екран (padStart додає нуль попереду, якщо цифра < 10, напр. "05" замість "5")
+            document.getElementById("t-days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("t-hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("t-minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("t-seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
     </script>
 <script src="script.js" defer></script>
 
