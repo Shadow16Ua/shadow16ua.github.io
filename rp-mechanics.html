@@ -139,12 +139,17 @@
 		/* --- БОКОВІ РЕКЛАМНІ БАНЕРИ --- */
 		.side-ad-banner {
 		    position: absolute;
-		    top: 50%;
-		    transform: translateY(-50%);
+		    /* 🛠 ТУТ: Задаємо фіксований відступ від верху сайту. 
+		       120px - це щоб він починався трохи нижче шапки (меню). 
+		       Можеш зробити 150px або 200px, якщо треба нижче. */
+		    top: 120px; 
+		    
 		    z-index: 100;
 		    /* width: 300px; */
 		    /* display: flex; */
 		    justify-content: center;
+		    
+		    /* ❌ ВИДАЛЕНО: top: 50%; та transform: translateY(-50%); */
 		}
 		
 		.ad-left { left: 15px; }
