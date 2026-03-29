@@ -127,35 +127,7 @@
             h1 { font-size: 1.8rem; }
         }
 
-
-		/* --- БОКОВІ РЕКЛАМНІ БАНЕРИ --- */
-		.side-ad-banner {
-		    position: absolute; /* Приклеює до екрана під час скролу */
-		    top: 50%;        /* Ставить рівно по центру вертикалі */
-		    transform: translateY(-50%);
-		    z-index: 100;    /* Щоб банер був поверх фону, але під шапкою */
-		    width: 160px;    /* Стандартна ширина вертикальних банерів */
-		    /* display: flex; */
-		    justify-content: center;
-		}
-		/* Відступи від країв */
-		.ad-left {
-		    left: 35px;
-		}
-		.ad-right {
-		    right: 35px;
-		}
-		
-		/* ЗАХИСТ ВІД ЗЛАМАНОЇ ВЕРСТКИ */
-		/* Ховаємо банери на ноутбуках і телефонах (якщо екран менший за 1400px) */
-		@media (max-width: 1400px) {
-		    .side-ad-banner {
-		        display: none !important;
-		    }
-		}
-
-
-		/* Темний фон, що перекриває весь сайт */
+	/* Темний фон, що перекриває весь сайт */
     .adblock-overlay {
         display: none; /* Приховано до перевірки */
         position: fixed;
@@ -241,13 +213,13 @@
     }
 
     .under-nav-ad {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0; /* Відступ 20px зверху і знизу від банера */
-            margin-bottom: 0;
-        }
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px 0; /* Відступ 20px зверху і знизу від банера */
+		margin-bottom: 0;
+	}
     </style>
 </head>
 <body>
