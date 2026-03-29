@@ -21,4 +21,4 @@
 
 ---
 **IP сервера:** `afterlight.joinserver.xyz` 
-**Discord:** [Приєднатися]([https://discord.gg/afterlight](https://discord.gg/zhKqAJyVpH))
+**Discord:** [Приєднатися]([https://discord.gg/zhKqAJyVpH])
