@@ -83,6 +83,64 @@ html, body {
     h1 { font-size: 1.8rem; }
 }
 
+.site-footer { 
+	width: 100%; 
+	background: #0a0a0a; 
+	border-top: 1px solid #333; 
+	padding: 20px 20px; 
+	display: flex; 
+	flex-direction: column;
+	justify-content: center; 
+	align-items: center; 
+	gap: 15px; 
+	margin-top: auto; 
+	position: relative; 
+	z-index: 10; 
+}
+
+.copyright { 
+	color: #888; 
+	font-size: 0.95rem; 
+	font-family: 'Roboto', sans-serif; 
+	text-align: center; 
+}
+
+.social-links { 
+	display: flex; 
+	gap: 15px; 
+	justify-content: center; 
+}
+
+/* Виправлені іконки соцмереж (Рівно по центру) */
+.social-btn { 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	width: 45px; 
+	height: 45px; 
+	border-radius: 50%; 
+	background: #1a1a1a; 
+	border: 1px solid #444; 
+	color: #aaa; 
+	text-decoration: none; 
+	transition: 0.3s; 
+	padding: 0; /* Прибрали відступи, щоб svg стало по центру */
+}
+
+.social-btn svg { 
+	width: 22px; 
+	height: 22px; 
+	display: block; 
+}
+
+.social-btn:hover { 
+	color: #fff; 
+	transform: translateY(-3px); 
+}
+.social-btn.discord:hover { background: #5865F2; border-color: #5865F2; box-shadow: 0 0 15px rgba(88, 101, 242, 0.5); }
+.social-btn.telegram:hover { background: #0088cc; border-color: #0088cc; box-shadow: 0 0 15px rgba(0, 136, 204, 0.5); }
+.social-btn.tiktok:hover { background: #ff0050; border-color: #ff0050; box-shadow: 0 0 15px rgba(255, 0, 80, 0.5); }
+
 
 
 
