@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-	<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -16,6 +16,7 @@
     <title>Про проєкт AfterLight | Наша команда</title>
     <meta name="description" content="Історія створення сервера AfterLight, інформація про команду адміністраторів та наші головні цілі в розвитку ідеального Minecraft проєкту.">
     <link rel="stylesheet" href="style.css">
+    <script src="maintenance.js" defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
 
@@ -128,25 +129,6 @@
             line-height: 1.4;
         }
 
-        .back-btn {
-            position: relative;
-            color: var(--accent-brass) !important;
-            text-decoration: none;
-            font-weight: bold;
-            font-family: 'Russo One', sans-serif;
-            border: 2px solid var(--accent-brass) !important;
-            padding: 10px 25px;
-            border-radius: 4px;
-            transition: all 0.4s ease-in-out;		
-            white-space: nowrap;		
-            display: inline-block;				
-            z-index: 1;				
-            left: -20px;
-
-            background-image: none !important; 
-            background-color: transparent !important;
-        }
-
         .support-footer {
             width: 100%;
             max-width: 700px;
@@ -241,13 +223,15 @@
     </style>
 </head>
 <body>
-<!-- <div class="chain-mechanism">
+
+
+<div class="chain-mechanism">
     <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
     <div class="chain-wrap">
         <div id="chainLinks" class="chain-links"></div>
     </div>
     <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
-</div> -->
+</div>
 
     <nav class="nav-bar">
         <a href="index.html" class="nav-logo-link">
@@ -263,7 +247,7 @@
             <strong>AfterLight</strong> — це унікальний Minecraft сервер на версії 1.20.1, де ванільне виживання зустрічається з безмежними можливостями моду <strong>Create</strong>. 
             Наша мета — створити затишну спільноту, де кожен може стати видатним інженером, політиком або успішним торговцем. 
             Ми цінуємо рольовий аспект (RP) та розвинену економіку, де кожен твій крок впливає на життя всього сервера.
-            <!-- Маєш запитання? Переглянь наш <a href="faq.html" class="faq-link">FAQ</a>, щоб швидше розібратися в механіках нашого світу! -->
+            Маєш запитання? Переглянь наш <a href="faq.html" class="faq-link">FAQ</a>, щоб швидше розібратися в механіках нашого світу!
         </div>
 
         <h2 style="font-family: 'Russo One'; color: var(--accent-copper); margin-bottom: 30px;">АДМІНІСТРАЦІЯ ПРОЕКТУ</h2>
@@ -323,12 +307,13 @@
         <div class="copyright">
             &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
         </div>
-        <!-- <div class="footer-legal">
+        <div class="footer-legal">
             <a href="contact.html">Контакти</a>
             <span class="separator">|</span>
             <a href="privacy-policy.html">Privacy Policy</a>
-        </div> -->
+        </div>
     </footer>
+
 <script>
 window.addEventListener('scroll', function() {
     const gearTop = document.getElementById('gearTop');
@@ -346,6 +331,8 @@ window.addEventListener('scroll', function() {
     // Ми змінюємо позицію фону. Швидкість (0.5) можна підкрутити
     chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
 });
+
 </script>
+
 </body>
 </html>
