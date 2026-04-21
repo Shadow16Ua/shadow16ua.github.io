@@ -284,4 +284,87 @@ html, body {
 
 
 
+/* --- СТИЛЬ ТЕХНІЧНОГО ВІКНА --- */
+.maintenance-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 8, 5, 0.9); /* Темний фон з прозорістю */
+    backdrop-filter: blur(15px); /* Розмиття контенту позаду */
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Поверх усього, навіть навігації */
+}
+
+.maintenance-card {
+    background: rgba(30, 25, 20, 0.95);
+    padding: 50px;
+    border-radius: 15px;
+    border: 2px solid var(--accent-brass, #f0a500); 
+    border-left: 6px solid var(--accent-brass, #f0a500); 
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(240, 165, 0, 0.2); 
+}
+
+.maintenance-gear {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: gear-spin 4s infinite linear;
+    filter: drop-shadow(0 0 10px var(--accent-brass)); 
+}
+
+.maintenance-card h1 {
+    font-family: 'Russo One', sans-serif; 
+    color: var(--accent-brass, #f0a500); 
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.maintenance-card p {
+    color: #ccc; 
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.maintenance-status {
+    font-family: 'Russo One', sans-serif; 
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.status-text {
+    color: #8f2525; /* Червонуватий статус */
+    letter-spacing: 1px;
+}
+
+/* Кнопка повернення */
+.back-home-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: transparent;
+    border: 1px solid var(--accent-brass); 
+    color: var(--accent-brass); 
+    text-decoration: none;
+    font-family: 'Russo One', sans-serif;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.back-home-btn:hover {
+    background: var(--accent-brass);
+    color: #000;
+}
+
+/* Анімація обертання шестерні */
+@keyframes gear-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 

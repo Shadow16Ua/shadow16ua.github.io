@@ -12,21 +12,17 @@
 	</script>
 	
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://shadow16ua.github.io/rp-mechanics.html" />
-
-    <link rel="icon" type="image/webp" href="favicon.webp">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-	
-    <title>RP Механіки | AfterLight S1</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>RP Механіки | Правила та можливості RolePlay на AfterLight S2</title>
+    <meta name="description" content="Детальний посібник з RP (RolePlay) механік першого сезону AfterLight. Дізнайтеся про взаємодію між гравцями, відіграш ролей, професії та створення власної історії.">
 	<link rel="stylesheet" href="style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
         body {
             margin: 0;
             padding: 0;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Parlament.webp');
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Parlament.webp');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -111,171 +107,43 @@
         li { margin-bottom: 8px; }
         b { color: var(--accent-brass); }
 
-        .back-btn {
-            position: relative;
-            color: var(--accent-brass) !important;
-            text-decoration: none;
-            font-weight: bold;
-            font-family: 'Russo One', sans-serif;
-            border: 2px solid var(--accent-brass) !important;
-            padding: 10px 25px;
-            border-radius: 4px;
-            transition: all 0.4s ease-in-out;		
-            white-space: nowrap;		
-            display: inline-block;				
-            z-index: 1;				
-            left: -30px;
-
-            background-image: none !important; 
-            background-color: transparent !important;
-        }
+        .back-btn {left: -23px;}
 
         @media (max-width: 600px) {
             .nav-logo { display: none; }
             h1 { font-size: 2rem; }
             .container { padding: 20px; }
         }
-
-		/* 
-		.side-ad-banner {
-		    position: absolute;
-		    🛠 ТУТ: Задаємо фіксований відступ від верху сайту. 
-		       120px - це щоб він починався трохи нижче шапки (меню). 
-		       Можеш зробити 150px або 200px, якщо треба нижче. 
-		    top: 120px; 
-		    
-		    z-index: 100;
-		    width: 300px;
-		    display: flex;
-		    justify-content: center;
-		    
-		    ❌ ВИДАЛЕНО: top: 50%; та transform: translateY(-50%);
-		}
-		
-		.ad-left { left: 15px; }
-		.ad-right { right: 15px; }
-		
-		@media (max-width: 1400px) {
-		    .side-ad-banner {
-		        display: none !important;
-		    }
-		} */
-
-        .under-nav-ad {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0; /* Відступ 20px зверху і знизу від банера */
-            margin-bottom: 0;
-        }
-
-		/* Темний фон, що перекриває весь сайт */
-    .adblock-overlay {
-        display: none; /* Приховано до перевірки */
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.8); /* Напівпрозоре затемнення */
-        backdrop-filter: blur(8px); /* Розмиття сайту на фоні */
-        z-index: 999999;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.3s ease;
-    }
-
-    /* Сама центральна плашка (на пів екрана) */
-    .adblock-modal {
-        background: rgba(20, 20, 20, 0.95);
-        border: 2px solid var(--accent-brass);
-        border-radius: 12px;
-        padding: 40px;
-        width: 90%;
-        max-width: 650px; /* Максимальна ширина для великих моніторів */
-        text-align: center;
-        color: #fff;
-        box-shadow: 0 0 50px rgba(240, 165, 0, 0.3);
-        position: relative;
-        font-family: 'Roboto', sans-serif;
-        
-        /* Крута анімація появи (вискакує і трохи пружинить) */
-        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    @keyframes popIn {
-        0% { transform: scale(0.7); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    .ab-icon {
-        font-size: 4.5rem;
-        margin-bottom: 20px;
-        filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));
-    }
-
-    .ab-title {
-        font-family: 'Russo One', sans-serif;
-        color: var(--accent-brass);
-        font-size: 2.2rem;
-        margin: 0 0 15px 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .ab-text {
-        font-size: 1.1rem;
-        color: #ccc;
-        line-height: 1.6;
-        margin-bottom: 35px;
-    }
-
-    .ab-text b {
-        color: #fff;
-    }
-
-    /* Кнопка "Я зрозумів" */
-    .ab-btn {
-        background: transparent;
-        border: 2px solid var(--accent-copper);
-        color: var(--accent-copper);
-        padding: 15px 40px;
-        font-family: 'Russo One', sans-serif;
-        font-size: 1.2rem;
-        cursor: pointer;
-        border-radius: 6px;
-        transition: 0.3s;
-        text-transform: uppercase;
-        width: 100%;
-    }
-
-    .ab-btn:hover {
-        background: var(--accent-copper);
-        color: #fff;
-        box-shadow: 0 0 20px rgba(200, 117, 51, 0.6);
-        transform: translateY(-3px);
-    }
     </style>
 </head>
 <body>
 
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
+        </div>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
+</div>
+
+<div class="chain-mechanism">
+    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+    <div class="chain-wrap">
+        <div id="chainLinks" class="chain-links"></div>
+    </div>
+    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
+</div>
+
     <nav class="nav-bar">
-        <a href="index.html"><img src="logo.webp" class="nav-logo" alt="AfterLight Logo" width="150" height="40"></a>
+        <a href="index.html" class="nav-logo-link">
+            <img src="logo.webp" class="nav-logo" alt="AfterLight Logo">
+        </a>
         <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
     </nav>
-	
-    
-<div class="under-nav-ad">
-	<script>
-	atOptions = {
-		'key' : '84098daf7de2c5bed744f8fab6ee74ff',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-	</script>
-	<script src="https://upcomingperusehike.com/84098daf7de2c5bed744f8fab6ee74ff/invoke.js"></script>
-</div>
 
     <div class="container">
     <h1>Механіки ROLEPLAY</h1>
@@ -341,63 +209,10 @@
             <li>Повторне оголошення війни можливе не раніше ніж через <b>7 днів</b>.</li>
             <li>Усі спірні ситуації вирішує адміністрація або РП-суд.</li>
         </ul>
+        
         <span class="punishment">Покарання за недотримання правил: бан на 3 дні (з кожним баном покарання буде збільшуватись).</span>
     </div>
 </div>
-
-<div id="adblock-fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2147483647; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
-    
-    <div style="background: #141414; border: 2px solid #f0a500; border-radius: 12px; padding: 40px; width: 100%; max-width: 600px; text-align: center; box-shadow: 0 0 50px rgba(240,165,0,0.4); position: relative; font-family: 'Roboto', sans-serif;">
-        
-        <!-- <button onclick="document.getElementById('adblock-fullscreen-popup').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: #888; font-size: 1.8rem; cursor: pointer;">✖</button> -->
-        
-        <div style="font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));">🛑</div>
-        
-        <h2 style="font-family: 'Russo One', sans-serif; color: #f0a500; font-size: 2.2rem; margin-top: 0; margin-bottom: 15px; text-transform: uppercase;">Вимкніть AdBlock</h2>
-        
-        <p style="font-size: 1.1rem; color: #ccc; line-height: 1.6; margin-bottom: 35px; margin-top: 0;">
-            Ми помітили, що ви використовуєте блокувальник реклами.<br><br>
-            Сервер <b style="color: #fff;">AfterLight</b> має платний хост. Будь ласка, додайте нас у винятки, щоб підтримувати проект.
-        </p>
-        <button onclick="location.reload()" style="background: transparent; border: 2px solid #c87533; color: #c87533; padding: 15px 30px; font-family: 'Russo One', sans-serif; font-size: 1.2rem; cursor: pointer; border-radius: 6px; 
-			text-transform: uppercase; width: 100%; transition: 0.3s;" onmouseover="this.style.background='#c87533'; this.style.color='#fff'; this.style.boxShadow='0 0 20px rgba(200, 117, 51, 0.6)';" 
-			onmouseout="this.style.background='transparent'; this.style.color='#c87533'; this.style.boxShadow='none';">🔄 Я ВИМКНУВ (ОНОВИТИ)</button>
-    </div>
-</div>
-
-<script>
-(function() {
-    async function checkRealAdBlock() {
-        const popup = document.getElementById('adblock-fullscreen-popup');
-        let adBlockEnabled = false;
-
-        // Метод 1: Швидка перевірка через завантаження "ворожого" для адблоків файлу
-        try {
-            // Використовуємо fetch з cache: 'no-store', щоб не було помилкових спрацювань з кешу
-            await fetch(new Request('https://www.google-analytics.com/analytics.js'), { 
-                mode: 'no-cors', 
-                cache: 'no-store' 
-            });
-        } catch (e) {
-            adBlockEnabled = true;
-        }
-
-        if (adBlockEnabled) {
-            // Показуємо вікно моментально
-            popup.style.display = 'flex';
-            // Блокуємо прокрутку сайту, щоб користувач не міг "втекти" від вікна
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    // Запуск без затримок (моментально при готовності DOM)
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        checkRealAdBlock();
-    } else {
-        document.addEventListener('DOMContentLoaded', checkRealAdBlock);
-    }
-})();
-</script>
 
 <footer class="site-footer">
     <div class="social-links">
@@ -416,11 +231,68 @@
     <div class="copyright">
         &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
     </div>
+    <div class="footer-legal">
+        <a href="contact.html">Контакти</a>
+        <span class="separator">|</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
 </footer>
+
+
+<script>
+window.addEventListener('scroll', function() {
+        const gearTop = document.getElementById('gearTop');
+        const gearBottom = document.getElementById('gearBottom');
+        const chain = document.getElementById('chainLinks');
+        
+        let scrollPos = window.pageYOffset;
+
+        // 1. Обертаємо шестерні
+        const rotation = scrollPos / 2;
+        gearTop.style.transform = `rotate(${rotation}deg)`;
+        gearBottom.style.transform = `rotate(${rotation}deg)`;
+
+        // 2. Рухаємо фон ланцюга (імітація їзди)
+        // Ми змінюємо позицію фону. Швидкість (0.5) можна підкрутити
+        chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
+    });
+
+
+// 1. Блокуємо праву кнопку миші (Контекстне меню)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// 2. Блокуємо гарячі клавіші розробника
+document.onkeydown = function(e) {
+    // Блокуємо F12
+    if(e.keyCode == 123) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+I (Інспектор)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+C (Вибір елемента)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+J (Консоль)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+S (Збереження сторінки)
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        return false;
+    }
+};
+</script>
 </body>
 </html>
-
-
 
 
 

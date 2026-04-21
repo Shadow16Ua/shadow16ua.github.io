@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-	<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -10,16 +10,11 @@
 	
 	  gtag('config', 'G-M7D417QV57');
 	</script>
-   
+
     <meta charset="UTF-8">
-	<link rel="canonical" href="https://shadow16ua.github.io/leaderboard.html" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	
-	<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-	
-    <title>Дошка пошани | AfterLight</title>
-	<link rel="icon" type="image/webp" href="favicon.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лідерборд | Рейтинг та Топ гравців сервера AfterLight</title>
+    <meta name="description" content="Рейтинг найкращих гравців AfterLight. Дізнайся, хто лідирує в топі вбивств (PvP), має найбільше награного часу та дослідив найбільше територій.">
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
@@ -30,22 +25,27 @@
         }
 
         body {
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Parlament.webp');
-            background-attachment: fixed;
+            margin: 0; 
+            padding: 0;
+            /* Зроблено фон світлішим (0.65 замість 0.8) */
+            background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('Parlament.webp');
+            background-attachment: fixed; 
+            background-position: center; 
+            background-repeat: no-repeat; 
             background-size: cover;
-            color: #fff;
+            color: var(--text-color); 
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             width: 95%;
-            margin: 40px auto;
+            margin: 10px auto;
             text-align: center;
         }
 
@@ -105,12 +105,7 @@
         .rank-2 { border-left-color: #c0c0c0; background: rgba(192, 192, 192, 0.05); }
         .rank-3 { border-left-color: #cd7f32; background: rgba(205, 127, 50, 0.05); }
 
-        .player-info, .stats-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .player-info, .stats-info {display: flex;align-items: center;gap: 10px;}
         .nick { font-weight: bold; font-size: 1rem; }
         .value { font-family: 'Russo One', sans-serif; color: var(--accent-brass); min-width: 70px; text-align: right; }
 
@@ -140,18 +135,105 @@
                 filter: brightness(1); 
             }
         }
-
         /* ДИНАМІКА (ТРЕНД) */
         .trend { font-size: 0.8rem; font-weight: bold; }
         .trend.up { color: #44ff44; }
         .trend.down { color: #ff4444; }
         .trend.steady { color: #666; }
+
+        /* =========================================
+   ЛЕГЕНДА ЛІДЕРБОРДУ (ПОЯСНЕННЯ)
+   ========================================= */
+    .leaderboard-legend {
+        max-width: 1000px;
+        margin: 30px auto 40px auto;
+        padding: 0 20px;
+    }
+
+    .legend-title {
+        font-family: 'Russo One', sans-serif;
+        color: var(--accent-brass, #f0a500);
+        font-size: 1.8rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        text-shadow: 0 0 15px rgba(240, 165, 0, 0.4);
+    }
+
+    .legend-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на ПК */
+        gap: 20px;
+    }
+
+    .legend-card {
+        background: rgba(15, 15, 15, 0.6); /* Темне напівпрозоре тло */
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(200, 117, 51, 0.2); /* Мідна рамка */
+        border-radius: 12px;
+        padding: 25px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .legend-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(200, 117, 51, 0.6);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(200, 117, 51, 0.05);
+    }
+
+    .legend-card h4 {
+        font-family: 'Russo One', sans-serif;
+        color: #e6a039;
+        font-size: 1.3rem;
+        margin-top: 0;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .legend-card p {
+        font-family: 'Roboto', sans-serif;
+        color: #aaa; /* Світло-сірий текст для легкого читання */
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Адаптивність: 1 колонка на телефонах та невеликих планшетах */
+    @media (max-width: 768px) {
+        .legend-grid {
+            grid-template-columns: 1fr;
+        }
+    }
     </style>
 </head>
 <body>
+
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
+        </div>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
+</div>
+
+<div class="chain-mechanism">
+    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+    <div class="chain-wrap">
+        <div id="chainLinks" class="chain-links"></div>
+    </div>
+    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
+</div>
+
     <nav class="nav-bar">
         <div class="nav-side">
-            <a href="index.html"><img src="logo.png" alt="Logo" class="nav-logo"></a>
+            <a href="index.html"><img src="logo.webp" alt="Logo" class="nav-logo"></a>
         </div>
         <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
         <div class="nav-side"></div>
@@ -164,75 +246,116 @@
         <div id="main-grid" class="leaderboard-grid">
             </div>
     </div>
+    <div class="leaderboard-legend">
+        <h3 class="legend-title">Що означають ці рейтинги?</h3>
+        <div class="legend-grid">
+            
+            <div class="legend-card">
+                <h4>⚔️ Топ вбивств (PvP)</h4>
+                <p>Рейтинг найнебезпечніших гравців сервера за кількістю перемог у боях проти інших. Чим більше крові на твоїх руках — тим вище ти у цій таблиці. Цей топ показує справжніх майстрів зброї, безжальних найманців та ветеранів політичних війн, з якими краще не зустрічатися сам на сам.</p>
+            </div>
 
+            <div class="legend-card">
+                <h4>💀 Топ смертей</h4>
+                <p>Абсолютний рейтинг страждань. Відображає, як часто гравець вирушав на точку відродження. Причини можуть бути різними: жорстокі битви за територію, підступні пастки, невдалі експерименти з механізмами Create або просто випадкове падіння в лаву. Сумнівне досягнення, але свідчить про насичене життя!</p>
+            </div>
 
-<footer class="site-footer">
-	<div class="social-links">
-		<a href="https://discord.gg/zhKqAJyVpH" class="social-btn discord" target="_blank" title="Discord">
-			<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-		</a>
-		<a href="https://t.me/AfterLightAdministration" class="social-btn telegram" target="_blank" title="Telegram">
-			<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-		</a>
-		<a href="https://www.tiktok.com/@segfaulted_g.o.u" class="social-btn tiktok" target="_blank" title="TikTok">
-			<svg width="18" height="18" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-				<path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-			</svg>
-		</a>
-	</div>
-	<div class="copyright">
-		&copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
-	</div>
-</footer>
+            <div class="legend-card">
+                <h4>⏳ Награний час</h4>
+                <p>Загальний час, проведений на сервері. Це головний показник відданості проєкту. Гравці з вершини цього списку — це старожили, які розбудували найбільші міста, налаштували найскладніші заводи та знають кожен куточок цього світу. Їхній досвід та вплив викликають повагу.</p>
+            </div>
+
+            <div class="legend-card">
+                <h4>🗺️ Топ мандрівників</h4>
+                <p>Рейтинг за кількістю пройдених блоків. Показує справжніх першовідкривачів, які не сидять на базі, а постійно досліджують незвідані землі. Вони шукають нові біоми, ідеальні місця для заснування міст або заховані ресурси. Справжні володарі бездоріжжя.</p>
+            </div>
+
+            <div class="legend-card">
+                <h4>🧟 Вбито мобів</h4>
+                <p>Кількість ворожих істот, яких знищив гравець. Цей топ відображає твою активність у PvE, фармі ресурсів та зачистці данжів. Ті, хто очолює цей список, забезпечують економіку сервера цінним лутом з мобів і роблять нічні землі безпечнішими для новачків.</p>
+            </div>
+
+            <div class="legend-card">
+                <h4>🛡️ Використано тотемів</h4>
+                <p>Кількість разів, коли магія тотема безсмертя рятувала гравця від вірної загибелі. Цей показник розкриває дві речі: гравець постійно ризикує, лізучи в самісіньке пекло (масштабні рейди чи PvP), і він достатньо багатий, щоб дозволити собі такий дорогий спосіб виживання.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="social-links">
+            <a href="https://discord.gg/zhKqAJyVpH" class="social-btn discord" target="_blank" title="Discord">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            </a>
+            <a href="https://t.me/AfterLightAdministration" class="social-btn telegram" target="_blank" title="Telegram">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@segfaulted_g.o.u" class="social-btn tiktok" target="_blank" title="TikTok">
+                <svg width="18" height="18" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
+        </div>
+        <div class="footer-legal">
+            <a href="contact.html">Контакти</a>
+            <span class="separator">|</span>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
+
     <script>
         // ДАНІ (Обов'язково з streak та trend!)
         const leaderboardData = [
             {
                 title: "⚔️ ТОП ВБИВСТВ",
                 players: [
-                    { name: "SegFaulted19", value: "606", streak: 3, trend: ""},
-                    { name: "Blendy", value: "553", streak: 3, trend: "" },
-                    { name: "Mourang", value: "343", trend: "up" }
+                    { name: "?????", value: "??", trend: ""},
+                    { name: "?????", value: "??", trend: "" },
+                    { name: "?????", value: "??", trend: "" }
                 ]
             },
             {
                 title: "💀 Топ Смертей",
                 players: [
-                    { name: "Blendy", value: "430", streak: 3, trend: ""},
-                    { name: "Alextimcuk20", value: "391", streak: 1, trend: ""},
-					{ name: "kiriewka", value: "344", streak: 2, trend: ""},
+                    { name: "?????", value: "??", trend: ""},
+                    { name: "?????", value: "??", trend: ""},
+					{ name: "?????", value: "??", trend: ""},
                 ]
             },
             {
                 title: "⏳ Награний час",
                 players: [
-                    { name: "Blendy", value: "12днів 9г", streak: 3, trend: "" },
-					{ name: "Alextimcuk20", value: "10днів 10г",  streak: 1, trend: ""},
-                    { name: "ronin_Boronin1", value: "10днів 3г", streak: 1, trend: ""},
+                    { name: "?????", value: "??днів ?г", trend: "" },
+					{ name: "?????", value: "??днів ?г", trend: ""},
+                    { name: "?????", value: "??днів ?г", trend: ""},
                 ]
             },
             {
                 title: "🗺️ Топ Мандрівників",
                 players: [
-                    { name: "Blendy", value: "503к блоків", streak: 4, trend: ""},
-                    { name: "brunoLOVE2727", value: "303к блоків", streak: 3, trend: ""},
-                    { name: "Alextimcuk20", value: "271к блоків", streak: 1, trend: ""},
+                    { name: "?????", value: "??к блоків", trend: ""},
+                    { name: "?????", value: "??к блоків", trend: ""},
+                    { name: "?????", value: "??к блоків", trend: ""},
                 ]
             },
             {
                 title: "🏗️ Вбито мобів",
                 players: [
-                    { name: "BrockKE", value: "157к мобів", streak: 3, trend: ""},
-                    { name: "salik", value: "40к мобів", streak: 3, trend: ""},
-                    { name: "kiritotop3", value: "34к мобів", streak: 3, trend: ""}
+                    { name: "?????", value: "?? мобів", trend: ""},
+                    { name: "?????", value: "?? мобів", trend: ""},
+                    { name: "?????", value: "?? мобів", trend: ""}
                 ]
             },
             {
                 title: "Використано тотемів",
                 players: [
-					{ name: "Alextimcuk20", value: "407", streak: 1, trend: "" },
-                    { name: "SegFaulted19", value: "303", streak: 1, trend: ""},
-                    { name: "egyss", value: "177", streak: 3, trend: "" }, 
+					{ name: "?????", value: "??", trend: "" },
+                    { name: "?????", value: "??", trend: ""},
+                    { name: "?????", value: "??", trend: "" }, 
                 ]
             }
         ];
@@ -280,11 +403,59 @@
                 grid.appendChild(card);
             });
         }
-
         // Виклик функції після повного завантаження сторінки
         document.addEventListener('DOMContentLoaded', renderLeaderboards);
+
+        window.addEventListener('scroll', function() {
+            const gearTop = document.getElementById('gearTop');
+            const gearBottom = document.getElementById('gearBottom');
+            const chain = document.getElementById('chainLinks');
+            
+            let scrollPos = window.pageYOffset;
+
+            // 1. Обертаємо шестерні
+            const rotation = scrollPos / 2;
+            gearTop.style.transform = `rotate(${rotation}deg)`;
+            gearBottom.style.transform = `rotate(${rotation}deg)`;
+
+            // 2. Рухаємо фон ланцюга (імітація їзди)
+            // Ми змінюємо позицію фону. Швидкість (0.5) можна підкрутити
+            chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
+        });
+
+
+        // 1. Блокуємо праву кнопку миші (Контекстне меню)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. Блокуємо гарячі клавіші розробника
+        document.onkeydown = function(e) {
+            // Блокуємо F12
+            if(e.keyCode == 123) {
+                return false;
+            }
+            // Блокуємо Ctrl+Shift+I (Інспектор)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            // Блокуємо Ctrl+Shift+C (Вибір елемента)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            // Блокуємо Ctrl+Shift+J (Консоль)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+            // Блокуємо Ctrl+S (Збереження сторінки)
+            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+                return false;
+            }
+        };
     </script>
-
-
 </body>
 </html>

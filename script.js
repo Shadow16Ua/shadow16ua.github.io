@@ -31,6 +31,8 @@ function prevSlide(sliderId) {
     showSlide(sliderId, current - 1);
 }
 
+
+
 /* --- АВТОМАТИЗАЦІЯ ПРИ ЗАВАНТАЖЕННІ --- */
 document.addEventListener('DOMContentLoaded', () => {
     // Запускаємо авто-прокрутку для лівого та правого слайдерів

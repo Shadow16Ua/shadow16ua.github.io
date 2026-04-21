@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-M7D417QV57');
+	</script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/webp" href="favicon.webp">
+    <title>Dev-Блог | Оновлення та новини сервера AfterLight</title>
+    <meta name="description" content="Читайте останні новини, патчноути та дізнавайтесь про технічні роботи на сервері AfterLight. Усі зміни, події та оновлення ядра в нашому Dev-блозі.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent-brass: #f0a500;   /* Латунь (Жовто-гарячий) */
+            --accent-copper: #c87533;  /* Мідь (Темно-оранжевий) */
+            --panel-bg: rgba(15, 15, 15, 0.85); /* Скляний темний фон */
+            --text-color: #e0e0e0;
+            --bg-dark: #0a0a0a;
+            
+            /* Кольори для платформ */
+            --color-mc: #2ecc71;   
+            --color-ds: #5865F2;   
+            --color-web: var(--accent-brass); /* Сайт буде золотим */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Parlament.webp');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 95%;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* ШАПКА СТОРІНКИ */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--accent-brass);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 25px rgba(240, 165, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.9);
+        }
+
+        .page-header p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Розділювач (лінія як на сайті) */
+        .divider {
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(200, 117, 51, 0.5), transparent);
+            margin: 40px auto;
+        }
+
+        /* КАРТКА ПОСТА (Скляна панель) */
+        .post-card {
+            background: var(--panel-bg); 
+            border: 1px solid rgba(200, 117, 51, 0.3); 
+            border-radius: 16px; 
+            padding: 40px; 
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(240, 165, 0, 0.05); 
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .post-card:hover {
+            border-color: rgba(240, 165, 0, 0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7), inset 0 0 30px rgba(240, 165, 0, 0.1); 
+            transform: translateY(-3px);
+        }
+
+        /* 🛠 1. ШАПКА ПОСТА */
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Жорстко притискаємо все до верху */
+            flex-wrap: nowrap; /* ЗАБОРОНЯЄМО даті падати на новий рядок */
+            margin-bottom: 15px;
+            gap: 20px; /* Відстань між текстом і датою */
+        }
+
+        /* 🛠 2. ЗАГОЛОВОК ПОСТА */
+        .post-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.6rem;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            flex: 1; /* Заголовок займає весь вільний простір зліва... */
+        }
+
+        /* 🛠 3. ДАТА ПОСТА */
+        .post-date {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-copper);
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(200, 117, 51, 0.2);
+            text-shadow: 0 0 10px rgba(200, 117, 51, 0.5);
+            
+            /* МАГІЯ ФІКСАЦІЇ: */
+            flex-shrink: 0; /* Забороняємо даті стискатися */
+            white-space: nowrap; /* Забороняємо тексту дати переноситися на 2 рядки */
+            margin-top: -2px; /* візуально вирівняти з першим рядком заголовка */
+        }
+
+        /* ТЕГИ ПЛАТФОРМ */
+        .post-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .tag.mc { background: rgba(46, 204, 113, 0.1); color: var(--color-mc); border: 1px solid rgba(46, 204, 113, 0.3); }
+        .tag.ds { background: rgba(88, 101, 242, 0.1); color: var(--color-ds); border: 1px solid rgba(88, 101, 242, 0.3); }
+        .tag.web { background: rgba(240, 165, 0, 0.1); color: var(--color-web); border: 1px solid rgba(240, 165, 0, 0.3); }
+
+        /* Опис поста */
+        .post-desc {
+            margin-bottom: 25px;
+            color: #bbb;
+            font-size: 1.05rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            padding-bottom: 20px;
+        }
+
+        /* СПИСОК ЗМІН */
+        .changelog {
+            list-style: none;
+        }
+
+        .changelog li {
+            position: relative;
+            padding-left: 0;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        .prefix {
+            font-family: 'Russo One', sans-serif;
+            margin-right: 12px;
+            font-size: 0.85rem;
+            min-width: 50px; 
+            display: inline-block;
+            text-shadow: 0 0 8px currentColor; /* Світіння під колір тексту */
+        }
+
+        .prefix.mc { color: var(--color-mc); }
+        .prefix.ds { color: var(--color-ds); }
+        .prefix.web { color: var(--color-web); }
+
+        
+        /* =========================================
+           ЧАС ТЕХНІЧНИХ РОБІТ (Downtime)
+           ========================================= */
+        .maintenance-time {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            background: rgba(0, 0, 0, 0.4); /* Темніший фон для контрасту */
+            border-left: 3px solid var(--accent-copper); /* Мідна лінія зліва */
+            padding: 12px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 25px;
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.85rem;
+            color: #ddd;
+            letter-spacing: 0.5px;
+        }
+
+        .time-block {
+            display: flex;
+            align-items: center;
+        }
+
+        .time-label {
+            color: #888; /* Сірий колір для підписів */
+            margin-right: 8px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .time-value {
+            color: #fff;
+        }
+
+        .time-duration .time-value {
+            color: var(--accent-brass); /* Тривалість виділяємо золотим/латунним */
+            text-shadow: 0 0 8px rgba(240, 165, 0, 0.4);
+        }
+
+        .back-btn {left: -3px;} 
+
+        /* Адаптивність для телефонів: щоб час ставав у стовпчик, якщо екран малий */
+        @media (max-width: 600px) {
+            .maintenance-time {
+                flex-direction: column;
+                gap: 10px;}
+            .post-card { padding: 25px; }
+            .post-header { flex-direction: column; align-items: flex-start; }
+            .post-date { order: -1; margin-bottom: 5px; }
+        }
+
+        .container li a {
+            color: var(--accent-copper);
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .container li a:hover {
+            color: var(--accent-brass);
+            text-shadow: 0 0 15px var(--accent-brass);
+            letter-spacing: 0.5px; /* Легке розширення при наведенні */
+        }
+    </style>
+</head>
+<body>
+
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
+        </div>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
+</div>
+
+<div class="chain-mechanism">
+    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+    <div class="chain-wrap">
+        <div id="chainLinks" class="chain-links"></div>
+    </div>
+    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
+</div>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo-link">
+            <img src="logo.webp" class="nav-logo" alt="AfterLight Logo">
+        </a>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+    </nav>
+
+    
+    <div class="container">
+        <header class="page-header">
+            <h1>Dev-Блог</h1>
+            <p>Технічні оновлення, зміни в балансі та новини розробки. Слідкуй за тим, як розвивається наш сервер.</p>
+        </header>
+
+        <div class="divider"></div>
+
+        <main>
+        <!-- <li><span class="prefix web">[WEB][MC][DS]</span> -->
+
+            <article class="post-card">
+                <div class="post-header">
+                    <h2 class="post-title">Зміни на сайті та в збірці</h2>
+                    <span class="post-date">19 Квітня, 2026</span>
+                </div>
+
+                <div class="post-tags">
+                    <span class="tag mc">Minecraft</span>
+                    <span class="tag web">Website</span>
+                </div>
+
+                <div class="maintenance-time">
+                    <div class="time-block">
+                        <span class="time-label">Початок:</span>
+                        <span class="time-value">12:00 28.03.2026</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-label">Кінець:</span>
+                        <span class="time-value">18:00 20.04.2026</span>
+                    </div>
+                    <div class="time-block time-duration">
+                        <span class="time-label">Тривалість:</span>
+                        <span class="time-value">~23 дні</span>
+                    </div>
+                </div>
+
+                <p class="post-desc">
+                    Додано нові моди до збірки та оновлено дизайн сайту для покращення користувацького досвіду. Тепер ви можете легко відстежувати всі оновлення в одному місці!
+                </p>
+                <ul class="changelog">
+                    <li><span class="prefix mc">[MC]</span>ВАЙП</li>
+                    <li><span class="prefix mc">[MC]</span>Змінено збірку</li>
+                    <li><span class="prefix mc">[MC]</span>Створено моди та плагіни</li>
+                    <li><span class="prefix web">[WEB]</span> Додано сторінку Dev-блог для відстеження оновлень.</li>
+                    <li><span class="prefix web">[WEB]</span> Змінено дизайн головної сторінки та незначні оновлення інших сторінок</li>
+                    <li><span class="prefix web">[WEB]</span> Додано візуальні анімації, ефекти та нові стилі</li>
+                    <li><span class="prefix web">[WEB]</span> Додано пошук та можливість згортання секцій на сторінці <a href="rules.html">&nbsp;Правил</a></li>
+                    <li><span class="prefix web">[WEB]</span> Додано теги на сторінці <a href="news.html">&nbsp;Новини</a></li>
+                    <!-- <li><span class="prefix web">[WEB]</span> Оновлено сторінку економіки <a href="economy.html">&nbsp;Економіка</a></li> -->
+                    <li><span class="prefix web">[WEB]</span> Додано сторінку <a href="donate.html">&nbsp;Донат</a></li>
+                    <li><span class="prefix web">[WEB]</span> Додано сторінку<a href="faq.html">&nbsp;Часті питання</a></li>
+                    <li><span class="prefix web">[WEB]</span> Додано випливаюче вікно при наведенні <a href="index.html">&nbsp;на показчик онлайну&nbsp;</a> для показу детальнішої інформації</li>
+                    <li><span class="prefix web">[WEB]</span> Додано сторінки <a href="contact.html">&nbsp;контакти&nbsp;</a> і <a href="privacy-policy.html">&nbsp;конфіденційність</a></li>
+                
+                </ul>
+            </article>
+        </main>
+    </div>
+<footer class="site-footer">
+    <div class="social-links">
+        <a href="https://discord.gg/zhKqAJyVpH" class="social-btn discord" target="_blank" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+        <a href="https://t.me/AfterLightAdministration" class="social-btn telegram" target="_blank" title="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@segfaulted_g.o.u" class="social-btn tiktok" target="_blank" title="TikTok">
+            <svg width="18" height="18" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+            </svg>
+        </a>
+    </div>
+    <div class="copyright">
+        &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
+    </div>
+    <div class="footer-legal">
+        <a href="contact.html">Контакти</a>
+        <span class="separator">|</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+    const gearTop = document.getElementById('gearTop');
+    const gearBottom = document.getElementById('gearBottom');
+    const chain = document.getElementById('chainLinks');
+    
+    let scrollPos = window.pageYOffset;
+
+    // 1. Обертаємо шестерні
+    const rotation = scrollPos / 2;
+    gearTop.style.transform = `rotate(${rotation}deg)`;
+    gearBottom.style.transform = `rotate(${rotation}deg)`;
+
+    // 2. Рухаємо фон ланцюга (імітація їзди)
+    // Ми змінюємо позицію фону. Швидкість (0.5) можна підкрутити
+    chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
+});
+
+// 1. Блокуємо праву кнопку миші (Контекстне меню)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// 2. Блокуємо гарячі клавіші розробника
+document.onkeydown = function(e) {
+    // Блокуємо F12
+    if(e.keyCode == 123) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+I (Інспектор)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+C (Вибір елемента)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+J (Консоль)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+S (Збереження сторінки)
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        return false;
+    }
+};
+</script>
+</body>
+</html>

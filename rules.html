@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
 	<script>
@@ -13,16 +12,14 @@
 	</script>
 	
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://shadow16ua.github.io/rules.html" />
-    <link rel="icon" type="image/webp" href="favicon.webp">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-	
-    <title>Правила | AfterLight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Правила сервера | AfterLight Minecraft</title>
+    <meta name="description" content="Офіційні правила гри на сервері AfterLight. Ознайомтеся з нормами поведінки, списком дозволених модів та правилами торгівлі, щоб уникнути бану.">
 	<link rel="stylesheet" href="style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
         * { box-sizing: border-box; }
 
         html, body {
@@ -30,7 +27,7 @@
             overflow-x: hidden;
             margin: 0;
             padding: 0;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Parlament.webp');
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Parlament.webp');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -39,6 +36,17 @@
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
         }  
+
+        html {
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;     
+            flex-direction: column;
+        }
 
         /* КОНТЕНТ */
         .container {
@@ -57,6 +65,7 @@
 			/* Латунна рамка зі світінням */
 			border: 1px solid rgba(240, 165, 0, 0.3);
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+           
         }
 
         h1 {
@@ -114,6 +123,8 @@
         ul { padding-left: 20px; margin: 10px 0; }
         li { margin-bottom: 5px; color: #ccc; }
 
+        .back-btn {left: -3px;} 
+        
         code {
             background: #111;
             padding: 2px 6px;
@@ -121,427 +132,463 @@
             color: var(--accent-brass);
         }
 
-        @media (max-width: 600px) {
-            .nav-bar { padding: 10px 20px; flex-direction: column; gap: 15px; }
-            .container { padding: 20px; }
-            h1 { font-size: 1.8rem; }
+        .search-wrapper {
+            /* margin-bottom: 10px; */
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-	/* Темний фон, що перекриває весь сайт */
-    .adblock-overlay {
-        display: none; /* Приховано до перевірки */
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.8); /* Напівпрозоре затемнення */
-        backdrop-filter: blur(8px); /* Розмиття сайту на фоні */
-        z-index: 999999;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.3s ease;
-    }
+        #rulesSearch {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid var(--accent-copper);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: 0.3s;
+        }
 
-    /* Сама центральна плашка (на пів екрана) */
-    .adblock-modal {
-        background: rgba(20, 20, 20, 0.95);
-        border: 2px solid var(--accent-brass);
-        border-radius: 12px;
-        padding: 40px;
-        width: 90%;
-        max-width: 650px; /* Максимальна ширина для великих моніторів */
-        text-align: center;
-        color: #fff;
-        box-shadow: 0 0 50px rgba(240, 165, 0, 0.3);
-        position: relative;
-        font-family: 'Roboto', sans-serif;
-        
-        /* Крута анімація появи (вискакує і трохи пружинить) */
-        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
+        #rulesSearch:focus {
+            border-color: var(--accent-brass);
+            box-shadow: 0 0 15px rgba(240, 165, 0, 0.3);
+        }
 
-    @keyframes popIn {
-        0% { transform: scale(0.7); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
-    }
+        /* .main-wrapper {
+            flex: 1 0 auto; 
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        } */
 
-    .ab-icon {
-        font-size: 4.5rem;
-        margin-bottom: 20px;
-        filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));
-    }
+        /* .site-footer {
+            flex-shrink: 0; 
+            background: rgba(0, 0, 0, 0.8); 
+            padding: 20px 0;
+            width: 100%;
+        } */
 
-    .ab-title {
-        font-family: 'Russo One', sans-serif;
-        color: var(--accent-brass);
-        font-size: 2.2rem;
-        margin: 0 0 15px 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+/* Основний контейнер розділу (твоя картка) */
+.rule-section {
+    background: var(--card-dark);
+    padding: 0 !important; /* Прибираємо паддінг тут, щоб він не заважав анімації */
+    margin-bottom: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 4px solid var(--accent-brass);
+    text-align: left;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
 
-    .ab-text {
-        font-size: 1.1rem;
-        color: #ccc;
-        line-height: 1.6;
-        margin-bottom: 35px;
-    }
+/* Шапка картки (Заголовок) */
+.rule-header {
+    padding: 30px; /* Повертаємо паддінг сюди */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
 
-    .ab-text b {
-        color: #fff;
-    }
+.rule-header h2 {
+    font-family: 'Russo One', sans-serif;
+    color: var(--accent-brass);
+    margin: 0;
+    padding-bottom: 10px;
+    /* Твоя лінія під заголовком */
+    border-bottom: 1px solid rgba(200, 117, 51, 0.3);
+    flex-grow: 1;
+}
 
-    /* Кнопка "Я зрозумів" */
-    .ab-btn {
-        background: transparent;
-        border: 2px solid var(--accent-copper);
-        color: var(--accent-copper);
-        padding: 15px 40px;
-        font-family: 'Russo One', sans-serif;
-        font-size: 1.2rem;
-        cursor: pointer;
-        border-radius: 6px;
-        transition: 0.3s;
-        text-transform: uppercase;
-        width: 100%;
-    }
+/* Шестерня перемикач */
+.toggle-gear {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    color: var(--accent-brass);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    .ab-btn:hover {
-        background: var(--accent-copper);
-        color: #fff;
-        box-shadow: 0 0 20px rgba(200, 117, 51, 0.6);
-        transform: translateY(-3px);
-    }
+/* Контент, який ховаємо */
+.rule-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 30px; /* Бокові відступи */
+    transition: all 0.5s ease;
+}
 
-    .under-nav-ad {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 10px 0; /* Відступ 20px зверху і знизу від банера */
-		margin-bottom: 0;
-	}
+/* Стан коли розгорнуто */
+.rule-section.active .rule-content {
+    max-height: 5000px; /* Велика висота для тексту */
+    opacity: 1;
+    padding-bottom: 30px; /* Нижній відступ з'являється при відкритті */
+}
+
+.rule-section.active .toggle-gear {
+    transform: rotate(180deg);
+}
+
+/* Твої внутрішні блоки правил */
+.rule-block { 
+    background: rgba(240, 165, 0, 0.05); 
+    padding: 15px; 
+    border-radius: 5px; 
+    margin: 15px 0; 
+    border: 1px dashed rgba(240, 165, 0, 0.3);
+    color: #e0e0e0;
+}
+
+/* Твоє оформлення покарання */
+.punishment {
+    color: #ff9e9e;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.rule-id {
+    color: var(--accent-brass);
+    font-weight: bold;
+    margin-right: 5px;
+}
     </style>
 </head>
 <body>
 
-    <nav class="nav-bar">
-        <div class="nav-side">
-            <a href="index.html"><img src="logo.webp" class="nav-logo" alt="AfterLight Logo" width="150" height="40"></a>
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
         </div>
-        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
-        <div class="nav-side"></div>
-    </nav>
-
-<div class="under-nav-ad">
-	<script>
-	  atOptions = {
-	    'key' : '84098daf7de2c5bed744f8fab6ee74ff',
-	    'format' : 'iframe',
-	    'height' : 50,
-	    'width' : 320,
-	    'params' : {}
-	  };
-	</script>
-	<script src="https://upcomingperusehike.com/84098daf7de2c5bed744f8fab6ee74ff/invoke.js"></script>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
 </div>
 
+<div class="chain-mechanism">
+    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+    <div class="chain-wrap">
+        <div id="chainLinks" class="chain-links"></div>
+    </div>
+    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
+</div>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo-link">
+            <img src="logo.webp" class="nav-logo" alt="AfterLight Logo">
+        </a>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+    </nav>
+
+    <div class="search-wrapper">
+        <input type="text" id="rulesSearch" placeholder="Пошук за ключовим словом (напр. 'гриферство')..." onkeyup="searchRules()">
+    </div>
+    <div id="no-results" style="display: none; text-align: center; margin-top: 50px; color: #888;">
+        🔍 Нічого не знайдено за цим запитом...
+    </div>
+
+    
     <div class="container">
         <h1>Правила Сервера</h1>
 
         <div class="rule-section">
-            <h2>1. Основні правила гри</h2>
+            <div class="rule-header">
+                <h2>1. Основні правила гри</h2>
+                <span class="toggle-gear">⚙️</span>
+            </div>
+            <div class="rule-content">
+                <div class="rule-item">
+                    <span class="rule-id">1.1.</span> Власник акаунта несе повну відповідальність за всі дії, що були виконані з його профілю.
+                </div>
+                
+                <div class="rule-item">
+                    <span class="rule-id">1.2.</span> Заборонено використовувати:
+                    <ul>
+                        <li>Нікнейми з нецензурною лексикою або образами.</li>
+                        <li>Скіни образливого, еротичного чи непристойного змісту.</li>
+                        <li>Нікнейми, що імітують адміністрацію.</li>
+                    </ul>
+                    <div class="punishment">Покарання: Бан до зміни; при наслідках — бан 3-20 днів або перманент.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.3.</span> Заборонено використовувати додаткові акаунти (твінки, мультіакаунти) або акаунти інших людей з метою отримання ігрової переваги, обходу покарання або або будь-якої іншої причини
+                    <div class="punishment">Покарання: Перманентний бан для всіх додаткових акаунтів; бан основного акаунта та акаунта друга (якщо використовувався він) на 7 днів.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.4. (RMT)</span> Заборонено продаж або купівлю ігрових цінностей за реальні гроші.
+                    <div class="punishment">Покарання: Бан від 45 до 90 днів.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.5.</span> Заборонено видавати себе за представника адміністрації чи модерації сервера.
+                    <div class="punishment">Покарання: Бан від 7 до 30 днів.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.6.</span> Заборонено публікацію персональної інформації про гравців без їх згоди.
+                    <div class="punishment">Покарання: Перманентний бан + ЧС.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.7.</span> Заборонено публічно поширювати інформацію, що принижує сервер, адміністрацію або проєкт загалом, а також закликати гравців покинути проєкт.
+                    <div class="punishment">Покарання: Вилучення прохідки + ЧС.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.8.</span> На сервері та в Discord-спільноті діє політика повної заборони будь-якого контенту, пов'язаного з країною-агресором (рф). Це включає, але не обмежується пропагандою, символікою, айдентикою, дискусіями або публікацєю постів пропагандистів і інше.
+                    <div class="punishment">Покарання: Мут на день. При повторенні бан від 1 до 30 днів.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.9.</span> Заборонено використання VPN/Proxy (з метою обходу блокування, приховування особи або будь-якої іншої причини)<i>(Виняток: ТОТ України, Туреччина)</i>.
+                    <div class="punishment">Покарання: Перманентний бан.</div>
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.10.</span> У разі відсутності технічних доказів (логів, записів тощо), порушення може бути підтверджене свідченнями щонайменше двох незалежних гравців. 
+                    Свідчення не враховуються у випадку очевидного конфлікту інтересів або підозри у змові. Остаточне рішення приймає адміністрація.
+                </div>
+                
+                <div class="rule-item">
+                    <span class="rule-id">1.11.</span> Адміністрація залишає за собою право карати за дії, які явно шкодять серверу або гравцям, навіть якщо вони прямо не описані в правилах. 
+                    Правила — це не інструкція з обходу заборон, а основа для комфортної гри.
+                </div>
+                
+                <div class="rule-item">
+                    <span class="rule-id">1.12.</span> На час судового або адміністративного розгляду акаунт гравця може бути тимчасово заблокований як запобіжний захід.
+                </div> 
+
+                <div class="rule-item">
+                    <span class="rule-id">1.13.</span> Адміністрація не зобов'язана пояснювати причини бану або інші подробиці порушення людям, які не є прямими порушниками і не залучені у справі.
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">1.14.</span> За відволікання адмінів від роботи створенням нових тікітів з запитаннями типу: "За що була відкинута та чи інша людина" адмін може замутити вас за флуд!
+                </div>
+            </div>
+        </div>
+
+        <div class="rule-card rule-section">
+            <div class="rule-header">
+                <h2>2. Правила ігрового процесу</h2>
+                <span class="toggle-gear">⚙️</span>
+            </div>
+
+            <div class="rule-content">
             
-            <div class="rule-item">
-                <span class="rule-id">1.1.</span> Власник акаунта несе повну відповідальність за всі дії, що були виконані з його профілю.
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">2.1.</span> Заборонено використання читів, стороннього софту (X-Ray, FreeCam, клікери, скрипти), 
+                    ресурспаків, конфігів (XaerosMap, JADE та інші..) та модифікацій, 
+                    що надають нечесну перевагу (наприклад, пошук ресурсів або допомога в PvP).
+                    <div class="punishment">Покарання: Бан на 10 днів. При повторенні - бан на 30 днів</div>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">1.2.</span> Заборонено використовувати:
-                <ul>
-                    <li>Нікнейми з нецензурною лексикою або образами.</li>
-                    <li>Скіни образливого, еротичного чи непристойного змісту.</li>
-                    <li>Нікнейми, що імітують адміністрацію.</li>
-                </ul>
-                <div class="punishment">Покарання: Бан до зміни; при наслідках — бан 3-20 днів або перманент.</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">2.2.</span> Заборонено використання будь-яких ігрових помилок (багів) для отримання переваги. <i>Виняток: дюп килимів та TNT для ферм.</i>
+                    <div class="punishment">Покарання: Бан від 5 до 15 днів. При повторенні - бан назавжди</div>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">1.3.</span> Заборонено використовувати додаткові акаунти (твінки, мультіакаунти) або акаунти інших людей з метою отримання ігрової переваги, обходу покарання або або будь-якої іншої причини
-                <div class="punishment">Покарання: Перманентний бан для всіх додаткових акаунтів; бан основного акаунта та акаунта друга (якщо використовувався він) на 7 днів.</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">2.3.</span> Заборонено гриферство (руйнування, крадіжки, вбивство тварин, фарм на чужій території).
+                    <div class="punishment">Покарання: Рішення Суду. В тяжких випадках — Перманент (бан навзажди).</div>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">1.4. (RMT)</span> Заборонено продаж або купівлю ігрових цінностей за реальні гроші.
-                <div class="punishment">Покарання: Бан від 45 до 90 днів.</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">2.4.</span> Заборонено навантаження сервера (лаг-машини, ліміти сутностей, крижані дороги у верхньому світі).
+                    <div class="punishment">Покарання: Бан від 1 дня до 10 днів + демонтаж. При повторенні - бан назавжди</div>
+                </div>
+                
+                <div class="rule-item">
+                    <span class="rule-id">2.5.</span> Заборонено вводити гравців в оману з метою отримання вигоди, крадіжки акаунтів чи вимагання майна.
+                    <div class="punishment">Покарання: Бан від 7 до 30 днів, залежно від масштабу. При повторенні - бан назавжди</div>
+                </div>
+                
+                <div class="rule-item">
+                    <span class="rule-id">2.6.</span> Заборонено переслідувати гравців, які ведуть трансляцію, з метою завадити їм. Поважайте особистий простір інших.
+                    <div class="punishment">Покарання: Бан від 1 до 3 годин. При повторенні - бан на 10 днів</div>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">1.5.</span> Заборонено видавати себе за представника адміністрації чи модерації сервера.
-                <div class="punishment">Покарання: Бан від 7 до 30 днів.</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">2.7.</span> Заборонено створювати пастки, що призводять до неминучої смерті або блокування гравця одразу після телепортації. 
+                    Гравці повинні мати можливість безпечно увійти та вийти з порталу.
+                    <div class="punishment">Покарання: Бан від 1 год до 5 днів. При повторенні - бан на 30 днів</div>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">1.6.</span> Заборонено публікацію персональної інформації про гравців без їх згоди.
-                <div class="punishment">Покарання: Перманентний бан + ЧС.</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">2.8.</span> Заборонено прикривати власні порушення і/або співпрацювати з правопорушником (або захищати його).
+                    <div class="punishment">Покарання: Бан від 1 до 30 днів. При повторенні - бан назавжди</div>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">1.7.</span> Заборонено публічно поширювати інформацію, що принижує сервер, адміністрацію або проєкт загалом, а також закликати гравців покинути проєкт.
-                <div class="punishment">Покарання: Вилучення прохідки + ЧС.</div>
-            </div>
-
-			<div class="rule-item">
-                <span class="rule-id">1.8.</span> На сервері та в Discord-спільноті діє політика повної заборони будь-якого контенту, пов'язаного з країною-агресором (рф). Це включає, але не обмежується пропагандою, символікою, айдентикою, дискусіями або публікацєю постів пропагандистів і інше.
-                <div class="punishment">Покарання: Мут на день. При повторенні бан від 1 до 30 днів.</div>
-            </div>
-
-            <div class="rule-item">
-                <span class="rule-id">1.9.</span> Заборонено використання VPN/Proxy (з метою обходу блокування, приховування особи або будь-якої іншої причини)<i>(Виняток: ТОТ України, Туреччина)</i>.
-                <div class="punishment">Покарання: Перманентний бан.</div>
-            </div>
-
-			<div class="rule-item">
-                <span class="rule-id">1.10.</span> У разі відсутності технічних доказів (логів, записів тощо), порушення може бути підтверджене свідченнями щонайменше двох незалежних гравців. 
-				Свідчення не враховуються у випадку очевидного конфлікту інтересів або підозри у змові. Остаточне рішення приймає адміністрація.
-            </div>
-			
-			<div class="rule-item">
-                <span class="rule-id">1.11.</span> Адміністрація залишає за собою право карати за дії, які явно шкодять серверу або гравцям, навіть якщо вони прямо не описані в правилах. 
-				Правила — це не інструкція з обходу заборон, а основа для комфортної гри.
-            </div>
-			
-			<div class="rule-item">
-                <span class="rule-id">1.12.</span> На час судового або адміністративного розгляду акаунт гравця може бути тимчасово заблокований як запобіжний захід.
-            </div> 
-
-            <div class="rule-item">
-                <span class="rule-id">1.13.</span> Адміністрація не зобов'язана пояснювати причини бану або інші подробиці порушення людям, які не є прямими порушниками і не залучені у справі.
-            </div>
-
-            <div class="rule-item">
-                <span class="rule-id">1.14.</span> За відволікання адмінів від роботи створенням нових тікітів з запитаннями типу: "За що була відкинута та чи інша людина" адмін може замутити вас за флуд!
+                <div class="rule-item">
+                    <span class="rule-id">2.9.</span> За велику кількість порушень на які є докази в інших гравців/адміністрації покарання перманентний бан
+                    <div class="punishment">Покарання: бан назавжди</div>
+                </div>
             </div>
         </div>
 
-        <div class="rule-section">
-            <h2>2. Правила ігрового процесу</h2>
+        <div class="rule-card rule-section">
+            <div class="rule-header">
+                <h2>3. Будівництво та території</h2>
+                <span class="toggle-gear">⚙️</span>
+            </div>
+
+            <div class="rule-content">
+
+                <div class="rule-item">
+                    <span class="rule-id">3.1.</span> Радіус 300 блоків від центру спавну (-565 ~ -930) — зона без баз/ферм/приватів без узгодження. Точка спавну - біля парламенту.
+                    Територія спавну є недоторканною зоною. Заборонено будь-яке несанкціоноване руйнування або зміну ландшафту (як на поверхні, так і під землею).
+                    <div class="punishment">Покарання: Вимога перенести споруду і/або розприватити територію протягом 1 години, інакше - бан від 1 до 10 днів.</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.2.</span>  Щоб зайняти територію, позначте її межі помітним способом (таблички, багаття). 
+                    Якщо позначена територія не використовується протягом 10 днів, вона може бути визнана вільною.
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.3.</span> Заборонено будівництво і вандалізм на території іншого міста чи гравця без дозволу власника. 
+                    <div class="punishment">Покарання: бан від 1 години до 1 дня. Спірні ситуації вирішує Суд.</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.4.</span> Заборонено руйнування довкілля ("грязьові" мости та стовпи, літаючі крони, викопування чанків).
+                    <div class="punishment">Покарання: бан на 5 днів (10 днів за викопування чанків). При повторенні - бан на 30 днів</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.5.</span> Заборонено будівництво споруд еротичного, образливого чи нацистського характеру.
+                    <div class="punishment">Покарання: Бан на 3 дні та вимога знести споруду. При повторенні - бан на 30 днів</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.6.</span> Заборонено мати більше ніж 1 основний приват та 1 саб-клейм (додатковий приват).
+                    <div class="punishment">Покарання: Бан на 7 днів та вимога розпривату. При повторенні - бан на 30 днів</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.7.</span> Заборонено мати більше ніж 2 прогружених чанки одночасно.
+                    <div class="punishment">Покарання: Бан від 1 до 7 днів та вимога розпривату. При повторенні - бан на 30 днів</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.7.</span> Приват дозволено мати на відстані не менше ніж 40 чанків від спавну.
+                    <div class="punishment">Покарання: Бан від 1 до 7 днів та вимога розпривату. При повторенні - бан на 30 днів</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.8.</span> Спавн поділений на зони. Кожен гравець може отримати окрему територію для своїх потреб.
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">3.9.</span> Требушети з катапультами і пушками можна ставити тільки в тому випадку, якшо треба їх використовувати
+                    <div class="punishment">Покарання: Бан від 1 години до 7 днів та вимога знесення. При повторенні - бан на 30 днів</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="rule-card rule-section">
+            <div class="rule-header">
+                <h2>4. РП Правила</h2>
+                <span class="toggle-gear">⚙️</span>
+            </div>
             
-            <div class="rule-item">
-                <span class="rule-id">2.1.</span> Заборонено використання читів, стороннього софту (X-Ray, FreeCam, клікери, скрипти), 
-				ресурспаків, конфігів (XaerosMap, JADE та інші..) та модифікацій, 
-				що надають нечесну перевагу (наприклад, пошук ресурсів або допомога в PvP).
-                <div class="punishment">Покарання: Бан на 10 днів. При повторенні - бан на 30 днів</div>
-            </div>
+            <div class="rule-content">
 
-            <div class="rule-item">
-                <span class="rule-id">2.2.</span> Заборонено використання будь-яких ігрових помилок (багів) для отримання переваги. <i>Виняток: дюп килимів та TNT для ферм.</i>
-                <div class="punishment">Покарання: Бан від 5 до 15 днів. При повторенні - бан назавжди</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">4.1. (NonRP / FunGaming)</span> Заборонено дії, що руйнують RP-ситуації та перетворюють гру на безглузду розвагу (наприклад, несерйозні виклики екстрених служб, безпричинні перестрілки).<br>
+                    <span class="punishment">Покарання: Бан на 1 день. При повторенні - бан на 10 днів</span>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">2.3.</span> Заборонено гриферство (руйнування, крадіжки, вбивство тварин, фарм на чужій території).
-                <div class="punishment">Покарання: Рішення Суду. В тяжких випадках — Перманент (бан навзажди).</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">4.2. (AFKAbuse / LeaveRP)</span> Заборонено йти в AFK або виходити з гри, щоб уникнути RP-ситуації (арешт, пограбування).<br>
+                    <span class="punishment">Покарання: Бан від 10 до 30 днів (обхід СБТ), інакше - 1 день.</span>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">2.4.</span> Заборонено навантаження сервера (лаг-машини, ліміти сутностей, крижані дороги у верхньому світі).
-                <div class="punishment">Покарання: Бан від 1 дня до 10 днів + демонтаж. При повторенні - бан назавжди</div>
-            </div>
-			
-			<div class="rule-item">
-                <span class="rule-id">2.5.</span> Заборонено вводити гравців в оману з метою отримання вигоди, крадіжки акаунтів чи вимагання майна.
-                <div class="punishment">Покарання: Бан від 7 до 30 днів, залежно від масштабу. При повторенні - бан назавжди</div>
-            </div>
-			
-			<div class="rule-item">
-                <span class="rule-id">2.6.</span> Заборонено переслідувати гравців, які ведуть трансляцію, з метою завадити їм. Поважайте особистий простір інших.
-                <div class="punishment">Покарання: Бан від 1 до 3 годин. При повторенні - бан на 10 днів</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">4.3. (Powergaming)</span> Заборонено приписувати своєму персонажу надлюдські здібності та ігнорувати наслідки (наприклад, поранення після перестрілки).
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">2.7.</span> Заборонено створювати пастки, що призводять до неминучої смерті або блокування гравця одразу після телепортації. 
-				Гравці повинні мати можливість безпечно увійти та вийти з порталу.
-                <div class="punishment">Покарання: Бан від 1 год до 5 днів. При повторенні - бан на 30 днів</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">4.4. (New Life Rule)</span> Після смерті в RP-ситуації заборонено повертатися на місце смерті протягом 5 хвилин та мститися кривдникам.<br>
+                    <span class="punishment">Покарання: Попередження або бан на 1-3 дні.</span>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">2.8.</span> Заборонено прикривати власні порушення і/або співпрацювати з правопорушником (або захищати його).
-                <div class="punishment">Покарання: Бан від 1 до 30 днів. При повторенні - бан назавжди</div>
-            </div>
+                <div class="rule-item">
+                    <span class="rule-id">4.5. (DM - Deathmatch)</span> Заборонено вбивати гравців без вагомої RP-причини (війна угруповань, ліквідація свідка, самооборона).<br>
+                    <span class="punishment">Покарання: Бан від 3 до 10 днів. При повторенні - бан на 30 днів</span>
+                </div>
 
-            <div class="rule-item">
-                <span class="rule-id">2.9.</span> За велику кількість порушень на які є докази в інших гравців/адміністрації покарання перманентний бан
-                <div class="punishment">Покарання: бан назавжди</div>
+                <div class="rule-item">
+                    <span class="rule-id">4.6. (Metagaming)</span> Заборонено використовувати інформацію, отриману поза грою (Discord, стріми), для отримання ігрової переваги.
+                </div>
+
+                <div class="rule-item">
+                    <h3 style="font-family: 'Roboto', sans-serif; font-weight: 400; color: var(--accent-copper); margin-bottom: 10px;">4.7. Правила для кримінального світу:</h3>
+                    • <b>Вмотивований злочин (MC):</b> Злочини повинні мати логічну причину. Заборонено напади на держструктури без приводу.<br>
+                    • <b>Масові злочини:</b> Для пограбувань тощо потрібно мінімум 4 учасники угрупування.<br>
+                    • <b>Вибухівка:</b> Заборонено використання в громадських місцях без вагомої ситуації.<br>
+                    • <b>Примус:</b> Заборонено змушувати гравця до дій, що суперечать правилам або ламають сценарій.
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">4.8. (FailRP) Відхід від ролі:</span><br>
+                    Заборонено діяти всупереч логіці вашої ролі. При затриманні уникайте нереалістичної поведінки ("суперстрибки", ігнорування команд).
+                </div>
+
+                <div class="rule-item">
+                    <h3 style="font-family: 'Roboto', sans-serif; font-weight: 400; color: var(--accent-copper); margin-bottom: 10px;">4.9. Правила щодо заручників:</h3>
+                    • <b>Кількість:</b> Мінімум 2 нападники.<br>
+                    • <b>Вимоги:</b> Заборонено вимагати неможливі умови (танки, неіснуючі ресурси).<br>
+                    • <b>Пріоритет:</b> Життя заручника має бути найвищою цінністю для обох сторін.<br>
+                    • <b>Поведінка:</b> Дозволено вбити заручника за провокації або невиконання наказів.
+                </div>
+
+                <div class="rule-item">
+                    <span class="rule-id">4.10. Економіка та торгівля:</span><br>
+                    Заборонено штучне маніпулювання цінами та шахрайство при угодах. <br>
+                    Заборонено шахрайство при торгівлі (неповернення боргу, підміна товару). </br>
+                    <div class="punishment">Покарання: Рішення суду</div>
+                </div>
             </div>
         </div>
 
-        <div class="rule-section">
-            <h2>3. Будівництво та території</h2>
-            <div class="rule-item">
-                <span class="rule-id">3.1.</span> Радіус 300 блоків від центру спавну (-565 ~ -930) — зона без баз/ферм/приватів без узгодження. Точка спавну - біля парламенту.
-				Територія спавну є недоторканною зоною. Заборонено будь-яке несанкціоноване руйнування або зміну ландшафту (як на поверхні, так і під землею).
-				<div class="punishment">Покарання: Вимога перенести споруду і/або розприватити територію протягом 1 години, інакше - бан від 1 до 10 днів.</div>
-            </div>
-			<div class="rule-item">
-                <span class="rule-id">3.2.</span>  Щоб зайняти територію, позначте її межі помітним способом (таблички, багаття). 
-				Якщо позначена територія не використовується протягом 10 днів, вона може бути визнана вільною.
-            </div>
-			<div class="rule-item">
-                <span class="rule-id">3.3.</span> Заборонено будівництво і вандалізм на території іншого міста чи гравця без дозволу власника. 
-				<div class="punishment">Покарання: бан від 1 години до 1 дня. Спірні ситуації вирішує Суд.</div>
-            </div>
-            <div class="rule-item">
-                <span class="rule-id">3.4.</span> Заборонено руйнування довкілля ("грязьові" мости та стовпи, літаючі крони, викопування чанків).
-                <div class="punishment">Покарання: бан на 5 днів (10 днів за викопування чанків). При повторенні - бан на 30 днів</div>
-            </div>
-			<div class="rule-item">
-                <span class="rule-id">3.5.</span> Заборонено будівництво споруд еротичного, образливого чи нацистського характеру.
-                <div class="punishment">Покарання: Бан на 3 дні та вимога знести споруду. При повторенні - бан на 30 днів</div>
-            </div>
-			<div class="rule-item">
-                <span class="rule-id">3.6.</span> Заборонено мати більше ніж 1 основний приват та 1 саб-клейм (додатковий приват).
-                <div class="punishment">Покарання: Бан на 7 днів та вимога розпривату. При повторенні - бан на 30 днів</div>
-            </div>
-        </div>
 
-		<div class="rule-section">
-			<h2>4. РП Правила</h2>
-			<p>Наш сервер є напів-RP. Рольова гра заохочується, але не повинна заважати іншим гравцям.</p>
-			
-			<div class="rule-item">
-				<span class="rule-id">4.1. (NonRP / FunGaming)</span> Заборонено дії, що руйнують RP-ситуації та перетворюють гру на безглузду розвагу (наприклад, несерйозні виклики екстрених служб, безпричинні перестрілки).<br>
-				<span class="punishment">Покарання: Бан на 1 день. При повторенні - бан на 10 днів</span>
-			</div>
-
-			<div class="rule-item">
-				<span class="rule-id">4.2. (AFKAbuse / LeaveRP)</span> Заборонено йти в AFK або виходити з гри, щоб уникнути RP-ситуації (арешт, пограбування).<br>
-				<span class="punishment">Покарання: Бан від 10 до 30 днів (обхід СБТ), інакше - 1 день.</span>
-			</div>
-
-			<div class="rule-item">
-				<span class="rule-id">4.3. (Powergaming)</span> Заборонено приписувати своєму персонажу надлюдські здібності та ігнорувати наслідки (наприклад, поранення після перестрілки).
-			</div>
-
-			<div class="rule-item">
-				<span class="rule-id">4.4. (New Life Rule)</span> Після смерті в RP-ситуації заборонено повертатися на місце смерті протягом 5 хвилин та мститися кривдникам.<br>
-				<span class="punishment">Покарання: Попередження або бан на 1-3 дні.</span>
-			</div>
-
-			<div class="rule-item">
-				<span class="rule-id">4.5. (DM - Deathmatch)</span> Заборонено вбивати гравців без вагомої RP-причини (війна угруповань, ліквідація свідка, самооборона).<br>
-				<span class="punishment">Покарання: Бан від 3 до 10 днів. При повторенні - бан на 30 днів</span>
-			</div>
-
-			<div class="rule-item">
-				<span class="rule-id">4.6. (Metagaming)</span> Заборонено використовувати інформацію, отриману поза грою (Discord, стріми), для отримання ігрової переваги.
-			</div>
-
-			<div class="rule-item">
-				<h3 style="font-family: 'Roboto', sans-serif; font-weight: 400; color: var(--accent-copper); margin-bottom: 10px;">4.7. Правила для кримінального світу:</h3>
-				• <b>Вмотивований злочин (MC):</b> Злочини повинні мати логічну причину. Заборонено напади на держструктури без приводу.<br>
-				• <b>Масові злочини:</b> Для пограбувань тощо потрібно мінімум 4 учасники угрупування.<br>
-				• <b>Вибухівка:</b> Заборонено використання в громадських місцях без вагомої ситуації.<br>
-				• <b>Примус:</b> Заборонено змушувати гравця до дій, що суперечать правилам або ламають сценарій.
-			</div>
-
-			<div class="rule-item">
-				<span class="rule-id">4.8. (FailRP) Відхід від ролі:</span><br>
-				Заборонено діяти всупереч логіці вашої ролі. При затриманні уникайте нереалістичної поведінки ("суперстрибки", ігнорування команд).
-			</div>
-
-			<div class="rule-item">
-				<h3 style="font-family: 'Roboto', sans-serif; font-weight: 400; color: var(--accent-copper); margin-bottom: 10px;">4.9. Правила щодо заручників:</h3>
-				• <b>Кількість:</b> Мінімум 2 нападники.<br>
-				• <b>Вимоги:</b> Заборонено вимагати неможливі умови (танки, неіснуючі ресурси).<br>
-				• <b>Пріоритет:</b> Життя заручника має бути найвищою цінністю для обох сторін.<br>
-				• <b>Поведінка:</b> Дозволено вбити заручника за провокації або невиконання наказів.
-			</div>
-
-			<div class="rule-item">
-				<span class="rule-id">4.10. Економіка та торгівля:</span><br>
-				Заборонено штучне маніпулювання цінами та шахрайство при угодах. <br>
-				Заборонено шахрайство при торгівлі (неповернення боргу, підміна товару). </br>
-				<div class="punishment">Покарання: Рішення суду</div>
-			</div>
-		</div>
-
-        <div class="rule-section">
-            <h2>5. Спілкування</h2>
-            <div class="rule-item">
-                <span class="rule-id">5.1.</span> Токсичність та образи заборонені. <div class="punishment">Покарання: Мут 3-5 годин.</div>
+        <div class="rule-card rule-section">
+            <div class="rule-header">
+                <h2>5. Спілкування</h2>
+                <span class="toggle-gear">⚙️</span>
             </div>
-			<div class="rule-item">
-                <span class="rule-id">5.2.</span> Заборонено рекламувати сторонні сервери чи ресурси, не пов'язані з проєктом. 
-				<div class="punishment">Покарання: Мут на 1 годину. (У разі переманювання гравців - вилучення прохідки).</div>
-            </div>
-            <div class="rule-item">
-                <span class="rule-id">5.3.</span> Дискримінація (раса, нація, релігія) або зв'язок з правилом 1.8. <div class="punishment">Мут від 1 до 24 год. При повторенні - бан 1-5 днів.</div>
-            </div>
-			 <div class="rule-item">
-                <span class="rule-id">5.4.</span> Спам смертями. Заборонено навмисно помирати для спаму в чаті. <div class="punishment">Покарання: Бан на 1 годину. При повторенні - бан на 10 днів</div>
-            </div>
-			<div class="rule-item">
-                <span class="rule-id">5.5.</span> Спам (3 чи більше однакових повідомлень підряд або протягом 5-10 хвилин) <div class="punishment">Покарання: Мут на 1 годину. При повторенні - мут на 1 день</div>
-            </div>
-			<div class="rule-item">
-                <span class="rule-id">5.6.</span> Усі правила спілкування поширюються на voice chat 
+
+            <div class="rule-content">
+
+                <div class="rule-item">
+                    <span class="rule-id">5.1.</span> Токсичність та образи заборонені. <div class="punishment">Покарання: Мут 3-5 годин.</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">5.2.</span> Заборонено рекламувати сторонні сервери чи ресурси, не пов'язані з проєктом. 
+                    <div class="punishment">Покарання: Мут на 1 годину. (У разі переманювання гравців - вилучення прохідки).</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">5.3.</span> Дискримінація (раса, нація, релігія) або зв'язок з правилом 1.8. <div class="punishment">Мут від 1 до 24 год. При повторенні - бан 1-5 днів.</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">5.4.</span> Спам смертями. Заборонено навмисно помирати для спаму в чаті. <div class="punishment">Покарання: Бан на 1 годину. При повторенні - бан на 10 днів</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">5.5.</span> Спам (3 чи більше однакових повідомлень підряд або протягом 5-10 хвилин) <div class="punishment">Покарання: Мут на 1 годину. При повторенні - мут на 1 день</div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-id">5.6.</span> Усі правила спілкування поширюються на voice chat 
+                </div>
             </div>
         </div>
     </div>
-
-<div id="adblock-fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2147483647; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
-    
-    <div style="background: #141414; border: 2px solid #f0a500; border-radius: 12px; padding: 40px; width: 100%; max-width: 600px; text-align: center; box-shadow: 0 0 50px rgba(240,165,0,0.4); position: relative; font-family: 'Roboto', sans-serif;">
-        
-        <!-- <button onclick="document.getElementById('adblock-fullscreen-popup').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: #888; font-size: 1.8rem; cursor: pointer;">✖</button> -->
-        
-        <div style="font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));">🛑</div>
-        
-        <h2 style="font-family: 'Russo One', sans-serif; color: #f0a500; font-size: 2.2rem; margin-top: 0; margin-bottom: 15px; text-transform: uppercase;">Вимкніть AdBlock</h2>
-        
-        <p style="font-size: 1.1rem; color: #ccc; line-height: 1.6; margin-bottom: 35px; margin-top: 0;">
-            Ми помітили, що ви використовуєте блокувальник реклами.<br><br>
-            Сервер <b style="color: #fff;">AfterLight</b> має платний хост. Будь ласка, додайте нас у винятки, щоб підтримувати проект.
-        </p>
-        <button onclick="location.reload()" style="background: transparent; border: 2px solid #c87533; color: #c87533; padding: 15px 30px; font-family: 'Russo One', sans-serif; font-size: 1.2rem; cursor: pointer; border-radius: 6px; 
-			text-transform: uppercase; width: 100%; transition: 0.3s;" onmouseover="this.style.background='#c87533'; this.style.color='#fff'; this.style.boxShadow='0 0 20px rgba(200, 117, 51, 0.6)';" 
-			onmouseout="this.style.background='transparent'; this.style.color='#c87533'; this.style.boxShadow='none';">🔄 Я ВИМКНУВ (ОНОВИТИ)</button>
-    </div>
-</div>
-
-<script>
-(function() {
-    async function checkRealAdBlock() {
-        const popup = document.getElementById('adblock-fullscreen-popup');
-        let adBlockEnabled = false;
-
-        // Метод 1: Швидка перевірка через завантаження "ворожого" для адблоків файлу
-        try {
-            // Використовуємо fetch з cache: 'no-store', щоб не було помилкових спрацювань з кешу
-            await fetch(new Request('https://www.google-analytics.com/analytics.js'), { 
-                mode: 'no-cors', 
-                cache: 'no-store' 
-            });
-        } catch (e) {
-            adBlockEnabled = true;
-        }
-
-        if (adBlockEnabled) {
-            // Показуємо вікно моментально
-            popup.style.display = 'flex';
-            // Блокуємо прокрутку сайту, щоб користувач не міг "втекти" від вікна
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    // Запуск без затримок (моментально при готовності DOM)
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        checkRealAdBlock();
-    } else {
-        document.addEventListener('DOMContentLoaded', checkRealAdBlock);
-    }
-})();
-</script>
 
 <footer class="site-footer">
     <div class="social-links">
@@ -560,7 +607,123 @@
     <div class="copyright">
         &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
     </div>
+    <div class="footer-legal">
+        <a href="contact.html">Контакти</a>
+        <span class="separator">|</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
 </footer>
+<script>
+function searchRules() {
+    // 1. Отримуємо слово і чистимо його
+    let input = document.getElementById('rulesSearch').value.toLowerCase().trim();
+    
+    // Функція для "відрізання" закінчень (спрощений стемінг для укр. мови)
+    function getRoot(word) {
+        if (word.length < 4) return word; // Малі слова не чіпаємо
+        // Прибираємо популярні закінчення: а, я, и, і, у, ю, ом, ем, ою, ею, ий, ій, ого, ому...
+        return word.replace(/(а|я|и|і|у|ю|ом|ем|ою|ею|ий|ій|ого|ому|их|им|ими|ами|ями|ість|ості)$/g, '');
+    }
+
+    // Отримуємо "корінь" пошукового слова
+    let rootInput = getRoot(input);
+    
+    let sections = document.querySelectorAll('.rule-section');
+    let noResults = document.getElementById('no-results');
+    let globalMatch = false;
+
+    sections.forEach(section => {
+        let items = section.querySelectorAll('.rule-item');
+        let sectionHasMatch = false;
+
+        items.forEach(item => {
+            let text = item.textContent.toLowerCase();
+            
+            // Тепер перевіряємо і ціле слово, і його "корінь"
+            if (text.includes(input) || text.includes(rootInput)) {
+                item.style.display = "block";
+                sectionHasMatch = true;
+                globalMatch = true;
+            } else {
+                item.style.display = "none";
+            }
+        });
+
+        section.style.display = sectionHasMatch ? "block" : "none";
+    });
+
+    if (noResults) {
+        noResults.style.display = globalMatch ? "none" : "block";
+    }
+}
+
+window.addEventListener('scroll', function() {
+        const gearTop = document.getElementById('gearTop');
+        const gearBottom = document.getElementById('gearBottom');
+        const chain = document.getElementById('chainLinks');
+        
+        let scrollPos = window.pageYOffset;
+
+        // 1. Обертаємо шестерні
+        const rotation = scrollPos / 2;
+        gearTop.style.transform = `rotate(${rotation}deg)`;
+        gearBottom.style.transform = `rotate(${rotation}deg)`;
+
+        // 2. Рухаємо фон ланцюга (імітація їзди)
+        // Ми змінюємо позицію фону. Швидкість (0.5) можна підкрутити
+        chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
+    });
+
+document.querySelectorAll('.rule-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const section = header.parentElement;
+        
+        // Якщо хочеш, щоб при відкритті одного розділу інші закривалися — розкоментуй код нижче:
+        /*
+        document.querySelectorAll('.rule-section').forEach(s => {
+            if (s !== section) s.classList.remove('active');
+        });
+        */
+
+        section.classList.toggle('active');
+    });
+});
+
+
+
+// 1. Блокуємо праву кнопку миші (Контекстне меню)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// 2. Блокуємо гарячі клавіші розробника
+document.onkeydown = function(e) {
+    // Блокуємо F12
+    if(e.keyCode == 123) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+I (Інспектор)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+C (Вибір елемента)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+J (Консоль)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+S (Збереження сторінки)
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        return false;
+    }
+};
+</script>
 </body>
 </html>
 

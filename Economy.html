@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7D417QV57"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-M7D417QV57');
+	</script>
+	
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.webp">
+    <title>Економіка та Ринок | Фінансова система AfterLight</title>
+    <meta name="description" content="Дізнайся все про живу економіку сервера AfterLight. Курс ігрової валюти, аналітика ринку, торгівля між гравцями та офіційна фінансова система.">
+	<link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Parlament.webp');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-bar {
+			width: 100%;
+			padding: 15px 0; /* Прибираємо бокові паддінги для точного центру */
+			background: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: space-between; /* Розподіляє: ліво - центр - право */
+			align-items: center;
+			border-bottom: 2px solid var(--accent-copper);
+			position: sticky; 
+			top: 0; 
+			z-index: 1000;
+		}
+
+		/* Додаємо порожній блок справа для балансу */
+		.nav-side-right {
+			flex: 1;
+		}
+
+        .nav-logo { 
+			position: absolute;
+			top: 22px;
+			left: 20px;
+			width: 150px; /* Розмір логотипу */
+			height: auto;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+		}
+        .nav-logo:hover { filter: drop-shadow(0 0 8px var(--accent-brass)); }
+
+        /* Контейнер */
+        .container {
+            max-width: 940px;
+            width: 95%;
+            margin: 40px auto;
+            background: var(--panel-bg);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            backdrop-filter: blur(10px);
+            text-align: center;
+			background: rgba(255, 255, 255, 0.05) !important; /* Дуже тонка біла основа */
+			backdrop-filter: blur(10px); /* Розмиття того, що ПІД контейнером */
+			-webkit-backdrop-filter: blur(15px); /* Для iPhone/Safari */
+			
+			/* Латунна рамка зі світінням */
+			border: 1px solid rgba(240, 165, 0, 0.3);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: 2.5rem;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        /* Діаграма */
+        .chart-wrapper {
+			max-width: 850px; 
+			width: 95%;
+			height: 450px;
+			margin: 30px auto; 
+			border: 2px solid var(--accent-copper);
+			border-radius: 8px;
+			background: #333333; 
+			overflow: hidden; /* Це важливо: воно відріже все, що вилізе за край */
+			position: relative;
+		}
+
+		.chart-wrapper iframe {
+			/* Робимо iframe ШИРШИМ за сам контейнер на 5% */
+			width: 105% !important; 
+			height: 100%;
+			border: none;
+			display: block;
+			
+			/* Зміщуємо вліво, щоб шкала цифр залишилась, а пустий край справа виліз за рамку */
+			margin-left: 0; 
+			
+			/* Додатковий фікс: якщо справа все ще багато місця, 
+			   можна додати трансформацію */
+			transform: scaleX(1.04); 
+			transform-origin: left;
+		}
+		
+        /* Картки курсів */
+        .exchange-rates {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .rate-card {
+            background: var(--card-dark);
+            border: 2px solid #555;
+            padding: 25px;
+            border-radius: 8px;
+            min-width: 220px;
+            transition: 0.3s;
+        }
+
+        .rate-card:hover {
+            border-color: var(--accent-brass);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .rate-label {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .rate-value {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-brass);
+        }
+
+        .rate-trend {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .up { color: #4caf50; }
+        .down { color: #f44336; }
+
+        /* Адаптивність */
+        @media (max-width: 600px) {
+            .corner-logo { display: none; }
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .rate-card { width: 100%; }
+        }
+		
+		/* Звичайний стан підсвіченої картки */
+		.highlight-card {
+			border-color: var(--accent-brass) !important;
+			box-shadow: 0 0 20px rgba(240, 165, 0, 0.4), 
+						inset 0 0 10px rgba(240, 165, 0, 0.2);
+			
+			/* Встановлюємо початковий збільшений розмір */
+			transform: scale(1.05) !important; 
+			z-index: 2;
+			background: rgba(60, 60, 60, 0.9) !important;
+			animation: pulse-glow 3s infinite ease-in-out;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		/* Стан при наведенні ТІЛЬКИ для підсвіченої картки */
+		.highlight-card:hover {
+			/* Робимо її ще трохи більшою або залишаємо такою ж, 
+			   щоб вона не "стрибала" назад */
+			transform: scale(1.1) !important; 
+			box-shadow: 0 0 30px rgba(240, 165, 0, 0.6), 
+						inset 0 0 15px rgba(240, 165, 0, 0.3);
+		}
+
+		/* ВСТУП ЕКОНОМІКИ (ОПИС ВАЛЮТИ) */
+		.economy-intro-card {
+			background: rgba(20, 20, 20, 0.6);
+			backdrop-filter: blur(10px);
+			border-left: 4px solid var(--accent-brass, #f0a500); /* Золота лінія зліва */
+			border-radius: 8px;
+			padding: 25px 30px;
+			/* margin-bottom: 20px; */
+			margin-top: 40px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+		}
+
+		.economy-intro-card h2 {
+			font-family: 'Russo One', sans-serif;
+			color: #fff;
+			font-size: 1.4rem;
+			margin-bottom: 15px;
+			text-shadow: 0 0 10px rgba(240, 165, 0, 0.3);
+		}
+
+		.economy-intro-card p {
+			font-family: 'Roboto', sans-serif;
+			color: #ccc;
+			font-size: 1rem;
+			line-height: 1.6;
+			margin-bottom: 12px;
+		}
+
+		.economy-intro-card p:last-child {
+			margin-bottom: 0;
+		}
+
+		.economy-intro-card b, 
+		.economy-intro-card strong {
+			color: var(--accent-brass, #f0a500); /* Виділення золотим кольором */
+		}
+
+        .calculator-card {
+            margin-top: 30px !important;
+            text-align: center;
+        }
+
+        .calc-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .calc-input-group {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .calc-input-group input, .calc-input-group select {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--accent-copper);
+            color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            outline: none;
+        }
+
+        .calc-input-group input { flex: 2; }
+        .calc-input-group select { flex: 1; cursor: pointer; }
+
+        .calc-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calc-buttons button {
+            background: transparent;
+            border: 1px solid var(--accent-brass);
+            color: var(--accent-brass);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .calc-buttons button:hover {
+            background: var(--accent-brass);
+            color: #000;
+        }
+
+        .calc-result {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            background: rgba(240, 165, 0, 0.1);
+            padding: 15px 30px;
+            border-radius: 8px;
+            border: 1px dashed var(--accent-brass);
+        }
+
+        #gdrResult {
+            color: var(--accent-brass);
+        }
+
+        .calc-mode-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            background: rgba(0,0,0,0.2);
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            color: #888;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .mode-btn.active {
+            background: var(--accent-brass);
+            color: #000;
+            box-shadow: 0 0 10px rgba(240, 165, 0, 0.3);
+        }
+
+        .calc-result b {
+            color: var(--accent-brass);
+        }
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
+        </div>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
+</div>
+
+
+
+<div class="chain-mechanism">
+    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+    <div class="chain-wrap">
+        <div id="chainLinks" class="chain-links"></div>
+    </div>
+    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
+</div>
+
+    <nav class="nav-bar">
+        <div class="nav-side">
+            <a href="index.html"><img src="logo.webp" alt="Logo" class="nav-logo"></a>
+        </div>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+        <div class="nav-side"></div>
+    </nav>
+
+    <div class="container">
+        <h1>ЕКОНОМІКА СЕРВЕРА</h1>
+        <p style="color: var(--accent-copper); font-weight: bold;">Моніторинг ринку та курсів валют в реальному часі</p>
+
+        <div class="chart-wrapper">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRiviA620osuqTpYTEb-sxdsWkTt_rxaAvSG_tqe-GWJj4y4ake74q-VexpK0Rm6rmEB77rvUvS6b50/pubchart?oid=725411998&format=interactive" 	 
+        scrolling="no"
+        allowfullscreen></iframe>
+        </div>
+
+        <div class="exchange-rates">
+            <div class="rate-card">
+                <div class="rate-label">DIAMOND COIN ➔ GDR</div>
+                <div class="rate-value">1</div>
+                <div class="rate-trend">0.0</div>
+            </div>
+
+            <div class="rate-card highlight-card">
+                <div class="rate-label">GOLD COIN ➔ GDR</div> 
+                <div class="rate-value">15</div>
+                <div class="rate-trend"> + 0</div>
+            </div>
+
+            <div class="rate-card">
+                <div class="rate-label">IRON COIN ➔ GDR</div>
+                <div class="rate-value">27</div>
+                <div class="rate-trend">0.0</div>
+            </div>
+        </div>
+
+		<div class="economy-intro-card">
+            <h2>💰 ФІНАНСОВА СИСТЕМА AFTERLIGHT</h2>
+            <p>
+                Економіка нашого сервера побудована на <strong>фізичній валюті</strong>. Офіційним та єдиним загальновизнаним платіжним засобом у світі AfterLight є монети <b>(Коіни)</b>. 
+				Це не просто віртуальні цифри в таб-листі чи на екрані, а реальні цінні предмети, які ви можете тримати в руках, зберігати в скринях або перевозити потягами Create.
+            </p>
+            <p>
+                Саме ці монети є "кров'ю" нашої економіки: за них гравці купують ресурси, відкривають власні магазини, наймають робітників та укладають торгові контракти. Ринок не контролюється адміністрацією — він <b>живий</b>. Цінність монет та ціни на товари постійно змінюються залежно від попиту, пропозиції та активності самих гравців.
+            </p>
+        </div>
+
+    <div class="economy-intro-card calculator-card">
+        <h2>⚙️ МЕХАНІЧНИЙ ОБМІННИК</h2>
+        <div class="calc-container">
+            <div class="calc-mode-selector">
+                <button id="modeToDC" class="mode-btn active" onclick="setMode('ToDC')">ОТРИМАТИ DC</button>
+                <button id="modeFromDC" class="mode-btn" onclick="setMode('FromDC')">ВІДДАТИ DC</button>
+            </div>
+
+            <div class="calc-input-group">
+                <input type="number" id="coinAmount" placeholder="Введіть кількість" min="0">
+                <select id="coinType">
+                    <option value="gdr">GDR</option>
+                    <option value="gold">Gold Coin</option>
+                    <option value="iron">Iron Coin</option>
+                </select>
+            </div>
+            
+            <div class="calc-buttons">
+                <button onclick="setAmount(1)">1 ШТ</button>
+                <button onclick="setAmount(64)">СТАК (64)</button>
+            </div>
+
+            <div class="calc-result">
+                <span id="labelResult">РЕЗУЛЬТАТ:</span> <span id="calcResult">0</span> <b id="resultUnit">Diamond Coins</b>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="social-links">
+        <a href="https://discord.gg/zhKqAJyVpH" class="social-btn discord" target="_blank" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+        <a href="https://t.me/AfterLightAdministration" class="social-btn telegram" target="_blank" title="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@segfaulted_g.o.u" class="social-btn tiktok" target="_blank" title="TikTok">
+            <svg width="18" height="18" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+            </svg>
+        </a>
+    </div>
+    <div class="copyright">
+        &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
+    </div>
+    <div class="footer-legal">
+        <a href="contact.html">Контакти</a>
+        <span class="separator">|</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+    const gearTop = document.getElementById('gearTop');
+    const gearBottom = document.getElementById('gearBottom');
+    const chain = document.getElementById('chainLinks');
+    
+    let scrollPos = window.pageYOffset;
+
+    // 1. Обертаємо шестерні
+    const rotation = scrollPos / 2;
+    gearTop.style.transform = `rotate(${rotation}deg)`;
+    gearBottom.style.transform = `rotate(${rotation}deg)`;
+
+    // 2. Рухаємо фон ланцюга (імітація їзди)
+    // Ми змінюємо позицію фону. Швидкість (0.5) можна підкрутити
+    chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
+});
+
+
+
+let currentMode = 'ToDC'; // Початковий режим: Ресурс в DC
+    const amountInput = document.getElementById('coinAmount');
+    const typeSelect = document.getElementById('coinType');
+    const resultDisplay = document.getElementById('calcResult');
+    const resultUnit = document.getElementById('resultUnit');
+
+    function setMode(mode) {
+        currentMode = mode;
+        document.getElementById('modeToDC').classList.toggle('active', mode === 'ToDC');
+        document.getElementById('modeFromDC').classList.toggle('active', mode === 'FromDC');
+        calculate();
+    }
+
+    function calculate() {
+        const amount = parseFloat(amountInput.value) || 0;
+        const selectedResource = typeSelect.value;
+        const selectedText = typeSelect.options[typeSelect.selectedIndex].text;
+        
+        let res = 0;
+        let unit = "";
+
+        // Константи курсів (Diamond Coin як база)
+        const GDR_VAL = 4;    // 1 GDR = 4 DC
+        const GOLD_VAL = 7;   // 1 DC = 7 Gold
+        const IRON_VAL = 100; // 1 DC = 100 Iron
+
+        if (currentMode === 'ToDC') {
+            // Режим: Щось ➔ Diamond Coins (DC)
+            unit = "Diamond Coins";
+            if (selectedResource === 'gdr') res = amount * GDR_VAL;     // 1 GDR дає 4 DC
+            if (selectedResource === 'gold') res = amount / GOLD_VAL;   // 7 Gold дають 1 DC
+            if (selectedResource === 'iron') res = amount / IRON_VAL;   // 100 Iron дають 1 DC
+        } else {
+            // Режим: Diamond Coins (DC) ➔ Щось
+            unit = selectedText;
+            if (selectedResource === 'gdr') res = amount / GDR_VAL;     // 4 DC дають 1 GDR
+            if (selectedResource === 'gold') res = amount * GOLD_VAL;   // 1 DC дає 7 Gold
+            if (selectedResource === 'iron') res = amount * IRON_VAL;   // 1 DC дає 100 Iron
+        }
+        
+        // Вивід результату з округленням до 2 знаків
+        resultDisplay.innerText = res.toLocaleString('en-US', {maximumFractionDigits: 2});
+        resultUnit.innerText = unit;
+    }
+
+    function setAmount(val) {
+        amountInput.value = val;
+        calculate();
+    }
+
+    amountInput.addEventListener('input', calculate);
+    typeSelect.addEventListener('change', calculate);
+
+
+
+// 1. Блокуємо праву кнопку миші (Контекстне меню)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// 2. Блокуємо гарячі клавіші розробника
+document.onkeydown = function(e) {
+    // Блокуємо F12
+    if(e.keyCode == 123) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+I (Інспектор)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+C (Вибір елемента)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+J (Консоль)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+S (Збереження сторінки)
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        return false;
+    }
+};
+</script>
+</body>
+</html>

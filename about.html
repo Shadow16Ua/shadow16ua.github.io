@@ -223,11 +223,29 @@
 </head>
 <body>
 
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
+        </div>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
+</div>
 
+<div class="chain-mechanism">
+    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+    <div class="chain-wrap">
+        <div id="chainLinks" class="chain-links"></div>
+    </div>
+    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
+</div>
 
     <nav class="nav-bar">
         <a href="index.html" class="nav-logo-link">
-            <img src="logo.png" class="nav-logo" alt="AfterLight Logo">
+            <img src="logo.webp" class="nav-logo" alt="AfterLight Logo">
         </a>
         <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
     </nav>
@@ -299,6 +317,11 @@
         <div class="copyright">
             &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
         </div>
+        <div class="footer-legal">
+            <a href="contact.html">Контакти</a>
+            <span class="separator">|</span>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
     </footer>
 
 <script>
@@ -319,6 +342,38 @@ window.addEventListener('scroll', function() {
     chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
 });
 
+// 1. Блокуємо праву кнопку миші (Контекстне меню)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// 2. Блокуємо гарячі клавіші розробника
+document.onkeydown = function(e) {
+    // Блокуємо F12
+    if(e.keyCode == 123) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+I (Інспектор)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+C (Вибір елемента)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+J (Консоль)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+S (Збереження сторінки)
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        return false;
+    }
+};
 </script>
 
 </body>

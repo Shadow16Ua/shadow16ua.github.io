@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.webp">
+    <title>Підтримка сервера | AfterLight</title>
+    <meta name="description" content="Придбати прохідку на сервер AfterLight, отримати привілеї або підтримати проєкт вільним донатом.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --accent-brass: #f0a500;
+            --accent-copper: #c87533;
+            --text-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Parlament.webp');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        
+        /* ================= КОНТЕНТ ================= */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: clamp(2rem, 6vw, 3rem);
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(240, 165, 0, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        /* ================= КАРТКИ ДОНАТУ ================= */
+        .donate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .donate-card {
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 117, 51, 0.3);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Золоте світіння для картки з прохідкою */
+        .donate-card.premium {
+            border-color: var(--accent-brass);
+            box-shadow: 0 10px 30px rgba(240, 165, 0, 0.15);
+        }
+
+        .donate-card.premium::before {
+            content: "РЕКОМЕНДОВАНО";
+            position: absolute;
+            /* ФІКС: Опустили нижче (було 15px) та зсунули правіше (було -35px) */
+            top: 35px; 
+            right: -45px; 
+            background: var(--accent-brass);
+            color: #000;
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.7rem;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .donate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            border-color: var(--accent-brass);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(240,165,0,0.5));
+        }
+
+        .donate-card h2 {
+            font-family: 'Russo One', sans-serif;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .donate-card ul {
+            text-align: left;
+            margin-bottom: 30px;
+            padding-left: 0;
+            list-style: none;
+            color: #ccc;
+            line-height: 1.6;
+            width: 100%;
+        }
+
+        .donate-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .donate-card ul li::before {
+            content: "✓";
+            color: #2ecc71;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .donate-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--accent-copper), var(--accent-brass));
+            color: #000 !important;
+            text-decoration: none;
+            font-family: 'Russo One', sans-serif;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .donate-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(240, 165, 0, 0.6);
+            color: #fff !important;
+        }
+
+        /* ================= ІНСТРУКЦІЯ ================= */
+        .info-box {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 4px solid var(--accent-brass);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .info-box h3 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent-brass);
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .info-box strong { color: #fff; }
+        .back-btn {left: -3px;}
+
+        /* АДАПТАЦІЯ */
+        @media (max-width: 600px) {
+            .nav-bar { padding: 15px 20px; flex-direction: column; align-items: center; gap: 15px; }
+            .nav-logo { width: 120px; margin: 0; }
+            h1 { font-size: 1.8rem; }
+            .donate-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
+        </div>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
+</div>
+
+<div class="chain-mechanism">
+    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+    <div class="chain-wrap">
+        <div id="chainLinks" class="chain-links"></div>
+    </div>
+    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
+</div>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo-link">
+            <img src="logo.webp" class="nav-logo" alt="AfterLight Logo">
+        </a>
+        <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
+    </nav>
+
+    <main class="container">
+        <h1>ПІДТРИМКА ПРОЄКТУ</h1>
+        <p class="subtitle">AfterLight існує завдяки підтримці гравців. У нас немає Pay-to-Win.</p>
+
+        <div class="donate-grid">
+            <div class="donate-card">
+                <div class="card-icon">🎟️</div>
+                <h2>ПРОХІДКА НА СЕРВЕР</h2>
+                <div class="price">50 ₴</div>
+                <ul>
+                    <li>Повний доступ до ігрового сервера</li>
+                    <li>Роль гравця у нашому Discord</li>
+                    <!-- <li>Можливість створювати держави, міста чи фракції</li> -->
+                    <li>Доступ назавжди (одноразова оплата)</li>
+                </ul>
+                <a href="https://donatello.to/AfterLight" target="_blank" class="donate-btn">ПРИДБАТИ</a>
+            </div>
+
+            <div class="donate-card  premium">
+                <div class="card-icon">💎</div>
+                <h2>VIP СТАТУС</h2>
+                <div class="price">100 ₴</div>
+                <ul>
+                    <li>VIP статус на 1 місяць</li>
+                    <li>Унікальний колір ніку в чаті та табі</li>
+                    <li>Доступ до debag stick</li>
+                    <li>Збільшений ліміт на кількість приватів</li>
+                    <li>Окрема роль у нашому Discord</li>
+                </ul>
+                <a href="https://donatello.to/AfterLight" target="_blank" class="donate-btn">ПРИДБАТИ</a>
+            </div>
+
+            <div class="donate-card">
+                <div class="card-icon">🏷️</div>
+                <h2>ВЛАСНИЙ ПРЕФІКС</h2>
+                <div class="price">70 ₴</div>
+                <ul>
+                    <li>Будь-який текст перед ніком (до 10 симв.)</li>
+                    <li>Можливість обрати колір префіксу</li>
+                    <li>Виділяйся серед натовпу гравців</li>
+                    <li>Змінюється адміном за запитом</li>
+                </ul>
+                <a href="https://donatello.to/AfterLight" target="_blank" class="donate-btn">ЗАМОВИТИ</a>
+            </div>
+
+            <div class="donate-card">
+                <div class="card-icon">💖</div>
+                <h2>ВІЛЬНИЙ ДОНАТ</h2>
+                <div class="price">Будь-яка сума</div>
+                <ul>
+                    <li>Добровільна підтримка розробників</li>
+                    <li>Оплата хостингу</li>
+                    <li>Ексклюзивна роль спонсора в Discord</li>
+                    <li>Наша безмежна вдячність!</li>
+                </ul>
+                <a href="https://donatello.to/AfterLight" target="_blank" class="donate-btn" style="background: rgba(200, 117, 51, 0.2); color: var(--accent-brass) !important; border: 1px solid var(--accent-brass);">ПІДТРИМАТИ</a>
+            </div>
+        </div>
+
+        <div class="donate-card" style="top: -20px;">
+            <div class="card-icon">📦</div>
+            <h2>ПАКЕТ "СТАРТ"</h2>
+            <div style="margin-bottom: 20px;">
+                <span style="text-decoration: line-through; color: #ff4444; font-size: 1.2rem; font-family: 'Russo One', sans-serif; opacity: 0.7;">120 ₴</span>
+                <div class="price" style="margin-top: -5px;">99 ₴</div>
+            </div>
+            <ul>
+                <li><strong>Прохідка</strong> на сервер (назавжди)</li>
+                <li><strong>Кастомний префікс</strong> на ваш вибір (назавжди)</li>
+                <li>Економія 21 грн!</li>
+            </ul>
+            <a href="https://donatello.to/AfterLight" target="_blank" class="donate-btn">ЗАБРАТИ ВИГІДНО</a>
+        </div>
+
+        <div class="donate-card premium" style="border-color: #ffd700; box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);">
+            <div class="card-icon">👑</div>
+            <h2>ПАКЕТ "УЛЬТРА"</h2>
+            <div style="margin-bottom: 20px;">
+                <span style="text-decoration: line-through; color: #ff4444; font-size: 1.2rem; font-family: 'Russo One', sans-serif; opacity: 0.7;">220 ₴</span>
+                <div class="price" style="margin-top: -5px;">199 ₴</div>
+            </div>
+            <ul>
+                <li><strong>VIP статус на 1 місяць</strong></li>
+                <li><strong>Кастомний префікс (назавжди)</strong></li>
+                <li><strong>Прохідка</strong> (якщо ще немає)</li>
+                <li>Економія 21 грн!</li>
+            </ul>
+            <a href="https://donatello.to/AfterLight" target="_blank" class="donate-btn" style="background: linear-gradient(45deg, #ffd700, #f0a500);">ОТРИМАТИ ВСЕ</a>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ ЯК ОТРИМАТИ ТОВАРИ ПІСЛЯ ОПЛАТИ?</h3>
+            <p>Видача всіх послуг (прохідок, VIP-статусів та префіксів) відбувається <strong>вручну адміністрацією</strong> через платформу Donatello. Щоб ми могли обробити ваше замовлення якнайшвидше, дотримуйтесь цього алгоритму:</p>
+            
+            <p style="margin-left: 10px;">
+                1. <strong>Під час оплати:</strong> На сайті Donatello обов'язково вкажіть ваш <strong>ігровий Нікнейм та Discord</strong> у полі коментаря. Це допоможе нам одразу ідентифікувати ваш платіж.<br><br>
+                2. <strong>Після оплати:</strong> Зайдіть у наш Discord-сервер та <strong>створіть тікет</strong> у відповідному каналі. Надішліть туди скріншот квитанції про оплату.
+            </p>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                <h4 style="color: var(--accent-brass); margin-bottom: 5px; font-family: 'Russo One', sans-serif; font-size: 1rem;">Що вказувати в тікеті?</h4>
+                <ul style="list-style: none; padding-left: 0; font-size: 0.9rem;">
+                    <li style="margin-bottom: 5px;">📍 <strong>Для Прохідки:</strong> Просто ваш ігровий нік для білого списку.</li>
+                    <li style="margin-bottom: 5px;">📍 <strong>Для VIP:</strong> Нікнейм та ваш Discord ID для видачі ролі.</li>
+                    <li style="margin-bottom: 5px;">📍 <strong>Для Префікса:</strong> Напишіть текст префікса (до 10 симв.) та колір, який ви хочете.</li>
+                    <li style="margin-bottom: 5px;">📍 <strong>Для Пакетів:</strong> Усі дані вище (Нік, префікс та його колір).</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 15px; font-size: 0.9rem; font-style: italic;">
+                * Зазвичай обробка запиту займає від 5 хвилин до кількох годин, залежно від завантаженості адміністрації. Дякуємо за терпіння та підтримку AfterLight!
+            </p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="social-links">
+            <a href="https://discord.gg/zhKqAJyVpH" class="social-btn discord" target="_blank" title="Discord">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            </a>
+            <a href="https://t.me/AfterLightAdministration" class="social-btn telegram" target="_blank" title="Telegram">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@segfaulted_g.o.u" class="social-btn tiktok" target="_blank" title="TikTok">
+                <svg width="18" height="18" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 AfterLight Server. Всі права захищені.<br>Не пов'язані з Mojang AB.
+        </div>
+        <div class="footer-legal">
+            <a href="contact.html">Контакти</a>
+            <span class="separator">|</span>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
+
+<script>
+window.addEventListener('scroll', function() {
+        const gearTop = document.getElementById('gearTop');
+        const gearBottom = document.getElementById('gearBottom');
+        const chain = document.getElementById('chainLinks');
+        
+        let scrollPos = window.pageYOffset;
+
+        // 1. Обертаємо шестерні
+        const rotation = scrollPos / 2;
+        gearTop.style.transform = `rotate(${rotation}deg)`;
+        gearBottom.style.transform = `rotate(${rotation}deg)`;
+
+        // 2. Рухаємо фон ланцюга (імітація їзди)
+        // Ми змінюємо позицію фону. Швидкість (0.5) можна підкрутити
+        chain.style.backgroundPositionY = (scrollPos * 0.5) + "px";
+    });
+
+// 1. Блокуємо праву кнопку миші (Контекстне меню)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// 2. Блокуємо гарячі клавіші розробника
+document.onkeydown = function(e) {
+    // Блокуємо F12
+    if(e.keyCode == 123) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+I (Інспектор)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+C (Вибір елемента)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+Shift+J (Консоль)
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+    // Блокуємо Ctrl+S (Збереження сторінки)
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        return false;
+    }
+};
+</script>
+</body>
+</html>
