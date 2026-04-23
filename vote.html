@@ -291,6 +291,65 @@
         }
 
         .stat-value { color: var(--accent-brass); margin-left: 5px; }
+
+		/* --- ГОРИЗОНТАЛЬНА СІТКА ГОЛОСУВАННЯ --- */
+        .vote-grid {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .vote-card {
+            flex: 1 1 200px; /* Дозволяє карткам стискатися, але триматися в ряд */
+            max-width: 240px; /* Обмежує ширину, щоб всі 4 влізли в один горизонтальний ряд на ПК */
+            background: rgba(30, 25, 20, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(240, 165, 0, 0.2);
+            border-bottom: 4px solid var(--accent-brass);
+            padding: 25px 15px;
+            border-radius: 12px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vote-card::before {
+            content: ''; position: absolute; top: -50%; left: -120%; width: 50%; height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.05), rgba(255,255,255,0));
+            transform: rotate(25deg); transition: 0.6s; pointer-events: none;
+        }
+
+        .vote-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-brass);
+            box-shadow: 0 15px 30px rgba(240, 165, 0, 0.15);
+            background: rgba(45, 35, 25, 0.95);
+        }
+
+        .vote-card:hover::before { left: 150%; }
+
+        .card-icon { font-size: 3rem; margin-bottom: -5px; filter: drop-shadow(0 0 15px rgba(240, 165, 0, 0.3)); }
+        .vote-card h3 { font-family: 'Russo One', sans-serif; margin: 0; color: var(--accent-brass); font-size: 1.2rem; }
+        .vote-card p { font-size: 0.8rem; color: #ccc; margin: 0; flex-grow: 1; line-height: 1.4; }
+        
+        .reward-hint {
+            background: rgba(0, 0, 0, 0.6); border: 1px dashed var(--accent-copper);
+            padding: 6px 5px; border-radius: 6px; font-size: 0.75rem; color: #fff;
+            font-family: 'Russo One', sans-serif; width: 100%;
+        }
+        .reward-hint span { color: var(--accent-brass); }
+
 </style>
 </head>
 <body>
@@ -324,40 +383,61 @@
         <h1>ГОЛОСУЙ ЗА НАС</h1>
         <p class="vote-desc">Підтримай сервер та допоможи нам стати кращими!</p>
 
-            <div class="vote-grid">
+           <div class="vote-grid">
                 <div class="vote-card">
+                    <div class="card-icon">👑</div>
                     <h3>AllMc.in.ua</h3>
-                    <p style="font-size: 0.85rem; color: #aaa;">Голосуй кожні 24 години та отримуй нагороди.</p>
+                    <p>Голосуй кожні 24 години та отримуй нагороди.</p>
+                    <!-- <div class="reward-hint">🎁 Нагорода: <span>1 СЕЙФ GDR</span></div> -->
                     <a href="https://allmc.in.ua/afterlight-graj-today" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
                 </div>
 
                 <div class="vote-card">
-                    <h3>Minecraft Servers</h3>
-                    <p style="font-size: 0.85rem; color: #aaa;">Твій голос піднімає AfterLight у топ списку, а ти отримаєш бонуси!</p>
+                    <div class="card-icon">📈</div>
+                    <h3>Minecraft-MP</h3>
+                    <p>Твій голос піднімає сервер у глобальному рейтингу!</p>
+                    <!-- <div class="reward-hint">🎁 Нагорода: <span>1 СЕЙФ GDR</span></div> -->
                     <a href="https://minecraft-mp.com/server/357207/vote/" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
                 </div>
+
+                <div class="vote-card">
+                    <div class="card-icon">🔥</div>
+                    <h3>HotMC</h3>
+                    <p>Популярний моніторинг. Допоможи нам стати вище.</p>
+                    <!-- <div class="reward-hint">🎁 Нагорода: <span>1 СЕЙФ GDR</span></div> -->
+                    <a href="https://monicore.com.ua/server/586/afterlight" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
+                </div>
+
+                <!-- <div class="vote-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>MCTop</h3>
+                    <p>Кожен голос допомагає новим гравцям знайти нас.</p>
+                    <a href="https://mctop.com/server/586" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
+                </div> -->
             </div>
 
             <div class="lootbox-card">
-            <div class="chest-wrapper">🧰</div> 
-            <h2 style="font-family: 'Russo One', sans-serif; color: var(--accent-brass);">АКЦІЯ: БОНУС ЗА ВІРНІСТЬ!</h2>
-            <p>Проголосуй <strong>15 разів</strong> за місяць та гарантовано отримай випадковий приз із набору:</p>
+                <div class="chest-wrapper">🧰</div> 
+                <h2 style="font-family: 'Russo One', sans-serif; color: var(--accent-brass);">АКЦІЯ: БОНУС ЗА ВІРНІСТЬ!</h2>
+                <p>Проголосуй <strong>15 разів</strong> за місяць та гарантовано отримай випадковий приз із набору:</p>
 
-            <div class="reward-list">
-                <div class="reward-item">
-                    <span class="reward-icon">💎</span>
-                    <span class="reward-name">20 ГДР</span>
+                <div class="reward-list">
+                    <div class="reward-item">
+                        <span class="reward-icon">💎</span>
+                        <span class="reward-name">20 ГДР</span>
+                    </div>
+                    <div class="reward-item">
+                        <span class="reward-icon">🌟</span>
+                        <span class="reward-name">VIP (на тиждень)</span>
+                    </div>
+                    <div class="reward-item">
+                        <span class="reward-icon">🆓</span>
+                        <span class="reward-name">Прохідка для друга</span>
+                    </div>
                 </div>
-                <div class="reward-item">
-                    <span class="reward-icon">Vip</span>
-                    <span class="reward-name">(на тиждень)</span>
-                </div>
-                <div class="reward-item">
-                    <span class="reward-icon">🆓</span>
-                    <span class="reward-name">Безплатна прохідка для друга</span>
-                </div>
+                <p class="bonus-instruction">Нагорода видається вручну після перевірки логів!</p>
             </div>
-        <p class="bonus-instruction">Нагорода видається вручну після перевірки логів!</p>
+        </div>
     </div>
 </div>
 <footer class="site-footer">
