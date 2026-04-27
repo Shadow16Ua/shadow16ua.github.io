@@ -29,15 +29,40 @@
     <loc>https://shadow16ua.github.io/news.html</loc>
     <priority>0.6</priority>
   </url>
-
+  
+  <url>
+    <loc>https://shadow16ua.github.io/dev-blog.html</loc>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://shadow16ua.github.io/parliament.html</loc>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://shadow16ua.github.io/leaderboard.html</loc>
+    <loc>https://shadow16ua.github.io/donate.html</loc>
     <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://shadow16ua.github.io/privacy-policy.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://shadow16ua.github.io/privacy-policy.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://shadow16ua.github.io/contact.html</loc>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://shadow16ua.github.io/faq.html</loc>
+    <priority>0.4</priority>
   </url>
 
   <url>
