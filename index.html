@@ -1890,58 +1890,7 @@
 </script>
 
 <script src="script.js" defer></script>
-<div id="adblock-fullscreen-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2147483647; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
-    
-    <div style="background: #141414; border: 2px solid #f0a500; border-radius: 12px; padding: 40px; width: 100%; max-width: 600px; text-align: center; box-shadow: 0 0 50px rgba(240,165,0,0.4); position: relative; font-family: 'Roboto', sans-serif;">
-        
-        <!-- <button onclick="document.getElementById('adblock-fullscreen-popup').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: #888; font-size: 1.8rem; cursor: pointer;">✖</button> -->
-        
-        <div style="font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));">🛑</div>
-        
-        <h2 style="font-family: 'Russo One', sans-serif; color: #f0a500; font-size: 2.2rem; margin-top: 0; margin-bottom: 15px; text-transform: uppercase;">Вимкніть AdBlock</h2>
-        
-        <p style="font-size: 1.1rem; color: #ccc; line-height: 1.6; margin-bottom: 35px; margin-top: 0;">
-            Ми помітили, що ви використовуєте блокувальник реклами.<br><br>
-            Сервер <b style="color: #fff;">AfterLight</b> має платний хост. Будь ласка, додайте нас у винятки, щоб підтримувати проект.
-        </p>
-        <button onclick="location.reload()" style="background: transparent; border: 2px solid #c87533; color: #c87533; padding: 15px 30px; font-family: 'Russo One', sans-serif; font-size: 1.2rem; cursor: pointer; border-radius: 6px; 
-			text-transform: uppercase; width: 100%; transition: 0.3s;" onmouseover="this.style.background='#c87533'; this.style.color='#fff'; this.style.boxShadow='0 0 20px rgba(200, 117, 51, 0.6)';" 
-			onmouseout="this.style.background='transparent'; this.style.color='#c87533'; this.style.boxShadow='none';">🔄 Я ВИМКНУВ (ОНОВИТИ)</button>
-    </div>
-</div>
-<script>
-(function() {
-    async function checkRealAdBlock() {
-        const popup = document.getElementById('adblock-fullscreen-popup');
-        let adBlockEnabled = false;
 
-        // Метод 1: Швидка перевірка через завантаження "ворожого" для адблоків файлу
-        try {
-            // Використовуємо fetch з cache: 'no-store', щоб не було помилкових спрацювань з кешу
-            await fetch(new Request('https://www.google-analytics.com/analytics.js'), { 
-                mode: 'no-cors', 
-                cache: 'no-store' 
-            });
-        } catch (e) {
-            adBlockEnabled = true;
-        }
-
-        if (adBlockEnabled) {
-            // Показуємо вікно моментально
-            popup.style.display = 'flex';
-            // Блокуємо прокрутку сайту, щоб користувач не міг "втекти" від вікна
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    // Запуск без затримок (моментально при готовності DOM)
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        checkRealAdBlock();
-    } else {
-        document.addEventListener('DOMContentLoaded', checkRealAdBlock);
-    }
-})();
-</script>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
