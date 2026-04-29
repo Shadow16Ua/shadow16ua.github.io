@@ -18,10 +18,14 @@
     <title>RP Механіки | Правила та можливості RolePlay на AfterLight S2</title>
     <meta name="description" content="Детальний посібник з RP (RolePlay) механік першого сезону AfterLight. Дізнайтеся про взаємодію між гравцями, відіграш ролей, професії та створення власної історії.">
 	<link rel="stylesheet" href="style.css">
-    <style>
+     <style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
 
-        body {
+        * { box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Parlament.webp');
@@ -32,60 +36,121 @@
             color: var(--text-color);
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-        }
-        
-        /* Контейнер зі скляним ефектом */
+        }  
+
+        html { height: 100%; overflow-y: scroll; }
+        body { min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* КОНТЕНТ (Світлий та прозорий дизайн з rules.html) */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             width: 90%;
             margin: 40px auto;
-            background: var(--panel-bg);
-            padding: 40px;
-            border-radius: 15px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05) !important; /* Дуже тонка біла основа */
+            backdrop-filter: blur(10px); /* Розмиття того, що ПІД контейнером */
+            -webkit-backdrop-filter: blur(15px); /* Для iPhone/Safari */
             border: 1px solid rgba(240, 165, 0, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 40px;
         }
 
         h1 {
             font-family: 'Russo One', sans-serif;
             color: var(--accent-brass);
             text-align: center;
-            font-size: 2.8rem;
-            margin: 0;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: var(--accent-copper);
-            margin: 10px auto 40px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: normal;
+        }
+        
+        h2, h3 { font-weight: normal; }
+
+        .search-wrapper {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Блоки як у правилах */
-        .rule-card {
+        #rulesSearch {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid var(--accent-copper);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #rulesSearch:focus {
+            border-color: var(--accent-brass);
+            box-shadow: 0 0 15px rgba(240, 165, 0, 0.3);
+        }
+
+        /* АКОРДЕОН ПРАВИЛ */
+        .rule-section {
             background: var(--card-dark);
-            padding: 30px;
+            padding: 0 !important;
             margin-bottom: 30px;
             border-radius: 8px;
-            border-left: 4px solid var(--accent-brass);
-            text-align: left;
             border: 1px solid rgba(255,255,255,0.05);
             border-left: 4px solid var(--accent-brass);
+            text-align: left;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        h2 {
+        .rule-header {
+            padding: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .rule-header h2 {
             font-family: 'Russo One', sans-serif;
             color: var(--accent-brass);
-            margin-top: 0;
-            border-bottom: 1px solid rgba(200, 117, 51, 0.3);
+            margin: 0;
             padding-bottom: 10px;
+            border-bottom: 1px solid rgba(200, 117, 51, 0.3);
+            flex-grow: 1;
         }
 
-        h3 { color: var(--accent-copper); margin-top: 25px; font-weight: bold; }
+        .toggle-gear {
+            margin-left: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-brass);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .rule-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding: 0 30px;
+            transition: all 0.5s ease;
+        }
+
+        .rule-section.active .rule-content {
+            max-height: 7000px;
+            opacity: 1;
+            padding-bottom: 30px;
+        }
+
+        .rule-section.active .toggle-gear { transform: rotate(180deg); }
+
+        .rule-item { margin-bottom: 20px; padding-left: 10px; }
+        .rule-id { color: var(--accent-copper); font-weight: bold; margin-right: 8px; }
         
         .rule-block { 
             background: rgba(240, 165, 0, 0.05); 
@@ -93,26 +158,37 @@
             border-radius: 5px; 
             margin: 15px 0; 
             border: 1px dashed rgba(240, 165, 0, 0.3);
+            color: #e0e0e0;
         }
 
-        .punishment {
-            color: #ff9e9e;
-            background: rgba(255, 0, 0, 0.1);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin-bottom: 5px; color: #ccc; }
         b { color: var(--accent-brass); }
 
-        .back-btn {left: -23px;}
+        .punishment {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #ff9e9e;
+            padding: 5px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Накладка технічних робіт */
+        .maintenance-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); z-index: 10000;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+        }
+
+        .maintenance-gear { font-size: 4rem; animation: rotateGear 4s infinite linear; display: inline-block; }
+        @keyframes rotateGear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .back-btn { left: -3px; } 
 
         @media (max-width: 600px) {
-            .nav-logo { display: none; }
             h1 { font-size: 2rem; }
             .container { padding: 20px; }
         }
@@ -120,7 +196,7 @@
 </head>
 <body>
 
-<div class="maintenance-overlay">
+<div class="maintenance-overlay" id="maintOverlay">
     <div class="maintenance-card">
         <div class="maintenance-gear">⚙️</div>
         <h1>ТЕХНІЧНІ РОБОТИ</h1>
@@ -132,13 +208,13 @@
     </div>
 </div>
 
-<div class="chain-mechanism">
-    <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
-    <div class="chain-wrap">
-        <div id="chainLinks" class="chain-links"></div>
+    <div class="chain-mechanism">
+        <img src="gear.webp" id="gearTop" class="gear" alt="Top Gear">
+        <div class="chain-wrap">
+            <div id="chainLinks" class="chain-links"></div>
+        </div>
+        <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
     </div>
-    <img src="gear.webp" id="gearBottom" class="gear" alt="Bottom Gear">
-</div>
 
     <nav class="nav-bar">
         <a href="index.html" class="nav-logo-link">
@@ -147,73 +223,233 @@
         <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
     </nav>
 
-    <div class="container">
-    <h1>Механіки ROLEPLAY</h1>
-    <div class="subtitle">AFTERLIGHT Season 1 • Офіційний збірник правил війни та рейдів</div>
+<div class="container">
+    <h1>RP Механіки та Правила</h1>
 
-    <div class="rule-card">
-        <h2>⚔️ Регламент оголошення війни</h2>
-        <p>РП-механіка війни та рейдів відтепер буде такою:</p>
-        <ul>
-            <li>Війну може оголосити лише лідер фракції.</li>
-            <li>Оголошення публікується у спеціальному Discord каналі <b>#рп-пости</b>.</li>
-            <li>Пост оформлюється як офіційний документ від фракції.</li>
-            <li>В пості обов’язково вказується причина війни.</li>
-            <li>Причина повинна мати логічне РП-обґрунтування.</li>
-            <li>В пості зазначається ціль війни (територія, ресурси, політичний вплив, компенсація).</li>
-        </ul>
-
-        <div class="rule-block">
-            <b>Підготовка та терміни:</b>
-            <ul>
-                <li>Після публікації починається <b>24 години підготовки</b>. Під час підготовки бойові дії заборонені.</li>
-                <li>Тривалість війни вказується в початковому пості — <b>3 або 7 днів</b>.</li>
-                <li>По закінченню періоду війни його можна продовжити ще одним рп-постом.</li>
-                <li>Війна стартує автоматично після завершення періоду підготовки.</li>
-            </ul>
+    <!-- 1. ЗАГАЛЬНІ ПРИНЦИПИ -->
+    <div class="rule-section">
+        <div class="rule-header">
+            <h2>1. Загальні принципи</h2>
+            <span class="toggle-gear">⚙️</span>
+        </div>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id">1.0.</span> Сервер базується на середньовічному RP-світі у стилі <b>Dark Fantasy</b> з розвитком держав, економіки, конфліктів та війни. Основні напрями: військова система, індустрія, дипломатія, економіка.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">1.1. RP-логіка:</span>
+                <ul>
+                    <li>Будь-яка дія має мати RP-причину.</li>
+                    <li>Заборонені нелогічні або "ігрові" дії без обґрунтування.</li>
+                    <li>Світ розвивається через історію та наслідки дій гравців.</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="rule-card">
-        <h2>🛡️ Дипломатія та Союзи</h2>
-        <ul>
-            <li>Відповідь другої сторони також оформлюється РП-постом у Discord.</li>
-            <li>Союзи оформлюються окремим РП-постом.</li>
-            <li>Найманці оформлюються через контракт у рп-пости (має містити умови та строк служби).</li>
-            <li>Нейтральні фракції не мають права втручатись у конфлікт.</li>
-        </ul>
-    </div>
-
-    <div class="rule-card">
-        <h2>🔥 Ведення бойових дій</h2>
-        <div class="rule-block">
-            <b>Замітка:</b> війна означає воєнний стан, під час якого проводяться рейди воюючих територій та дозволено вбивати всіх учасників війни.
+    <!-- 2 & 3. ЕКОНОМІКА ТА ІНДУСТРІЯ -->
+    <div class="rule-section">
+        <div class="rule-header">
+            <h2>2. Економіка та Індустрія</h2>
+            <span class="toggle-gear">⚙️</span>
         </div>
-        <ul>
-            <li>Під час війни дозволені рейди територій противника.</li>
-            <li><b>Заборонено оффлайн-рейд</b>, якщо у фракції немає онлайн учасників.</li>
-            <li>PvP дозволене лише між воюючими сторонами та їх союзниками.</li>
-            <li>Порушення правил сервера не виправдовується війною.</li>
-            <li>Всі воєнні події повинні мати логічний РП-хід подій.</li>
-        </ul>
-
-        <h3>Механіка захоплення:</h3>
-        <p>Захоплення території відбувається через контроль точки <b>30 хвилин</b>. Контроль означає присутність більшості бійців однієї сторони. Результат захоплення фіксується РП-постом зі скриншотами.</p>
-        <p><i>*Територію відкатувати будуть в окремих ситуаціях.</i></p>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id">2.0. Економіка:</span> 
+                Основи — виробництво, торгівля, ресурси, стабільність держав.
+                <ul>
+                    <li>Вплив війни: падіння економіки, дефіцит ресурсів, руйнування інфраструктури.</li>
+                    <li><b>Заборонено:</b> штучне руйнування економіки без RP-причини.</li>
+                </ul>
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">3.0. Індустрія:</span> 
+                Стратегічна, але не бойова система.
+                <ul>
+                    <li>Включає: ферми та механізми, транспорт (телеги, кораблі), виробничі системи.</li>
+                    <li>Роль: розвиток економіки, логістика, забезпечення армій, стратегічна перевага.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="rule-card">
-        <h2>🏳️ Капітуляція та Мир</h2>
-        <ul>
-            <li>Капітуляція оформлюється окремим офіційним постом, де прописуються умови миру.</li>
-            <li>Після завершення війни публікується фінальний РП-звіт.</li>
-            <li>Після війни діє <b>48 годин мирного режиму</b>.</li>
-            <li>Повторне оголошення війни можливе не раніше ніж через <b>7 днів</b>.</li>
-            <li>Усі спірні ситуації вирішує адміністрація або РП-суд.</li>
-        </ul>
-        
-        <span class="punishment">Покарання за недотримання правил: бан на 3 дні (з кожним баном покарання буде збільшуватись).</span>
+    <!-- 4, 5, 6. ПОСТІ, КОНФЛІКТИ, ДИПЛОМАТІЯ -->
+    <div class="rule-section">
+        <div class="rule-header">
+            <h2>4. Розвиток світу та Конфлікти</h2>
+            <span class="toggle-gear">⚙️</span>
+        </div>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id">4.0. RP-пости та події:</span> 
+                Основний інструмент розвитку світу. Можуть включати: створення держав/міст, відкриття будівель, появу персонажів, створення союзів, економічні та політичні події. 
+                Дипломатія використовується тільки у міждержавних або політичних діях.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">5.0. Конфлікти:</span>
+                Конфлікти можуть існувати без війни. Типи:
+                <ul>
+                    <li>Політичні (ультиматуми, образи, розриви договорів).</li>
+                    <li>Економічні (санкції, блокади, заборони торгівлі).</li>
+                    <li>Кримінальні (саботаж, диверсії, вбивства).</li>
+                    <li>Територіальні спори.</li>
+                </ul>
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">6.0. Дипломатія:</span> 
+                Зміни можливі тільки через RP-події. 
+                <br>Рівні відносин: <b>Союз ➔ нейтралітет ➔ напруга ➔ конфлікт ➔ війна</b>.
+            </div>
+        </div>
     </div>
+
+    <!-- 7. РЕЙДИ -->
+    <div class="rule-section">
+        <div class="rule-header">
+            <h2>7. Правила Рейдів</h2>
+            <span class="toggle-gear">⚙️</span>
+        </div>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id">7.0.</span> Рейд — коротка швидка операція з чіткою RP-метою.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">7.1. Обмеження:</span>
+                <ul>
+                    <li>Максимальна тривалість: <b>30 хвилин</b>.</li>
+                    <li><b>1 рейд на день</b>.</li>
+                    <li>Одна конкретна ціль (об'єкт або персонаж).</li>
+                    <li>Заборонено масове руйнування міста та хаотичні атаки без мети.</li>
+                </ul>
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">7.2. Після рейду:</span>
+                Обов'язковий RP-пост з результатом. Наслідки фіксуються адміністрацією.
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. ВІЙНА: БОЇ ТА ОБЛОГИ -->
+    <div class="rule-section">
+        <div class="rule-header">
+            <h2>8. Війна: Бої та Облоги</h2>
+            <span class="toggle-gear">⚙️</span>
+        </div>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id">8.1. Формат війни:</span> 
+                Великі битви, стратегічні переміщення, захоплення територій, облоги.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">8.2. Узгодження:</span>
+                Визначається сторона нападу та захисту. Узгоджується дата і час бою між лідерами та RP-адміністрацією. Умови бою можуть змінюватися лише за згодою всіх сторін (або адміністрацією). Заборонено залучати нові сили після початку бою без узгодження.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">8.3. Бої:</span>
+                <ul>
+                    <li>Кожен боєць має <b>1 життя</b>. Після смерті вихід з бою (респавн тільки на стартовій позиції).</li>
+                    <li>Час бою обмежений. Заборонені повторні "нескінченні атаки".</li>
+                    <li>Переможець визначається контролем території або чисельною перевагою.</li>
+                    <li>Переможна сторона має право на огляд та збір ресурсів із залишків поля бою та ворожих таборів.</li>
+                </ul>
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">8.4. Облоги:</span>
+                Проходять у межах визначеної зони поетапно:
+                <ol>
+                    <li><b>Початкова фаза:</b> Розташування таборів. Забороняються бойові дії та знищення ворожих укріплень.</li>
+                    <li><b>Підготовча фаза:</b> Побудова облогових машин атакуючими, рейдові дії оборони.</li>
+                    <li><b>Штурмова фаза:</b> Використання машин, блокада, підготовка до штурму, локальні сутички.</li>
+                    <li><b>Міські бої:</b> Перехід у місто, контроль території.</li>
+                    <li><b>Завершення:</b> Капітуляція, мирна угода або відступ.</li>
+                </ol>
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">8.5. Облогові машини:</span>
+                Заборонено миттєве створення під час бойових дій. Час побудови:
+                <ul>
+                    <li>Trebuchet - 45 хв | Catapult - 30 хв</li>
+                    <li>Ballista - 10 хв | Culverin / Mortar - 40 хв</li>
+                    <li>Battering Ram - 25 хв | Siege Ladder - 20 хв</li>
+                </ul>
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">8.7 & 8.8 Обмеження та Наслідки:</span>
+                Заборонено повне знищення міста або світу. Заборонені вічні війни без фіналу та безпричинні атаки. Результати фіксуються RP-постом.
+            </div>
+        </div>
+    </div>
+
+    <!-- ЛОГІСТИКА ТА ПОВСТАННЯ -->
+    <div class="rule-section">
+        <div class="rule-header">
+            <h2>9. Повстання та 10. Табори</h2>
+            <span class="toggle-gear">⚙️</span>
+        </div>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id">9.0. Повстання:</span>
+                Оголошується тільки на захопленій території за наявності RP-причини (окупація, репресії) і затверджується адміністрацією. Може включати рейди, бої та захоплення точок.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">10.0. Табори:</span>
+                Тимчасова військово-логістична база. Дає можливість формування армії, зберігання спорядження, є RP-точкою відступу.
+                <ul>
+                    <li>Не є містом і не дає економічних переваг.</li>
+                    <li>Обмеження: до 8 гравців = 1 табір; 9+ = 2 табори; 17+ = 3 табори; 25+ = 4 табори.</li>
+                    <li>Час побудови: <b>45 хвилин</b>. Заборонено миттєве появлення в зоні ворога.</li>
+                </ul>
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">8.6 Кораблі та Телеги:</span>
+                1 країна = 1 корабель (макс 3 на сторону конфлікту). 1 телега = до 6 гравців, 2 телеги = 7-10 гравців тощо.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">11.0 Найманці та Організації:</span>
+                Дозволені військові операції та контракти. Найманці не можуть змінювати сторону під час бою без RP-обґрунтування.
+            </div>
+        </div>
+    </div>
+
+    <!-- ЗАБОРОНИ -->
+    <div class="rule-section" style="border-left-color: #ff4444;">
+        <div class="rule-header">
+            <h2 style="color: #ff9e9e;">12. Заборонені предмети</h2>
+            <span class="toggle-gear" style="color: #ff9e9e;">⚙️</span>
+        </div>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id" style="color: #ff4444;">12.0.</span> 
+                Під час боїв, облог та рейдів <b>ЗАБОРОНЕНО</b> використовувати:
+                <ul>
+                    <li>Напої з моду Kaleidoscope Tavern.</li>
+                    <li>Тотеми безсмертя та зілля невидимості.</li>
+                    <li>Предмети/механіки, що дозволяють ваншот.</li>
+                    <li>Покращення з Sophisticated Backpacks: Alchemy, Помпа досвіду, Швидкі руки, Магніт, Автототем та їх просунуті версії.</li>
+                </ul>
+                <div class="punishment">Гармати з aleki's Nifty Ships дозволені тільки на кораблях.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- АДМІНІСТРАЦІЯ -->
+    <div class="rule-section">
+        <div class="rule-header">
+            <h2>13. RP-Адміністрація та Куратор</h2>
+            <span class="toggle-gear">⚙️</span>
+        </div>
+        <div class="rule-content">
+            <div class="rule-item">
+                <span class="rule-id">13.1. RP-адміністрація:</span>
+                Контроль подій, затвердження війн/рейдів, баланс, фіксація результатів. Має право змінювати результати при порушеннях, зупиняти конфлікти.
+            </div>
+            <div class="rule-item">
+                <span class="rule-id">13.2. RP-куратор:</span>
+                Розвиток сюжетної логіки, контроль історії, формування глобального сценарію, керування адміністрацією.
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <footer class="site-footer">
@@ -242,6 +478,73 @@
 
 
 <script>
+// Секретна комбінація
+let inputBuffer = "";
+const secretCode = "rpmechanics331";
+
+document.addEventListener('keydown', (e) => {
+    inputBuffer += e.key.toLowerCase();
+    if (inputBuffer.length > 20) inputBuffer = inputBuffer.substring(1);
+    if (inputBuffer.endsWith(secretCode)) {
+        document.getElementById('maintOverlay').style.display = 'none';
+        inputBuffer = "";
+    }
+});
+
+// --- Логіка пошуку ---
+function searchRules() {
+    let input = document.getElementById('rulesSearch').value.toLowerCase().trim();
+    function getRoot(word) {
+        if (word.length < 4) return word;
+        return word.replace(/(а|я|и|і|у|ю|ом|ем|ою|ею|ий|ій|ого|ому|их|им|ими|ами|ями|ість|ості)$/g, '');
+    }
+    let rootInput = getRoot(input);
+    let sections = document.querySelectorAll('.rule-section');
+    let noResults = document.getElementById('no-results');
+    let globalMatch = false;
+
+    sections.forEach(section => {
+        let items = section.querySelectorAll('.rule-item');
+        let sectionHasMatch = false;
+
+        items.forEach(item => {
+            let text = item.textContent.toLowerCase();
+            if (text.includes(input) || text.includes(rootInput)) {
+                item.style.display = "block";
+                sectionHasMatch = true;
+                globalMatch = true;
+            } else {
+                item.style.display = "none";
+            }
+        });
+
+        // Якщо є збіг, автоматично відкриваємо секцію
+        if (sectionHasMatch && input.length > 0) {
+            section.style.display = "block";
+            section.classList.add('active');
+        } else if (!sectionHasMatch && input.length > 0) {
+            section.style.display = "none";
+        } else {
+            // Скидання пошуку
+            section.style.display = "block";
+            section.classList.remove('active');
+            items.forEach(i => i.style.display = "block");
+        }
+    });
+
+    if (noResults) noResults.style.display = globalMatch || input.length === 0 ? "none" : "block";
+}
+
+// --- Акордеон ---
+document.querySelectorAll('.rule-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const section = header.parentElement;
+        section.classList.toggle('active');
+    });
+});
+
+
+
 window.addEventListener('scroll', function() {
         const gearTop = document.getElementById('gearTop');
         const gearBottom = document.getElementById('gearBottom');
@@ -295,7 +598,6 @@ document.onkeydown = function(e) {
 </script>
 </body>
 </html>
-
 
 
 
