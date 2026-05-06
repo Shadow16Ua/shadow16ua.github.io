@@ -1,0 +1,21 @@
+# robots.txt для shadow16ua.github.io
+# Документація: https://www.robotstxt.org/
+
+# Дозволяємо всім пошуковим ботам сканувати сайт
+User-agent: *
+Allow: /
+
+# Забороняємо індексувати застарілі сторінки — вони псують SEO
+Disallow: /old_index.html
+Disallow: /old_parliament.html
+
+# Забороняємо індексувати технічні файли
+Disallow: /common.js
+Disallow: /script.js
+Disallow: /maintenance.js
+
+# Вказуємо де знаходиться карта сайту
+Sitemap: https://shadow16ua.github.io/sitemap.xml
+
+# Пріоритет сканування (необов'язково, але корисно)
+Crawl-delay: 1
