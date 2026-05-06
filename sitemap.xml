@@ -1,82 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Головна сторінка — найвища пріоритетність -->
   <url>
     <loc>https://shadow16ua.github.io/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Новини — часто оновлюються -->
   <url>
-    <loc>https://shadow16ua.github.io/download.html</loc>
+    <loc>https://shadow16ua.github.io/news.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <url>
-    <loc>https://shadow16ua.github.io/rules.html</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://shadow16ua.github.io/rp-mechanics.html</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://shadow16ua.github.io/economy.html</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://shadow16ua.github.io/news.html</loc>
-    <priority>0.6</priority>
-  </url>
-  
+  <!-- Dev-блог — часто оновлюється -->
   <url>
     <loc>https://shadow16ua.github.io/dev-blog.html</loc>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shadow16ua.github.io/parliament.html</loc>
-    <priority>0.5</priority>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
+  <!-- Завантажити / Як грати -->
   <url>
-    <loc>https://shadow16ua.github.io/donate.html</loc>
-    <priority>0.5</priority>
+    <loc>https://shadow16ua.github.io/download.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
+  <!-- Правила сервера -->
   <url>
-    <loc>https://shadow16ua.github.io/privacy-policy.html</loc>
-    <priority>0.5</priority>
+    <loc>https://shadow16ua.github.io/rules.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
+  <!-- Економіка -->
   <url>
-    <loc>https://shadow16ua.github.io/privacy-policy.html</loc>
-    <priority>0.5</priority>
+    <loc>https://shadow16ua.github.io/Economy.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
+  <!-- RP Механіки -->
   <url>
-    <loc>https://shadow16ua.github.io/contact.html</loc>
-    <priority>0.4</priority>
+    <loc>https://shadow16ua.github.io/rp-mechanics.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>https://shadow16ua.github.io/faq.html</loc>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://shadow16ua.github.io/geoguessr.html</loc>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://shadow16ua.github.io/vote.html</loc>
-    <priority>0.4</priority>
-  </url>
-
+  <!-- Про проєкт -->
   <url>
     <loc>https://shadow16ua.github.io/about.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- FAQ -->
+  <url>
+    <loc>https://shadow16ua.github.io/faq.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Лідерборд -->
+  <url>
+    <loc>https://shadow16ua.github.io/leaderboard.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Донат -->
+  <url>
+    <loc>https://shadow16ua.github.io/donate.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Голосування -->
+  <url>
+    <loc>https://shadow16ua.github.io/vote.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Контакти -->
+  <url>
+    <loc>https://shadow16ua.github.io/contact.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Політика конфіденційності -->
+  <url>
+    <loc>https://shadow16ua.github.io/privacy-policy.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+
+
 </urlset>
