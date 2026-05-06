@@ -26,6 +26,73 @@
 	
     <title>Головна | Afterlight — Український Майнкрафт Сервер</title>
 	<meta name="description" content="AfterLight — унікальний Minecraft сервер на версії 1.20.1. Ванільне виживання з модом Create, розвиненою економікою, політикою та затишною спільнотою. Приєднуйся до нас!">
+	<!-- Open Graph (для красивого прев'ю при шарингу у Discord, Telegram, Facebook) -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://shadow16ua.github.io/" />
+	<meta property="og:title" content="AfterLight — Український Minecraft Сервер" />
+	<meta property="og:description" content="AfterLight — унікальний Minecraft сервер 1.20.1 з модом Create, живою економікою, парламентом та RP-механіками. Приєднуйся!" />
+	<meta property="og:image" content="https://shadow16ua.github.io/logo.webp" />
+	<meta property="og:locale" content="uk_UA" />
+	<meta property="og:site_name" content="AfterLight" />
+	 
+	<!-- Twitter Card (для шарингу в Twitter/X) -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="AfterLight — Український Minecraft Сервер" />
+	<meta name="twitter:description" content="AfterLight — Minecraft сервер з Create mod, економікою та парламентом гравців." />
+	<meta name="twitter:image" content="https://shadow16ua.github.io/logo.webp" />
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "WebSite",
+	  "name": "AfterLight",
+	  "alternateName": "AfterLight Minecraft Server",
+	  "url": "https://shadow16ua.github.io/",
+	  "description": "Офіційний сайт українського Minecraft сервера AfterLight — виживання з модом Create, розвиненою економікою та системою парламентського управління.",
+	  "inLanguage": "uk",
+	  "potentialAction": {
+	    "@type": "SearchAction",
+	    "target": {
+	      "@type": "EntryPoint",
+	      "urlTemplate": "https://shadow16ua.github.io/faq.html?q={search_term_string}"
+	    },
+	    "query-input": "required name=search_term_string"
+	  }
+	}
+	</script>
+    <!-- Блок 2: Інформація про організацію/проєкт -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AfterLight",
+    "url": "https://shadow16ua.github.io/",
+    "logo": "https://shadow16ua.github.io/logo.webp",
+    "description": "Українська спільнота Minecraft гравців навколо сервера AfterLight.",
+    "foundingDate": "2026",
+    "areaServed": "UA",
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://shadow16ua.github.io/contact.html"
+    },
+    "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Головна",
+        "item": "https://shadow16ua.github.io/"
+        }
+    ]
+    }
+    </script>
+	
 	<meta name="keywords" content="майнкрафт сервер, AfterLight, Create mod сервер, український майнкрафт сервер, український майнкрафт, 1.20.1 forge, виживання з модами">
 	<link rel="stylesheet" href="style.css">
     <style>
@@ -2010,32 +2077,32 @@ document.addEventListener('contextmenu', function(e) {
 });
 
 // 2. Блокуємо гарячі клавіші розробника
-document.onkeydown = function(e) {
-    // Блокуємо F12
-    if(e.keyCode == 123) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+I (Інспектор)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+C (Вибір елемента)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+J (Консоль)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+S (Збереження сторінки)
-    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-        return false;
-    }
-};
+// document.onkeydown = function(e) {
+//     // Блокуємо F12
+//     if(e.keyCode == 123) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+I (Інспектор)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+C (Вибір елемента)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+J (Консоль)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+//     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+S (Збереження сторінки)
+//     if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+//         return false;
+//     }
+// };
 </script>
 </body>
 </html>

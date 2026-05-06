@@ -10,16 +10,47 @@
 	
 	  gtag('config', 'G-M7D417QV57');
 	</script>
-
-    <meta name="google-adsense-account" content="ca-pub-9855066680842594">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9855066680842594"
-     crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/webp" href="favicon.webp">
     <title>Dev-Блог | Оновлення та новини сервера AfterLight</title>
+    <link rel="icon" type="image/webp" href="favicon.webp">
     <meta name="description" content="Читайте останні новини, патчноути та дізнавайтесь про технічні роботи на сервері AfterLight. Усі зміни, події та оновлення ядра в нашому Dev-блозі.">
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Головна",
+        "item": "https://shadow16ua.github.io/"
+        },
+        {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "RP Механіки",
+        "item": "https://shadow16ua.github.io/rp-mechanics.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Правила сервера",
+        "item": "https://shadow16ua.github.io/rules.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Dev-Блог",
+        "item": "https://shadow16ua.github.io/dev-blog.html"
+        }
+    ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
@@ -317,8 +348,7 @@
         <div class="divider"></div>
 
         <main>
-        <!-- <li><span class="prefix web">[WEB][MC][DS]</span> -->
-			<article class="post-card">
+            <article class="post-card">
                 <div class="post-header">
                     <h2 class="post-title">Зміни на сайті та в збірці</h2>
                     <span class="post-date">22 Квітня, 2026</span>
@@ -353,8 +383,8 @@
                 
                 </ul>
             </article>
+        <!-- <li><span class="prefix web">[WEB][MC][DS]</span> -->
 
-			
             <article class="post-card">
                 <div class="post-header">
                     <h2 class="post-title">Зміни на сайті та в збірці</h2>
@@ -373,11 +403,11 @@
                     </div>
                     <div class="time-block">
                         <span class="time-label">Кінець:</span>
-                        <span class="time-value">20:00 21.04.2026</span>
+                        <span class="time-value">18:00 20.04.2026</span>
                     </div>
                     <div class="time-block time-duration">
                         <span class="time-label">Тривалість:</span>
-                        <span class="time-value">~24 дні</span>
+                        <span class="time-value">~23 дні</span>
                     </div>
                 </div>
 
@@ -393,7 +423,7 @@
                     <li><span class="prefix web">[WEB]</span> Додано візуальні анімації, ефекти та нові стилі</li>
                     <li><span class="prefix web">[WEB]</span> Додано пошук та можливість згортання секцій на сторінці <a href="rules.html">&nbsp;Правил</a></li>
                     <li><span class="prefix web">[WEB]</span> Додано теги на сторінці <a href="news.html">&nbsp;Новини</a></li>
-                    <!-- <li><span class="prefix web">[WEB]</span> Оновлено сторінку економіки <a href="Economy.html">&nbsp;Економіка</a></li> -->
+                    <!-- <li><span class="prefix web">[WEB]</span> Оновлено сторінку економіки <a href="economy.html">&nbsp;Економіка</a></li> -->
                     <li><span class="prefix web">[WEB]</span> Додано сторінку <a href="donate.html">&nbsp;Донат</a></li>
                     <li><span class="prefix web">[WEB]</span> Додано сторінку<a href="faq.html">&nbsp;Часті питання</a></li>
                     <li><span class="prefix web">[WEB]</span> Додано випливаюче вікно при наведенні <a href="index.html">&nbsp;на показчик онлайну&nbsp;</a> для показу детальнішої інформації</li>
@@ -450,33 +480,33 @@ document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
 
-// 2. Блокуємо гарячі клавіші розробника
-document.onkeydown = function(e) {
-    // Блокуємо F12
-    if(e.keyCode == 123) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+I (Інспектор)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+C (Вибір елемента)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+J (Консоль)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+S (Збереження сторінки)
-    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-        return false;
-    }
-};
+// // 2. Блокуємо гарячі клавіші розробника
+// document.onkeydown = function(e) {
+//     // Блокуємо F12
+//     if(e.keyCode == 123) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+I (Інспектор)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+C (Вибір елемента)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+J (Консоль)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+//     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+S (Збереження сторінки)
+//     if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+//         return false;
+//     }
+// };
 </script>
 </body>
 </html>

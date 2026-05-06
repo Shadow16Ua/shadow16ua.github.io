@@ -11,16 +11,40 @@
 	  gtag('config', 'G-M7D417QV57');
 	</script>
 	
-    <meta name="google-adsense-account" content="ca-pub-9855066680842594">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9855066680842594"
-     crossorigin="anonymous"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
     <title>Правила сервера | AfterLight Minecraft</title>
     <meta name="description" content="Офіційні правила гри на сервері AfterLight. Ознайомтеся з нормами поведінки, списком дозволених модів та правилами торгівлі, щоб уникнути бану.">
-	<link rel="stylesheet" href="style.css">
+	
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Головна",
+        "item": "https://shadow16ua.github.io/"
+        },
+        {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "RP Механіки",
+        "item": "https://shadow16ua.github.io/rp-mechanics.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Правила сервера",
+        "item": "https://shadow16ua.github.io/rules.html"
+        }
+    ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
 
@@ -241,7 +265,7 @@
 
 /* Твої внутрішні блоки правил */
 .rule-block { 
-    background: rgba(240, 165, 0, 0.05); 
+    background: rgba(207, 195, 167, 0.05); 
     padding: 15px; 
     border-radius: 5px; 
     margin: 15px 0; 
@@ -395,8 +419,8 @@
             <div class="rule-content">
             
                 <div class="rule-item">
-                    <span class="rule-id">2.1.</span> Заборонено використання читів, стороннього софту (X-Ray, клікери, скрипти), 
-                    конфігів (JADE та інші..) та модифікацій, 
+                    <span class="rule-id">2.1.</span> Заборонено використання читів, стороннього софту (X-Ray, FreeCam, клікери, скрипти), 
+                    ресурспаків, конфігів (XaerosMap, JADE та інші..) та модифікацій, 
                     що надають нечесну перевагу (наприклад, пошук ресурсів або допомога в PvP).
                     <div class="punishment">Покарання: Бан на 10 днів. При повторенні - бан на 30 днів</div>
                 </div>
@@ -453,7 +477,7 @@
             <div class="rule-content">
 
                 <div class="rule-item">
-                    <span class="rule-id">3.1.</span> Радіус 300 блоків від центру спавну — зона без баз/ферм/приватів без узгодження. Точка спавну - біля парламенту.
+                    <span class="rule-id">3.1.</span> Радіус 300 блоків від центру спавну (-565 ~ -930) — зона без баз/ферм/приватів без узгодження. Точка спавну - біля парламенту.
                     Територія спавну є недоторканною зоною. Заборонено будь-яке несанкціоноване руйнування або зміну ландшафту (як на поверхні, так і під землею).
                     <div class="punishment">Покарання: Вимога перенести споруду і/або розприватити територію протягом 1 години, інакше - бан від 1 до 10 днів.</div>
                 </div>
@@ -701,32 +725,32 @@ document.addEventListener('contextmenu', function(e) {
 });
 
 // 2. Блокуємо гарячі клавіші розробника
-document.onkeydown = function(e) {
-    // Блокуємо F12
-    if(e.keyCode == 123) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+I (Інспектор)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+C (Вибір елемента)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+J (Консоль)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+S (Збереження сторінки)
-    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-        return false;
-    }
-};
+// document.onkeydown = function(e) {
+//     // Блокуємо F12
+//     if(e.keyCode == 123) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+I (Інспектор)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+C (Вибір елемента)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+J (Консоль)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+//     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+S (Збереження сторінки)
+//     if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+//         return false;
+//     }
+// };
 </script>
 </body>
 </html>

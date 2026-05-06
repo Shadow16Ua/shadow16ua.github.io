@@ -10,14 +10,58 @@
 	
 	  gtag('config', 'G-M7D417QV57');
 	</script>
-
-    <meta name="google-adsense-account" content="ca-pub-9855066680842594">
 	
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="favicon.webp">
     <title>Економіка та Ринок | Фінансова система AfterLight</title>
     <meta name="description" content="Дізнайся все про живу економіку сервера AfterLight. Курс ігрової валюти, аналітика ринку, торгівля між гравцями та офіційна фінансова система.">
-	<link rel="stylesheet" href="style.css">
+	
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Головна",
+        "item": "https://shadow16ua.github.io/"
+        },
+        {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "RP Механіки",
+        "item": "https://shadow16ua.github.io/rp-mechanics.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Правила сервера",
+        "item": "https://shadow16ua.github.io/rules.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Dev-Блог",
+        "item": "https://shadow16ua.github.io/dev-blog.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Про проєкт",
+        "item": "https://shadow16ua.github.io/about.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Економіка та Ринок",
+        "item": "https://shadow16ua.github.io/Economy.html"
+        }
+    ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
 
@@ -338,7 +382,7 @@
             color: var(--accent-brass);
         }
 
-		.dev-notice {
+        .dev-notice {
     background: rgba(240, 165, 0, 0.1);
     border: 1px solid rgba(240, 165, 0, 0.3);
     padding: 20px;
@@ -372,7 +416,6 @@
     from { box-shadow: 0 0 10px rgba(240, 165, 0, 0.1); }
     to { box-shadow: 0 0 20px rgba(240, 165, 0, 0.2); }
 }
-
 </style>
 </head>
 <body>
@@ -388,7 +431,6 @@
         <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
     </div>
 </div> -->
-
 
 
 <div class="chain-mechanism">
@@ -407,13 +449,14 @@
         <div class="nav-side"></div>
     </nav>
 
-	 <div class="dev-notice">
+    <div class="dev-notice">
         <div class="dev-icon">⚙️</div>
         <div class="dev-text">
             <b>ПОПЕРЕДНІЙ ПЕРЕГЛЯД:</b> Сторінка перебуває на стадії калібрування механізмів 2-го сезону (перезапуск). 
             Деякі дані можуть бути змінені згідно з рішеннями Генеральної Ради або адміністрації.
         </div>
     </div>
+
 
     <div class="container">
         <h1>ЕКОНОМІКА СЕРВЕРА</h1>
@@ -589,33 +632,33 @@ document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
 
-// 2. Блокуємо гарячі клавіші розробника
-document.onkeydown = function(e) {
-    // Блокуємо F12
-    if(e.keyCode == 123) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+I (Інспектор)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+C (Вибір елемента)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+Shift+J (Консоль)
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-    // Блокуємо Ctrl+S (Збереження сторінки)
-    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-        return false;
-    }
-};
+// // 2. Блокуємо гарячі клавіші розробника
+// document.onkeydown = function(e) {
+//     // Блокуємо F12
+//     if(e.keyCode == 123) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+I (Інспектор)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+C (Вибір елемента)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+Shift+J (Консоль)
+//     if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+//     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+//         return false;
+//     }
+//     // Блокуємо Ctrl+S (Збереження сторінки)
+//     if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+//         return false;
+//     }
+// };
 </script>
 </body>
 </html>

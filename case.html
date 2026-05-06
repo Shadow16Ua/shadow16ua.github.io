@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfterLight — Технічні Кейси</title>
+    <link rel="icon" type="image/webp" href="favicon.webp">
+    <meta name="description" content="Відкривай кейси на сервері AfterLight та отримуй унікальні предмети та скіни для Minecraft." />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent-brass: #f0a500; /*  */
+            --accent-copper: #c87533; /*  */
+            --bg-color: #0a0a0a;
+            --common: #b0b0b0;
+            --rare: #4488ff;
+            --epic: #a335ee;
+            --legendary: #ff8000;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('Parlament.webp'); /* [cite: 7] */
+            background-attachment: fixed; background-size: cover;
+            color: #fff; font-family: 'Roboto', sans-serif; /* [cite: 8] */
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+            user-select: none; overflow-x: hidden;
+        }
+
+        .container { width: 95%; max-width: 1000px; padding: 40px 0; text-align: center; }
+        
+        h1 { 
+            font-family: 'Russo One', sans-serif; color: var(--accent-brass); font-size: 3.5rem; 
+            margin-bottom: 20px; text-shadow: 0 0 25px rgba(240, 165, 0, 0.4); 
+            animation: fadeInUp 1s ease forwards; 
+        }
+
+        /* --- ГОРИЗОНТАЛЬНА СІТКА --- */
+        .cases-grid { 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: center; 
+            align-items: stretch; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+            width: 100%;
+        }
+
+        /* --- ПЛАВАЮЧІ КАРТКИ ТА ЕФЕКТИ --- */
+        .case-card {
+            flex: 1; 
+            min-width: 320px;
+            max-width: 450px;
+            background: rgba(30, 25, 20, 0.9); 
+            border: 2px solid var(--accent-copper); 
+            border-radius: 15px; padding: 40px; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer; position: relative; overflow: hidden;
+            animation: float-icon 4s ease-in-out infinite; 
+            display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+        }
+
+        .case-card:nth-child(2) { animation-delay: 1s; }
+
+        .case-card:hover { 
+            transform: translateY(-15px) scale(1.02); 
+            border-color: var(--accent-brass); 
+            box-shadow: 0 15px 40px rgba(240, 165, 0, 0.2); 
+        }
+
+        /* Ефект блиску на картках  */
+        .case-card::after {
+            content: ''; position: absolute; top: -50%; left: -120%; width: 60%; height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(25deg); animation: shine 5s infinite;
+        }
+
+        .case-instruction {
+            background: rgba(240, 165, 0, 0.05); border: 1px dashed var(--accent-brass);
+            padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: left;
+            border-left: 5px solid var(--accent-brass); animation: fadeInUp 1.2s ease;
+        }
+
+        /* --- БАЛАНС ТА ВВОД КОДУ --- */
+        .key-balance {
+            font-family: 'Russo One', sans-serif; background: rgba(0,0,0,0.6);
+            padding: 12px 30px; border-radius: 50px; border: 1px solid var(--accent-copper);
+            display: inline-block; margin-bottom: 30px; color: var(--accent-brass);
+            font-size: 1.3rem; transition: 0.3s; animation: pulse-glow 2.5s infinite; 
+        }
+
+        .redeem-section {
+            background: rgba(20,20,20,0.8); padding: 20px; border-radius: 12px;
+            border: 1px solid rgba(240, 165, 0, 0.2); margin-bottom: 40px;
+            display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+        }
+
+        .redeem-input {
+            padding: 15px; background: #000; border: 1px solid var(--accent-copper);
+            color: #fff; border-radius: 6px; font-family: 'Russo One'; outline: none; width: 250px;
+            transition: 0.3s;
+        }
+        .redeem-input:focus { border-color: var(--accent-brass); box-shadow: 0 0 15px rgba(240, 165, 0, 0.2); }
+
+        .action-btn {
+            padding: 15px 35px; background: transparent; border: 2px solid var(--accent-brass);
+            color: var(--accent-brass); font-family: 'Russo One'; font-size: 1rem;
+            cursor: pointer; border-radius: 8px; transition: 0.3s; text-transform: uppercase;
+        }
+        .action-btn:hover:not(:disabled) { background: var(--accent-brass); color: #000; transform: scale(1.05); }
+
+        /* --- АНІМАЦІЇ --- */
+        @keyframes float-icon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes shine { 0% { left: -120%; } 100% { left: 150%; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 10px rgba(240, 165, 0, 0.2); } 50% { box-shadow: 0 0 25px rgba(240, 165, 0, 0.5); } 100% { box-shadow: 0 0 10px rgba(240, 165, 0, 0.2); } }
+
+        /* [cite: 290-318] Стилі для спіннера та модалки (залишаються без змін) */
+        .spinner-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
+        .spinner-viewport { position: relative; width: 800px; height: 180px; background: #111; border: 3px solid var(--accent-brass); overflow: hidden; border-radius: 10px; }
+        .spinner-pointer { position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background: var(--accent-brass); z-index: 100; transform: translateX(-50%); box-shadow: 0 0 15px var(--accent-brass); }
+        .spinner-track { display: flex; position: absolute; left: 0; top: 0; height: 100%; }
+        .spin-item { min-width: 150px; width: 150px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .spin-item img { height: 60px; }
+        .result-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 10000; align-items: center; justify-content: center; }
+        .result-content { background: #111; padding: 50px; border-radius: 20px; border: 2px solid var(--accent-brass); text-align: center; }
+
+        @media (max-width: 850px) { .spinner-viewport { width: 95%; } h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+
+<div class="maintenance-overlay">
+    <div class="maintenance-card">
+        <div class="maintenance-gear">⚙️</div>
+        <h1>ТЕХНІЧНІ РОБОТИ</h1>
+        <p>Наразі ми змащуємо шестерні та калібруємо механізми. Завітайте трохи пізніше!</p>
+        <div class="maintenance-status">
+            СТАТУС: <span class="status-text">&nbsp;ОБСЛУГОВУВАННЯ</span>
+        </div>
+        <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>МЕХАНІЧНІ КЕЙСИ</h1>
+
+    <div class="case-instruction">
+        <h3>📜 ВАЖЛИВА ІНСТРУКЦІЯ</h3>
+        <p>1. <strong>Кейс привілеїв: 3 ключі.</strong> Сейф GDR: 1 ключ.</p>
+        <p>2. <strong>ОБОВ'ЯЗКОВО зробіть скріншот екрана</strong> з вікном виграшу.</p>
+        <p>3. Надішліть скріншот у Discord-тикет для отримання нагороди.</p>
+    </div>
+
+    <div class="key-balance" id="balance-box">🔑 БАЛАНС: <span id="key-count">0</span> КЛЮЧІВ</div>
+
+    <div class="redeem-section">
+        <input type="text" id="promo-input" class="redeem-input" placeholder="ВВЕДІТЬ ПАРОЛЬ...">
+        <button class="action-btn" onclick="redeemCode()">АКТИВУВАТИ</button>
+    </div>
+
+    <div class="cases-grid">
+        <div class="case-card" onclick="attemptSpin('gdr', 2)">
+            <img src="gdr.webp" class="case-icon" style="height:100px;">
+            <h2>СЕЙФ GDR</h2>
+            <p>Ціна: 1 🔑</p>
+            <button class="action-btn" id="btn-gdr">ВІДКРИТИ</button>
+        </div>
+
+        <div class="case-card" onclick="attemptSpin('vip', 6)">
+            <div style="font-size: 5rem; margin-bottom: 20px;">🌟</div>
+            <h2>ПРИВІЛЕЇ</h2>
+            <p>Ціна: 3 🔑</p>
+            <button class="action-btn" id="btn-vip">ВІДКРИТИ</button>
+        </div>
+    </div>
+</div>
+
+<div id="spinner-overlay" class="spinner-overlay">
+    <h2 style="font-family: 'Russo One'; color: var(--accent-brass);">ГЕНЕРУЄМО ВИНАГОРОДУ...</h2>
+    <div class="spinner-viewport"><div class="spinner-pointer"></div><div id="spinner-track" class="spinner-track"></div></div>
+</div>
+
+<div id="result-modal" class="result-modal">
+    <div class="result-content">
+        <h2 style="color: #ff4444; font-family: 'Russo One';">⚠️ УВАГА! ЗРОБІТЬ СКРІНШОТ! ⚠️</h2>
+        <h2 id="win-rarity">РАРИТЕТ</h2>
+        <div id="win-display" style="margin: 20px 0;"></div>
+        <h1 id="win-name">НАЗВА</h1>
+        <button class="action-btn" style="background:var(--accent-brass); color:#000;" onclick="closeResult()">Я ЗРОБИВ СКРІНШОТ</button>
+    </div>
+</div>
+
+<script>
+    // 1. ПЕРЕЛІК КОДІВ ТА ЗАХИСТ
+    const secretCodes = { "START2026": 3, "GDR-FREE": 1, "AL-LUCKY": 5, "SUMMER-MOD": 2 };
+
+    let keys = parseInt(localStorage.getItem('afterlight_keys')) || 0;
+    // Завантажуємо список уже використаних кодів із пам'яті
+    let usedCodes = JSON.parse(localStorage.getItem('afterlight_used_codes')) || [];
+
+    updateUI();
+
+    function updateUI() {
+        document.getElementById('key-count').innerText = keys;
+        localStorage.setItem('afterlight_keys', keys);
+        document.getElementById('btn-gdr').disabled = keys < 2;
+        document.getElementById('btn-vip').disabled = keys < 6;
+        
+        // Візуальний ефект при зміні балансу
+        const box = document.getElementById('balance-box');
+        box.style.transform = 'scale(1.1)';
+        setTimeout(() => box.style.transform = 'scale(1)', 200);
+    }
+
+    function redeemCode() {
+        const input = document.getElementById('promo-input');
+        const code = input.value.trim().toUpperCase();
+        
+        if (!code) return;
+
+        // Перевірка, чи код уже був використаний цим гравцем
+        if (usedCodes.includes(code)) {
+            alert("Цей код уже активовано!");
+            input.value = "";
+            return;
+        }
+
+        if (secretCodes[code]) {
+            const amount = secretCodes[code];
+            keys += amount;
+            usedCodes.push(code); // Додаємо код до списку використаних
+            localStorage.setItem('afterlight_used_codes', JSON.stringify(usedCodes)); // Зберігаємо список
+            
+            alert(`Успішно! Додано ${amount} ключів.`);
+            input.value = "";
+            updateUI();
+        } else {
+            alert("Невірний пароль!");
+        }
+    }
+
+    // Решта логіки (Баланс нагород та Спіннер) залишається з минулого разу
+    const prizes = {
+        gdr: [
+            {name: "10 GDR", rarity: "Common", weight: 65, color: "#b0b0b0", img: true},
+            {name: "50 GDR", rarity: "Rare", weight: 25, color: "#4488ff", img: true},
+            {name: "100 GDR", rarity: "Epic", weight: 8, color: "#a335ee", img: true},
+            {name: "500 GDR", rarity: "Legendary", weight: 2, color: "#ff8000", img: true}
+        ],
+        vip: [
+            {name: "VIP 7 ДНІВ", rarity: "Common", weight: 50, color: "#b0b0b0", icon: "📜"},
+            {name: "ПРЕФІКС 7 ДНІВ", rarity: "Common", weight: 30, color: "#b0b0b0", icon: "🏷️"},
+            {name: "VIP 14 ДНІВ", rarity: "Rare", weight: 10, color: "#4488ff", icon: "🎖️"},
+            {name: "ПРЕФІКС 14 ДНІВ", rarity: "Rare", weight: 5, color: "#4488ff", icon: "🏷️"},
+            {name: "VIP 21 ДЕНЬ", rarity: "Epic", weight: 3, color: "#a335ee", icon: "🌟"},
+            {name: "ПРЕФІКС МІСЯЦЬ", rarity: "Epic", weight: 1, color: "#a335ee", icon: "🏷️"},
+            {name: "VIP МІСЯЦЬ", rarity: "Legendary", weight: 0.7, color: "#ff8000", icon: "⚡"},
+            {name: "ПРЕФІКС НАЗАВЖДИ", rarity: "Legendary", weight: 0.3, color: "#ff8000", icon: "👑"}
+        ]
+    };
+
+    function attemptSpin(type, cost) {
+        if (keys < cost) return;
+        keys -= cost;
+        updateUI();
+        startSpin(type);
+    }
+
+    function startSpin(type) {
+        const track = document.getElementById('spinner-track');
+        document.getElementById('spinner-overlay').style.display = 'flex';
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+
+        let tape = [];
+        const list = prizes[type];
+        for(let i=0; i<90; i++) {
+            let r = Math.random()*100, cur=0;
+            for(let p of list) { cur+=p.weight; if(r<=cur){tape.push(p);break;} }
+        }
+
+        track.innerHTML = tape.map(p => `
+            <div class="spin-item" style="background: linear-gradient(to top, ${p.color}33, transparent)">
+                ${p.img ? '<img src="gdr.webp">' : '<span style="font-size:2.5rem">'+p.icon+'</span>'}
+                <span style="font-family:Russo One; font-size:0.8rem; color:${p.color}">${p.name}</span>
+            </div>`).join('');
+
+        setTimeout(() => {
+            const itemWidth = 150;
+            const winnerIdx = 72; 
+            const viewportWidth = document.querySelector('.spinner-viewport').offsetWidth;
+            const stopPos = (winnerIdx * itemWidth) - (viewportWidth / 2) + (itemWidth / 2);
+
+            track.style.transition = 'transform 6s cubic-bezier(0.1, 0, 0.1, 1)';
+            track.style.transform = `translateX(-${stopPos}px)`;
+
+            setTimeout(() => {
+                const win = tape[winnerIdx];
+                document.getElementById('win-rarity').innerText = win.rarity.toUpperCase();
+                document.getElementById('win-rarity').style.color = win.color;
+                document.getElementById('win-name').innerText = win.name;
+                document.getElementById('win-display').innerHTML = win.img ? '<img src="gdr.webp" style="height:100px;">' : '<span style="font-size:6rem">'+win.icon+'</span>';
+                document.getElementById('result-modal').style.display = 'flex';
+            }, 6500);
+        }, 100);
+    }
+
+    function closeResult() {
+        document.getElementById('result-modal').style.display = 'none';
+        document.getElementById('spinner-overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

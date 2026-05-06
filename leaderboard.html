@@ -11,12 +11,75 @@
 	  gtag('config', 'G-M7D417QV57');
 	</script>
 
-    <meta name="google-adsense-account" content="ca-pub-9855066680842594">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лідерборд | Рейтинг та Топ гравців сервера AfterLight</title>
+    <link rel="icon" type="image/webp" href="favicon.webp">
     <meta name="description" content="Рейтинг найкращих гравців AfterLight. Дізнайся, хто лідирує в топі вбивств (PvP), має найбільше награного часу та дослідив найбільше територій.">
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Головна",
+        "item": "https://shadow16ua.github.io/"
+        },
+        {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "RP Механіки",
+        "item": "https://shadow16ua.github.io/rp-mechanics.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Правила сервера",
+        "item": "https://shadow16ua.github.io/rules.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Dev-Блог",
+        "item": "https://shadow16ua.github.io/dev-blog.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Про проєкт",
+        "item": "https://shadow16ua.github.io/about.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Економіка та Ринок",
+        "item": "https://shadow16ua.github.io/Economy.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 7,
+        "name": "Контакти та Підтримка",
+        "item": "https://shadow16ua.github.io/contact.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 8,
+        "name": "Підтримка сервера",
+        "item": "https://shadow16ua.github.io/donate.html"
+        },
+        {
+        "@type": "ListItem",
+        "position": 9,
+        "name": "Лідерборд",
+        "item": "https://shadow16ua.github.io/leaderboard.html"
+        }
+    ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
@@ -315,41 +378,41 @@
             {
                 title: "⚔️ ТОП ВБИВСТВ",
                 players: [
-                    { name: "Mourang", value: "130", trend: "up"},
-                    { name: "BlackBlame", value: "36", trend: "up" },
-                    { name: "Kra1zz3r", value: "21", trend: "up" }
+                    { name: "?????", value: "??", trend: ""},
+                    { name: "?????", value: "??", trend: "" },
+                    { name: "?????", value: "??", trend: "" }
                 ]
             },
             {
                 title: "💀 Топ Смертей",
                 players: [
-                    { name: "8_Pipetka", value: "74", trend: "up"},
-                    { name: "Kra1zz3r", value: "43", trend: "up"},
-					{ name: "Alextimcuk20", value: "27", trend: "up"},
+                    { name: "?????", value: "??", trend: ""},
+                    { name: "?????", value: "??", trend: ""},
+					{ name: "?????", value: "??", trend: ""},
                 ]
             },
             {
                 title: "⏳ Награний час",
                 players: [
-                    { name: "Anhitrion", value: "1дн 7г", trend: "up" },
-					{ name: "Kra1zz3r", value: "1дн 6г", trend: "up"},
-                    { name: "Danfandan_", value: "1дн 2г", trend: "up"},
+                    { name: "?????", value: "??днів ?г", trend: "" },
+					{ name: "?????", value: "??днів ?г", trend: ""},
+                    { name: "?????", value: "??днів ?г", trend: ""},
                 ]
             },
             {
                 title: "🗺️ Топ Мандрівників",
                 players: [
-                    { name: "Kra1zz3r", value: "40к блоків", trend: "up"},
-                    { name: "Grumm223", value: "37к блоків", trend: "up"},
-                    { name: "TheV1ter", value: "32к блоків", trend: "up"},
+                    { name: "?????", value: "??к блоків", trend: ""},
+                    { name: "?????", value: "??к блоків", trend: ""},
+                    { name: "?????", value: "??к блоків", trend: ""},
                 ]
             },
             {
                 title: "🏗️ Вбито мобів",
                 players: [
-                    { name: "Mourang", value: "2.3к мобів", trend: "up"},
-                    { name: "Kra1zz3r", value: "511 мобів", trend: "up"},
-                    { name: "MrLoki777", value: "456 мобів", trend: "up"}
+                    { name: "?????", value: "?? мобів", trend: ""},
+                    { name: "?????", value: "?? мобів", trend: ""},
+                    { name: "?????", value: "?? мобів", trend: ""}
                 ]
             },
             {
@@ -431,33 +494,33 @@
             e.preventDefault();
         });
 
-        // 2. Блокуємо гарячі клавіші розробника
-        document.onkeydown = function(e) {
-            // Блокуємо F12
-            if(e.keyCode == 123) {
-                return false;
-            }
-            // Блокуємо Ctrl+Shift+I (Інспектор)
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-            // Блокуємо Ctrl+Shift+C (Вибір елемента)
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-                return false;
-            }
-            // Блокуємо Ctrl+Shift+J (Консоль)
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-            // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-            // Блокуємо Ctrl+S (Збереження сторінки)
-            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-                return false;
-            }
-        };
+        // // 2. Блокуємо гарячі клавіші розробника
+        // document.onkeydown = function(e) {
+        //     // Блокуємо F12
+        //     if(e.keyCode == 123) {
+        //         return false;
+        //     }
+        //     // Блокуємо Ctrl+Shift+I (Інспектор)
+        //     if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        //         return false;
+        //     }
+        //     // Блокуємо Ctrl+Shift+C (Вибір елемента)
+        //     if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        //         return false;
+        //     }
+        //     // Блокуємо Ctrl+Shift+J (Консоль)
+        //     if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        //         return false;
+        //     }
+        //     // Блокуємо Ctrl+U (Перегляд вихідного коду сторінки)
+        //     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        //         return false;
+        //     }
+        //     // Блокуємо Ctrl+S (Збереження сторінки)
+        //     if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        //         return false;
+        //     }
+        // };
     </script>
 </body>
 </html>
