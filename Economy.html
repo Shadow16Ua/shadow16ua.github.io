@@ -338,14 +338,46 @@
             color: var(--accent-brass);
         }
 
+		.dev-notice {
+    background: rgba(240, 165, 0, 0.1);
+    border: 1px solid rgba(240, 165, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+    backdrop-filter: blur(5px);
+    animation: pulseNotice 2s infinite alternate;
+}
 
+.dev-icon {
+    font-size: 1.5rem;
+}
 
+.dev-text {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+.dev-text b {
+    color: var(--accent-brass);
+    display: block;
+    margin-bottom: 5px;
+}
+
+@keyframes pulseNotice {
+    from { box-shadow: 0 0 10px rgba(240, 165, 0, 0.1); }
+    to { box-shadow: 0 0 20px rgba(240, 165, 0, 0.2); }
+}
 
 </style>
 </head>
 <body>
 
-<div class="maintenance-overlay">
+<!-- <div class="maintenance-overlay">
     <div class="maintenance-card">
         <div class="maintenance-gear">⚙️</div>
         <h1>ТЕХНІЧНІ РОБОТИ</h1>
@@ -355,7 +387,7 @@
         </div>
         <a href="index.html" class="back-home-btn">← НА ГОЛОВНУ</a>
     </div>
-</div>
+</div> -->
 
 
 
@@ -374,6 +406,14 @@
         <a href="index.html" class="back-btn">← НА ГОЛОВНУ</a>
         <div class="nav-side"></div>
     </nav>
+
+	 <div class="dev-notice">
+        <div class="dev-icon">⚙️</div>
+        <div class="dev-text">
+            <b>ПОПЕРЕДНІЙ ПЕРЕГЛЯД:</b> Сторінка перебуває на стадії калібрування механізмів 2-го сезону (перезапуск). 
+            Деякі дані можуть бути змінені згідно з рішеннями Генеральної Ради або адміністрації.
+        </div>
+    </div>
 
     <div class="container">
         <h1>ЕКОНОМІКА СЕРВЕРА</h1>
