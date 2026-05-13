@@ -2104,5 +2104,26 @@ document.addEventListener('contextmenu', function(e) {
 //     }
 // };
 </script>
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Прокрутити вгору"></button>
+<script id="scroll-top-js-paste-before-body-close">
+(function () {
+    var btn = document.getElementById('scrollTopBtn');
+    if (!btn) return;
+ 
+    // Показуємо кнопку після 300px прокрутки
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }, { passive: true });
+ 
+    // Плавний скрол нагору при кліку
+    btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+})();
+</script>
 </body>
 </html>
