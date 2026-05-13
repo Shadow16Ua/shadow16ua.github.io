@@ -373,7 +373,7 @@ html, body {
 .scroll-top-btn {
 	position: fixed;
 	bottom: 30px;
-	right: 60px;
+	right: 32px;
 	width: 48px;
 	height: 48px;
 	background: rgba(10, 10, 10, 0.85);
@@ -402,26 +402,26 @@ html, body {
 	transform: rotate(45deg) translate(2px, 2px);
 	transition: border-color 0.3s ease;
 }
-
+ 
 .scroll-top-btn.visible {
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
 }
-
+ 
 .scroll-top-btn:hover {
 	border-color: var(--accent-brass);
 	box-shadow: 0 0 18px rgba(240, 165, 0, 0.35);
 }
-
+ 
 .scroll-top-btn:hover::before {
 	border-color: var(--accent-brass);
 }
-
+ 
 .scroll-top-btn:active {
 	transform: translateY(2px);
 }
-
+ 
 @media (max-width: 768px) {
 	.scroll-top-btn {
 		bottom: 20px;
@@ -430,4 +430,3 @@ html, body {
 		height: 42px;
 	}
 }
-
