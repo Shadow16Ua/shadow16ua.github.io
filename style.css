@@ -373,7 +373,7 @@ html, body {
 .scroll-top-btn {
 	position: fixed;
 	bottom: 30px;
-	right: 32px;
+	right: 60px;
 	width: 48px;
 	height: 48px;
 	background: rgba(10, 10, 10, 0.85);
