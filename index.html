@@ -453,16 +453,13 @@
             overflow: hidden;
             z-index: 100 !important;
 
-            /* Анімації */
             animation: fadeInUp 1s ease forwards, pulse-glow 2.5s infinite ease-in-out;
 
-            /* Трохи м'якша тінь */
             box-shadow: 0 0 25px rgba(240, 165, 0, 0.4);
 
             transition: 0.3s;
         }
 
-        /* Блиск */
         .main-start-btn::after {
             content: '';
             position: absolute;
@@ -480,7 +477,6 @@
             animation: shine 3s infinite;
         }
 
-        /* Легкий “дихаючий” ефект */
         @keyframes pulse-glow {
             0% {
                 transform: scale(1);
@@ -496,26 +492,22 @@
             }
         }
 
-        /* Блиск рухається */
         @keyframes shine {
             0% { left: -120%; }
             60% { left: 120%; }
             100% { left: 120%; }
-        }
+        } 
 
-        /* Наведення — трохи більша */
         .main-start-btn:hover {
             transform: scale(1.03) !important;
             box-shadow: 0 10px 40px rgba(240, 165, 0, 0.6);
         }
 
-        /* Натиск — трохи менша */
         .main-start-btn:active {
             transform: scale(0.95) !important;
             box-shadow: 0 5px 20px rgba(240, 165, 0, 0.4);
         }
 
-        /* Статус онлайну */
         .server-status { 
             display: inline-flex; 
             align-items: center; 
