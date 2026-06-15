@@ -226,12 +226,21 @@
             transition: 0.3s;
             text-transform: uppercase;
             font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 2s infinite alternate; /* Додано пульсацію */
         }
 
         .vote-btn:hover {
             background: var(--accent-brass);
-            box-shadow: 0 0 15px rgba(240, 165, 0, 0.5);
-            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(240, 165, 0, 0.8);
+            transform: scale(1.05);
+            animation: none; /* Вимикаємо пульсацію при наведенні */
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(200, 117, 51, 0.4); }
+            100% { box-shadow: 0 0 15px rgba(240, 165, 0, 0.6); }
         }
 
         .back-btn {	left: 0px;}
@@ -426,64 +435,77 @@
     
     <div class="container">
         <h1>ГОЛОСУЙ ЗА НАС</h1>
-        <p class="vote-desc">Підтримай сервер та допоможи нам стати кращими!</p>
+        <p class="vote-desc">Кожен твій голос — це нове вугілля в топку нашого проєкту!</p>
 
-            <div class="vote-grid">
-                <div class="vote-card">
-                    <div class="card-icon">👑</div>
-                    <h3>AllMc.in.ua</h3>
-                    <p>Голосуй кожні 24 години та отримуй нагороди.</p>
-                    <!-- <div class="reward-hint">🎁 Нагорода: <span>1 СЕЙФ GDR</span></div> -->
-                    <a href="https://allmc.in.ua/afterlight-graj-today" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
-                </div>
-
-                <div class="vote-card">
-                    <div class="card-icon">🔥</div>
-                    <h3>Монікор</h3>
-                    <p>Популярний моніторинг. Допоможи нам стати вище.</p>
-                    <!-- <div class="reward-hint">🎁 Нагорода: <span>1 СЕЙФ GDR</span></div> -->
-                    <a href="https://monicore.com.ua/server/586/afterlight" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
-                </div>
-
-				<div class="vote-card">
-                    <div class="card-icon">📈</div>
-                    <h3>MCUA</h3>
-                    <p>Твій голос піднімає сервер у рейтингу!</p>
-                    <!-- <div class="reward-hint">🎁 Нагорода: <span>1 СЕЙФ GDR</span></div> -->
-                    <a href="https://mcua.top/server-afterlight.356/vote" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
-                </div>
-
-                <!-- <div class="vote-card">
-                    <div class="card-icon">⚡</div>
-                    <h3>MCTop</h3>
-                    <p>Кожен голос допомагає новим гравцям знайти нас.</p>
-                    <a href="https://mctop.com/server/586" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
-                </div> -->
+        <!-- Картки голосування -->
+        <div class="vote-grid">
+            <div class="vote-card">
+                <div class="card-icon">👑</div>
+                <h3>AllMc.in.ua</h3>
+                <p>Голосуй кожні 24 години та отримуй нагороди прямо в інвентар.</p>
+                <a href="https://allmc.in.ua/afterlight-graj-today" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
             </div>
 
-            <div class="lootbox-card">
-                <div class="chest-wrapper">🧰</div> 
-                <h2 style="font-family: 'Russo One', sans-serif; color: var(--accent-brass);">АКЦІЯ: БОНУС ЗА ВІРНІСТЬ!</h2>
-                <p>Проголосуй <strong>15 разів</strong> за місяць та гарантовано отримай випадковий приз із набору:</p>
+            <div class="vote-card">
+                <div class="card-icon">🔥</div>
+                <h3>Монікор</h3>
+                <p>Допоможи нам піднятися в рейтингу та залучити нових інженерів.</p>
+                <a href="https://monicore.com.ua/server/586/afterlight" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
+            </div>
 
-                <div class="reward-list">
-                    <div class="reward-item">
-                        <span class="reward-icon">💎</span>
-                        <span class="reward-name">10-20 ГДР</span>
-                    </div>
-                    <div class="reward-item">
-                        <span class="reward-icon">🌟</span>
-                        <span class="reward-name">VIP (на тиждень)</span>
-                    </div>
-                    <div class="reward-item">
-                        <span class="reward-icon">🆓</span>
-                        <span class="reward-name">Прохідка для друга</span>
-                    </div>
-                </div>
-                <p class="bonus-instruction">Нагорода видається вручну після перевірки логів!</p>
+            <div class="vote-card">
+                <div class="card-icon">📈</div>
+                <h3>MCUA</h3>
+                <p>Підтримай українське ком'юніті. Твій голос має вирішальне значення!</p>
+                <a href="https://mcua.top/server-afterlight.356/vote" target="_blank" class="vote-btn">ПРОГОЛОСУВАТИ</a>
             </div>
         </div>
+
+        <!-- Секція "Бонус за вірність" -->
+        <div class="lootbox-card">
+            <div class="chest-wrapper">🧰</div> 
+            <h2 style="font-family: 'Russo One', sans-serif; color: var(--accent-brass);">БОНУС ЗА ВІРНІСТЬ</h2>
+            <p>Проголосуй <strong>15 разів</strong> за місяць та гарантовано отримай випадковий приз:</p>
+
+            <div class="reward-list">
+                <div class="reward-item">
+                    <span class="reward-icon">💎</span>
+                    <span class="reward-name"><b>10-100</b> ГДР</span>
+                </div>
+                <div class="reward-item">
+                    <span class="reward-icon">🌟</span>
+                    <span class="reward-name">VIP (на тиждень)</span>
+                </div>
+                <div class="reward-item">
+                    <span class="reward-icon">🎟️</span>
+                    <span class="reward-name">Прохідка для друга</span>
+                </div>
+            </div>
+            <p class="bonus-instruction">Нагорода видається вручну після перевірки!</p>
+        </div>
+
+        <!-- ТОП ГОЛОСУЮЧИХ (Використовуємо твій CSS) -->
+        <div class="top-voters-section">
+            <h2 style="font-family: 'Russo One', sans-serif; color: var(--accent-brass); margin-bottom: 20px;">🏆 ЛІДЕРИ ЦЬОГО МІСЯЦЯ</h2>
+            
+            <div class="voter-row top-1">
+                <span class="voter-name">🥇 Shadow_Ua</span>
+                <span class="voter-count">42 голоси</span>
+            </div>
+            <div class="voter-row">
+                <span class="voter-name">🥈 Anhitrion</span>
+                <span class="voter-count">13 голосів</span>
+            </div>
+            <div class="voter-row">
+                <span class="voter-name">🥉 -</span>
+                <span class="voter-count">- голосів</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #aaa; margin-top: 15px;">*Топ оновлюється адміністрацією щотижня</p>
+        </div>
+
     </div>
+
+
 </div>
 <footer class="site-footer">
     <div class="social-links">
