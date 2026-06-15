@@ -1522,6 +1522,101 @@
         margin: 0 2px;
     }
 }
+
+/* --- СПЛИВАЮЧА "РЕКЛАМА" ГОЛОСУВАННЯ --- */
+.vote-toast-ad {
+    position: fixed;
+    bottom: 30px;
+    right: -400px; /* Сховано за екраном */
+    width: 320px;
+    background: rgba(30, 25, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--accent-copper);
+    border-left: 4px solid var(--accent-brass);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: -5px 10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Ефект пружинки */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Клас для появи */
+.vote-toast-ad.show-toast {
+    transform: translateX(-430px); /* Виїжджає на екран */
+}
+
+/* Адаптація під телефони */
+@media (max-width: 600px) {
+    .vote-toast-ad {
+        width: 90%;
+        bottom: 20px;
+        right: -100%;
+    }
+    .vote-toast-ad.show-toast {
+        transform: translateX(calc(-100% - 5vw)); /* Виїжджає по центру */
+    }
+}
+
+.close-toast {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-toast:hover { color: #fff; }
+
+.toast-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.toast-icon { font-size: 2rem; filter: drop-shadow(0 0 5px rgba(240, 165, 0, 0.5)); }
+
+.toast-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.toast-title {
+    font-family: 'Russo One', sans-serif;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.toast-desc { font-size: 0.85rem; color: #aaa; line-height: 1.4; }
+
+.toast-btn {
+    display: block;
+    text-align: center;
+    background: var(--accent-copper);
+    color: white !important;
+    text-decoration: none;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.85rem;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+    text-transform: uppercase;
+}
+
+.toast-btn:hover {
+    background: var(--accent-brass);
+    transform: scale(1.02);
+}
+
+
    
     </style>
 </head>
@@ -1653,6 +1748,23 @@
     </div>
 
     <div class="season-under-online">✦ SEASON 3 ✦</div>
+
+
+    <!-- РЕКЛАМА ГОЛОСУВАННЯ -->
+    <div id="voteToastAd" class="vote-toast-ad">
+        <button id="closeToastBtn" class="close-toast">×</button>
+        <div class="toast-content">
+            <div class="toast-icon">📢</div>
+            <div class="toast-text">
+                <span class="toast-title">Звіт від механіків</span>
+                <span class="toast-desc">Ми знаємо, що ти любиш будувати заводи. А ще ми знаємо, що ти забув проголосувати за сервер! ⚙️ Допоможи індустрії — і твої конвеєри ніколи не заклинить.</span>
+            </div>
+        </div>
+        <a href="vote.html" class="toast-btn">Піти проголосувати</a>
+    </div>
+    <!-- КІНЕЦЬ -->
+
+
 
     <div class="section-divider"></div>
 

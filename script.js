@@ -43,3 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000); // 5 секунд
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const toastAd = document.getElementById('voteToastAd');
+    const closeBtn = document.getElementById('closeToastBtn');
+
+    if (toastAd) {
+        // Завжди показуємо через 4 секунди
+        setTimeout(() => {
+            toastAd.classList.add('show-toast');
+        }, 4000); 
+
+        // Логіка кнопки "Закрити" (ховає тільки на поточний перегляд)
+        closeBtn.addEventListener('click', () => {
+            toastAd.classList.remove('show-toast');
+        });
+    }
+});
